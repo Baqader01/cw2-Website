@@ -1,27 +1,14 @@
 <?php
-function db_connect()
-{
-    static $connection;
+$servername = "database";          
+$username   = "webdev";           
+$password   = "W3bD£velopment";  
+$dbname     = "foodbank";       
 
-    if (!isset($connection)) {
-        // Read from /var/www/private/config.ini
-        $config = parse_ini_file('/var/www/private/config.ini');
+// Create the connection object
+$conn = new mysqli($servername, $username, $password, $dbname);
 
-        if ($config === false) {
-            return 'Unable to read /var/www/private/config.ini';
-        }
-
-        $connection = mysqli_connect(
-            $config['servername'],  // "database"
-            $config['username'],    // "webdev"
-            $config['password'],    // "W3bD£development"
-            $config['dbname']       // "foodbank"
-        );
-    }
-
-    if ($connection === false) {
-        return mysqli_connect_error();
-    }
-
-    return $connection; // mysqli object
+// Check the connection worked
+if ($conn->connect_error) {
+    // If something goes wrong, stop the page and show the error
+    die("Database connection failed: " . $conn->connect_error);
 }

@@ -1,3 +1,14 @@
+<?php
+// include the database connection
+require __DIR__ . '/dbconnect.php';
+
+// we can safely run a query because $conn is defined
+$sql = "SELECT open_date, open_time, close_time, is_closed
+        FROM opening_hours
+        ORDER BY open_date";
+$result = $conn->query($sql);
+?>
+
 <!DOCTYPE html>
 <html lang="en-GB">
 <head>
@@ -54,14 +65,8 @@
     <section id="info">
       <h2>Visitor Information</h2>
       <p>We welcome everyone — no referrals or proof of need required. All meals are vegetarian-friendly, with vegan and gluten-free options available daily. The space is fully wheelchair accessible, with step-free entry and accessible bathrooms.</p>
-      <div class="opening-times">
-        <h3>Opening Times</h3>
-        <dl>
-          <dt>Monday – Friday:</dt><dd>10 am – 8 pm</dd>
-          <dt>Saturday:</dt><dd>10 am – 6 pm</dd>
-          <dt>Sunday:</dt><dd>Closed</dd>
-        </dl>
-      </div>
+      <?php include "opening_times.php"; ?>
+
     </section>
 
     <section id="volunteer">
