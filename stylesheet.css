@@ -104,11 +104,25 @@ dl {
 }
 
 .opening-times {
+  width: 50%;
   background: #e9eee9;
   padding: 1rem 1.5rem;
   border-left: 4px solid #487d59;
   border-radius: 6px;
-  margin-top: 1rem;
+  margin: 2rem auto 0rem auto;
+  
+}
+
+.opening-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Make the first column take a fixed width */
+.opening-table td:first-child {
+  width: 180px;       
+  padding-right: 12rem; 
+  white-space: nowrap; 
 }
 
 /* Carousel */
@@ -172,7 +186,7 @@ dl {
   display: grid;
   gap: 1.5rem;
   margin: 1.5rem 0;
-}
+} 
 
 blockquote {
   background: #e9eee9;

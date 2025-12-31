@@ -3,9 +3,9 @@
 require __DIR__ . '/dbconnect.php';
 
 // we can safely run a query because $conn is defined
-$sql = "SELECT open_date, open_time, close_time, is_closed
+$sql = "SELECT day_name, open_time, close_time, is_closed
         FROM opening_hours
-        ORDER BY open_date";
+        ORDER BY opening_id";
 $result = $conn->query($sql);
 ?>
 
@@ -21,13 +21,6 @@ $result = $conn->query($sql);
 </head>
 
 <body>
-  <?php
-  $sql = "SELECT open_date, open_time, close_time, is_closed
-        FROM opening_hours
-        ORDER BY open_date";
-  $result = $conn->query($sql);
-  ?>
-
   <header>
     <figure class="logo">
       <img src="assets/logos/CommunityTable-logo.png" alt="The Community Table logo">
@@ -65,8 +58,7 @@ $result = $conn->query($sql);
     <section id="info">
       <h2>Visitor Information</h2>
       <p>We welcome everyone — no referrals or proof of need required. All meals are vegetarian-friendly, with vegan and gluten-free options available daily. The space is fully wheelchair accessible, with step-free entry and accessible bathrooms.</p>
-      <?php include "opening_times.php"; ?>
-
+      <?php include __DIR__ . "/opening_times.php";?>
     </section>
 
     <section id="volunteer">
