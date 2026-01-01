@@ -75,7 +75,7 @@ if (!$result) {
                                 <td>
 
                                     <?php
-                                    // Format the timestamp into something readable (e.g. 06 Jan 2025 10:05)
+                                    // Format the timestamp into something readable
                                     $dt = strtotime($row['created_at']);
                                     echo htmlspecialchars(date('d M Y H:i', $dt));
                                     ?>

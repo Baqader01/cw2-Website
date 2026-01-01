@@ -1,6 +1,6 @@
 <?php
 // include the database connection
-require __DIR__ . '/dbconnect.php';
+require __DIR__ . '/../lib/dbconnect.php';
 
 // we can safely run a query because $conn is defined
 $sql = "SELECT day_name, open_time, close_time, is_closed
@@ -17,13 +17,13 @@ $result = $conn->query($sql);
   <meta name="description" content="The Community Table – a community hub tackling food insecurity and social isolation in East London.">
   <meta name="author" content="Mysarah Baqader">
   <title>The Community Table</title>
-  <link rel="stylesheet" href="stylesheet.css">
+  <link rel="stylesheet" href="/cw2/assets/css/stylesheet.css">
 </head>
 
 <body>
   <header>
     <figure class="logo">
-      <img src="assets/logos/CommunityTable-logo.png" alt="The Community Table logo">
+      <img src="../assets/logos/CommunityTable-logo.png" alt="The Community Table logo">
     </figure>
     
     <div class="title">
@@ -48,17 +48,17 @@ $result = $conn->query($sql);
     </section>
 
     <section class="carousel">
-      <img src="assets/marketing/food_1.jpg" alt="Volunteer placing donated food into a box in a community storeroom">
-      <img src="assets/marketing/food_2.jpg" alt="Two food donation boxes, including one labelled halal, filled with assorted groceries">
-      <img src="assets/marketing/food_3.jpg" alt="Volunteer packing food items into a donation box for the community">
-      <img src="assets/marketing/food_4.jpg" alt="Stack of food donation boxes prepared for community distribution">
-      <img src="assets/marketing/tins_1.jpeg" alt="Canned goods and tins donated for community food support">
+      <img src="../assets/marketing/food_1.jpg" alt="Volunteer placing donated food into a box in a community storeroom">
+      <img src="../assets/marketing/food_2.jpg" alt="Two food donation boxes, including one labelled halal, filled with assorted groceries">
+      <img src="../assets/marketing/food_3.jpg" alt="Volunteer packing food items into a donation box for the community">
+      <img src="../assets/marketing/food_4.jpg" alt="Stack of food donation boxes prepared for community distribution">
+      <img src="../assets/marketing/tins_1.jpeg" alt="Canned goods and tins donated for community food support">
     </section>
 
     <section id="info">
       <h2>Visitor Information</h2>
       <p>We welcome everyone — no referrals or proof of need required. All meals are vegetarian-friendly, with vegan and gluten-free options available daily. The space is fully wheelchair accessible, with step-free entry and accessible bathrooms.</p>
-      <?php include __DIR__ . "/opening_times.php";?>
+      <?php include __DIR__ . "/../includes/opening_times.php";?>
     </section>
 
     <section id="volunteer">
