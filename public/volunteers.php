@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '/dbconnect.php';
+require __DIR__ . '/../lib/dbconnect.php';
 
 // Simple query to get all opening hours in a fixed order
 $sql = "SELECT volunteer_id, full_name, email, phone, over18, created_at
@@ -21,14 +21,14 @@ if (!$result) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="stylesheet" href="/cw2/assets/css/stylesheet.css">
 
 </head>
 
 <body>
     <header>
         <figure class="logo">
-            <img src="assets/logos/CommunityTable-logo.png" alt="The Community Table logo">
+            <img src="../assets/logos/CommunityTable-logo.png" alt="The Community Table logo">
         </figure>
 
         <div class="title">

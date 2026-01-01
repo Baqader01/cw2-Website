@@ -1,11 +1,15 @@
 <?php
-$servername = "database";          
-$username   = "webdev";           
-$password   = "W3bD£velopment";  
-$dbname     = "foodbank";       
+$config = parse_ini_file(__DIR__ . '/../config/config.ini', true);
+
+// Basic safety check
+if ($config === false || !isset($config['database'])) {
+    die('Database configuration not found.');
+}
+
+$db = $config['database'];
 
 // Create the connection object
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = mysqli_connect( $db['host'], $db['username'], $db['password'], $db['dbname']);
 
 // Check the connection worked
 if ($conn->connect_error) {
