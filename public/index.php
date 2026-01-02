@@ -52,7 +52,11 @@ require __DIR__ . '/../app/Controllers/OpeningTimesController.php';
     <section id="info">
       <h2>Visitor Information</h2>
       <p>We welcome everyone — no referrals or proof of need required. All meals are vegetarian-friendly, with vegan and gluten-free options available daily. The space is fully wheelchair accessible, with step-free entry and accessible bathrooms.</p>
-      <?php OpeningTimesController::index($conn); ?>
+      
+      <?php 
+      $conn = db_connect();
+      OpeningTimesController::index($conn); 
+      ?>
 
     </section>
 
@@ -62,7 +66,7 @@ require __DIR__ . '/../app/Controllers/OpeningTimesController.php';
         <img src="assets/volunteers/people_w_1.jpeg" alt="Portrait of a volunteer woman with crossed arms in a dimly lit setting.">
       </figure>
       <p>Our volunteers are at the heart of everything we do. Whether you’re helping prepare meals, welcoming visitors, or organising food donations, your time makes a real difference.</p>
-      <a href="#contact" class="button">Become a Volunteer</a>
+      <a href="/cw2/public/register.php" class="button">Become a Volunteer</a>
     </section>
 
     <section id="testimonials" class="testimonials">

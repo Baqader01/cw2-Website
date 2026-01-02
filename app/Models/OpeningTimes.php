@@ -2,7 +2,7 @@
 
 class OpeningTimes
 {
-    public static function getAll($conn)
+    public static function getAll(mysqli $conn)
     {
         $sql = "SELECT day_name, open_time, close_time, is_closed
             FROM opening_hours

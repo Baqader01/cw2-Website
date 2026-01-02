@@ -1,18 +1,30 @@
 <?php
-$config = parse_ini_file(__DIR__ . '/../private/config.ini', true);
 
-// Basic safety check
-if ($config === false || !isset($config['database'])) {
-    die('Database configuration not found.');
+function db_connect(): mysqli
+{
+    $config = parse_ini_file(__DIR__ . '/../private/config.ini', true);
+
+    // Basic safety check
+    if ($config === false || !isset($config['database'])) {
+        die('Database configuration not found.');
+    }
+
+    $db = $config['database'];
+
+    // Create connection
+    $conn = mysqli_connect(
+        $db['host'],
+        $db['username'],
+        $db['password'],
+        $db['dbname']
+    );
+
+    // If mysqli_connect fails it returns false
+    if (!$conn) {
+        die("Database connection failed: " . mysqli_connect_error());
+    }
+
+    return $conn;
 }
 
-$db = $config['database'];
-
-// Create the connection object
-$conn = mysqli_connect( $db['host'], $db['username'], $db['password'], $db['dbname']);
-
-// Check the connection worked
-if ($conn->connect_error) {
-    // If something goes wrong, stop the page and show the error
-    die("Database connection failed: " . $conn->connect_error);
-}
+?>

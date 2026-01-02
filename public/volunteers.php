@@ -2,17 +2,7 @@
 require __DIR__ . '/../lib/dbconnect.php';
 require __DIR__ . '/../app/Controllers/VolunteersController.php';
 
-// Simple query to get all opening hours in a fixed order
-$sql = "SELECT volunteer_id, full_name, email, phone, over18, created_at
-  FROM volunteers
-  ORDER BY volunteer_id ASC";
-
-$result = mysqli_query($conn, $sql);
-// If the query fails, show a basic error and stop this part
-if (!$result) {
-    echo "<p>Could not load volunteers at the moment.</p>";
-    return;
-}
+$conn = db_connect();
 ?>
 
 <!DOCTYPE html>
