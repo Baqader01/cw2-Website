@@ -1,5 +1,5 @@
 <?php
-$config = parse_ini_file(__DIR__ . '/../config/config.ini', true);
+$config = parse_ini_file(__DIR__ . '/../private/config.ini', true);
 
 // Basic safety check
 if ($config === false || !isset($config['database'])) {
