@@ -1,12 +1,6 @@
 <?php
-// include the database connection
 require __DIR__ . '/../lib/dbconnect.php';
-
-// we can safely run a query because $conn is defined
-$sql = "SELECT day_name, open_time, close_time, is_closed
-        FROM opening_hours
-        ORDER BY opening_id";
-$result = $conn->query($sql);
+require __DIR__ . '/../app/Controllers/OpeningTimesController.php';
 ?>
 
 <!DOCTYPE html>
@@ -58,7 +52,8 @@ $result = $conn->query($sql);
     <section id="info">
       <h2>Visitor Information</h2>
       <p>We welcome everyone — no referrals or proof of need required. All meals are vegetarian-friendly, with vegan and gluten-free options available daily. The space is fully wheelchair accessible, with step-free entry and accessible bathrooms.</p>
-      <?php include __DIR__ . "/../includes/opening_times.php";?>
+      <?php OpeningTimesController::index($conn); ?>
+
     </section>
 
     <section id="volunteer">

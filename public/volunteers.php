@@ -1,5 +1,6 @@
 <?php
 require __DIR__ . '/../lib/dbconnect.php';
+require __DIR__ . '/../app/Controllers/VolunteersController.php';
 
 // Simple query to get all opening hours in a fixed order
 $sql = "SELECT volunteer_id, full_name, email, phone, over18, created_at
@@ -45,51 +46,7 @@ if (!$result) {
     </header>
 
     <main>
-        <section id="volunteer-list">
-            <h2>Registered Volunteers</h2>
-            <p>This page shows an overview of everyone who has registered to volunteer</p>
-
-            <?php if (mysqli_num_rows($result) > 0): ?>
-                <table class="admin-table">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Phone</th>
-                            <th>Over 18?</th>
-                            <th>Registered At</th>
-                        </tr>
-
-                    </thead>
-                    <tbody>
-                        <?php while ($row = mysqli_fetch_assoc($result)): ?>
-                            <tr>
-                                <td><?= htmlspecialchars($row['volunteer_id']) ?></td>
-                                <td><?= htmlspecialchars($row['full_name']) ?></td>
-                                <td><?= htmlspecialchars($row['email']) ?></td>
-                                <td><?= htmlspecialchars($row['phone']) ?></td>
-                                <td>
-                                    <?= ($row['over18'] == 1) ? 'Yes' : 'No' ?>
-                                </td>
-                                <td>
-
-                                    <?php
-                                    // Format the timestamp into something readable
-                                    $dt = strtotime($row['created_at']);
-                                    echo htmlspecialchars(date('d M Y H:i', $dt));
-                                    ?>
-                                </td>
-                            </tr>
-                        <?php endwhile;
-                        ?>
-                    </tbody>
-                </table>
-
-            <?php else: ?>
-                <p>No volunteers have registered yet.</p>
-            <?php endif; ?>
-        </section>
+        <?php VolunteersController::index($conn); ?>
     </main>
 
     <footer>
