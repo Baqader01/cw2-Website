@@ -2,12 +2,12 @@
     <h3>Opening Times</h3>
     <?php
     // If we have at least one row, show a table
-    if (mysqli_num_rows($openingTimes) > 0) {
+    if (mysqli_num_rows($result) > 0) {
         echo '<table class="opening-table">';
         echo '<tbody>';
 
         // Loop through each row from the database 
-        while ($row = mysqli_fetch_assoc($openingTimes)) {
+        while ($row = mysqli_fetch_assoc($result)) {
             // Decide what to show in the "Hours" column
             if ((int)$row['is_closed'] === 1) {
                 // Closed days

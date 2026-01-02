@@ -1,22 +1,12 @@
 <?php
+require_once __DIR__ . '/../Models/Volunteers.php';
 
 class VolunteersController
 {
     public static function index(mysqli $conn)
     {
-        $sql = "SELECT volunteer_id, full_name, email, phone, over18, created_at
-                FROM volunteers
-                ORDER BY volunteer_id ASC";
-
-        $query = mysqli_query($conn, $sql);
-
-        if (!$query) {
-            echo "<p>Could not load volunteers at the moment.</p>";
-            return;
-        }
-
-        // Convert DB result into an array of rows for the view
-        $result = $query->fetch_all(MYSQLI_ASSOC);
+        // The view expects $result, so name it $result here
+        $result = Volunteers::getAll($conn);
 
         require __DIR__ . '/../Views/Volunteers.php';
     }
