@@ -1,8 +1,6 @@
 <?php
 require __DIR__ . '/../lib/dbconnect.php';
 require __DIR__ . '/../app/Controllers/VolunteersController.php';
-
-$conn = db_connect();
 ?>
 
 <!DOCTYPE html>
@@ -36,7 +34,10 @@ $conn = db_connect();
     </header>
 
     <main>
-        <?php VolunteersController::index($conn); ?>
+        <?php 
+            $conn = db_connect();
+            VolunteersController::index($conn); 
+        ?>
     </main>
 
     <footer>

@@ -54,8 +54,8 @@ require __DIR__ . '/../app/Controllers/OpeningTimesController.php';
       <p>We welcome everyone — no referrals or proof of need required. All meals are vegetarian-friendly, with vegan and gluten-free options available daily. The space is fully wheelchair accessible, with step-free entry and accessible bathrooms.</p>
       
       <?php 
-      $conn = db_connect();
-      OpeningTimesController::index($conn); 
+        $conn = db_connect();
+        OpeningTimesController::index($conn); 
       ?>
 
     </section>
