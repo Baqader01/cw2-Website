@@ -48,12 +48,11 @@ require __DIR__ . '/../app/Controllers/OpeningTimesController.php';
     <section id="volunteer">
       <h2>Volunteer With Us</h2>
       <figure>
-        <img src="assets/volunteers/people_w_1.jpeg" alt="Portrait of a volunteer woman with crossed arms in a dimly lit setting.">
+        <img src="../assets/volunteers/people_w_1.jpeg" alt="Portrait of a volunteer woman with crossed arms in a dimly lit setting.">
       </figure>
       <p>Our volunteers are at the heart of everything we do. Whether you’re helping prepare meals, welcoming visitors, or organising food donations, your time makes a real difference.</p>
       <a href="/cw2/public/register.php" class="button">Become a Volunteer</a>
     </section>
-87
     <section id="testimonials" class="testimonials">
       <h2>What People Say</h2>
       <div class="testimonial-grid">

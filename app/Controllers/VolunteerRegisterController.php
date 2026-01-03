@@ -3,7 +3,7 @@ require_once __DIR__ . '/../Models/Volunteers.php';
 
 class VolunteerRegisterController
 {
-    public static function index(mysqli $conn)
+    public static function index(mysqli $conn): void
     {
         $errors = [];
         $old = [
@@ -13,50 +13,76 @@ class VolunteerRegisterController
             'over18' => 0
         ];
 
-        // If the form was submitted, handle it
+        // If this is a POST, we validate and insert
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-            // Trim input (basic Week 7/8 level validation)
-            $old['full_name'] = trim($_POST['full_name'] ?? '');
-            $old['email']     = trim($_POST['email'] ?? '');
-            $old['phone']     = trim($_POST['phone'] ?? '');
-            $old['over18']    = isset($_POST['over18']) ? 1 : 0;
+            // Grab + trim inputs (basic hygiene)
+            $full_name = trim($_POST['full_name'] ?? '');
+            $email     = trim($_POST['email'] ?? '');
+            $phone     = trim($_POST['phone'] ?? '');
+            $password  = $_POST['password'] ?? '';
+            $confirm   = $_POST['confirm_password'] ?? '';
+            $over18    = isset($_POST['over18']) ? 1 : 0;
 
-            $password         = $_POST['password'] ?? '';
-            $password_confirm = $_POST['password_confirm'] ?? '';
+            // Keep old values so the user doesn’t retype everything on error
+            $old['full_name'] = $full_name;
+            $old['email']     = $email;
+            $old['phone']     = $phone;
+            $old['over18']    = $over18;
 
-            // Very basic validation (keep it simple)
-            if ($old['full_name'] === '') $errors[] = "Please enter your name.";
-            if ($old['email'] === '' || !filter_var($old['email'], FILTER_VALIDATE_EMAIL)) $errors[] = "Please enter a valid email.";
-            if ($password === '' || strlen($password) < 6) $errors[] = "Password must be at least 6 characters.";
-            if ($password !== $password_confirm) $errors[] = "Passwords do not match.";
-            if ($old['over18'] !== 1) $errors[] = "You must confirm you are over 18.";
+            // Validation
+            if ($full_name === '' || strlen($full_name) < 2) {
+                $errors[] = 'Please enter your full name.';
+            }
 
-            // If valid, insert into DB
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $errors[] = 'Please enter a valid email address.';
+            }
+
+            if ($phone === '' || strlen($phone) < 7) {
+                $errors[] = 'Please enter a valid phone number.';
+            }
+
+            if (strlen($password) < 8) {
+                $errors[] = 'Password must be at least 8 characters.';
+            }
+
+            if ($password !== $confirm) {
+                $errors[] = 'Passwords do not match.';
+            }
+
+            if ($over18 !== 1) {
+                $errors[] = 'You must confirm you are over 18.';
+            }
+
+            // If no errors, insert
             if (empty($errors)) {
+                $data = [
+                    'full_name' => $full_name,
+                    'email' => $email,
+                    'phone' => $phone,
+                    'over18' => $over18,
+                    'password_hash' => password_hash($password, PASSWORD_DEFAULT),
+                ];
 
-                // Hash password properly (still standard PHP)
-                $password_hash = password_hash($password, PASSWORD_DEFAULT);
-
-                $ok = Volunteers::create($conn, [
-                    'full_name' => $old['full_name'],
-                    'email' => $old['email'],
-                    'phone' => $old['phone'],
-                    'over18' => $old['over18'],
-                    'password_hash' => $password_hash
-                ]);
+                $ok = Volunteers::create($conn, $data);
 
                 if ($ok) {
-                    // Redirect to volunteers list (or homepage)
-                    header("Location: /cw2/public/volunteers.php");
+                    // redirect after successful POST
+                    header('Location: /cw2/public/volunteers.php?registered=1');
                     exit;
+                }
+
+                // duplicate email (unique constraint)
+                if (mysqli_errno($conn) === 1062) {
+                    $errors[] = 'That email is already registered. Try logging in (or use a different email).';
                 } else {
-                    $errors[] = "Could not create account. Email might already be used.";
+                    $errors[] = 'Something went wrong saving your registration. Please try again.';
                 }
             }
         }
 
         // Show the form
-        require __DIR__ . '/../Views/register.php';
+        require __DIR__ . '/../Views/Register.php';
     }
 }

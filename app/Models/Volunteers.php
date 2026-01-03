@@ -19,16 +19,18 @@ class Volunteers
 
     public static function create(mysqli $conn, array $data): bool
     {
-        $sql = "INSERT INTO volunteers (full_name, email, phone, over18, password_hash, created_at)
-                VALUES (?, ?, ?, ?, ?, NOW())";
+        $sql = "INSERT INTO volunteers(full_name, email, phone, over18, password_hash, remember_token, remember_expires, created_at)
+                VALUES
+                    (?, ?, ?, ?, ?, NULL, NULL, NOW())";
 
-        $stmt = $conn->prepare($sql);
+        $stmt = mysqli_prepare($conn, $sql);
         if (!$stmt) {
             return false;
         }
 
-        $stmt->bind_param(
-            "sssiss",
+        mysqli_stmt_bind_param(
+            $stmt,
+            'sssiss',
             $data['full_name'],
             $data['email'],
             $data['phone'],
@@ -36,10 +38,7 @@ class Volunteers
             $data['password_hash']
         );
 
-        $ok = $stmt->execute();
-        $stmt->close();
-
-        return $ok;
+        return true;
     }
 
 }

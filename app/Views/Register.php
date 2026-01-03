@@ -1,7 +1,4 @@
 <div class="volunteer-register">
-    <h2>Volunteer Registration</h2>
-    <p>Fill in the form below to register as a volunteer.</p>
-
     <?php if (!empty($errors)): ?>
         <div class="error-box">
             <ul>
@@ -13,6 +10,9 @@
     <?php endif; ?>
 
     <form method="POST" action="">
+        <h2>Volunteer Registration</h2>
+        <p>Fill in the form below to register as a volunteer.</p>
+
         <label>
             Full name
             <input type="text" name="full_name" value="<?= htmlspecialchars($old['full_name']) ?>" required>

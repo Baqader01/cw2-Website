@@ -14,7 +14,7 @@ $conn = db_connect();
     <link rel="stylesheet" href="/cw2/assets/css/stylesheet.css">
 </head>
 <body>
-    <?php
+    <?php 
     require __DIR__ . '/../includes/header.php';
     VolunteerRegisterController::index($conn);
     require __DIR__ . '/../includes/footer.php';
