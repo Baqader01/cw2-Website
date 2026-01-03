@@ -15,17 +15,17 @@
 
         <label>
             Full name
-            <input type="text" name="full_name" value="<?= htmlspecialchars($old['full_name']) ?>" required>
+            <input type="text" name="full_name" value="<?= htmlspecialchars($old['full_name'] ?? '') ?>" required>
         </label>
 
         <label>
             Email
-            <input type="email" name="email" value="<?= htmlspecialchars($old['email']) ?>" required>
+            <input type="email" name="email" value="<?= htmlspecialchars($old['email'] ?? '') ?>" required>
         </label>
 
         <label>
             Phone
-            <input type="text" name="phone" value="<?= htmlspecialchars($old['phone']) ?>">
+            <input type="text" name="phone" value="<?= htmlspecialchars($old['phone'] ?? '') ?>">
         </label>
 
         <label>

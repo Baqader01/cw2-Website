@@ -17,7 +17,7 @@ class Volunteers
         return mysqli_fetch_all($result, MYSQLI_ASSOC);
     }
 
-    public static function create(mysqli $conn, array $data): bool
+    public static function create(mysqli $conn, array $data): bool|string
     {
         $sql = "INSERT INTO volunteers(full_name, email, phone, over18, password_hash, remember_token, remember_expires, created_at)
                 VALUES
@@ -30,13 +30,18 @@ class Volunteers
 
         mysqli_stmt_bind_param(
             $stmt,
-            'sssiss',
+            'sssis',
             $data['full_name'],
             $data['email'],
             $data['phone'],
             $data['over18'],
             $data['password_hash']
         );
+
+         if (!$stmt->execute()) {
+            // duplicate email
+            return "Insert failed: " . $stmt->error;
+        }
 
         return true;
     }

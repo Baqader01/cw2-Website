@@ -21,7 +21,7 @@ class VolunteerRegisterController
             $email     = trim($_POST['email'] ?? '');
             $phone     = trim($_POST['phone'] ?? '');
             $password  = $_POST['password'] ?? '';
-            $confirm   = $_POST['confirm_password'] ?? '';
+            $confirm   = $_POST['password_confirm'] ?? '';
             $over18    = isset($_POST['over18']) ? 1 : 0;
 
             // Keep old values so the user doesn’t retype everything on error
@@ -50,6 +50,12 @@ class VolunteerRegisterController
             if ($password !== $confirm) {
                 $errors[] = 'Passwords do not match.';
             }
+            else if($password === '' || $confirm === ''){
+                $errors[] = 'Please enter both passwords';
+            }
+            else{
+                $password_hash = password_hash($password, PASSWORD_DEFAULT);
+            }
 
             if ($over18 !== 1) {
                 $errors[] = 'You must confirm you are over 18.';
@@ -62,23 +68,19 @@ class VolunteerRegisterController
                     'email' => $email,
                     'phone' => $phone,
                     'over18' => $over18,
-                    'password_hash' => password_hash($password, PASSWORD_DEFAULT),
+                    'password_hash' => $password_hash,
                 ];
 
                 $ok = Volunteers::create($conn, $data);
 
                 if ($ok) {
                     // redirect after successful POST
-                    header('Location: /cw2/public/volunteers.php?registered=1');
+                    echo '<script>window.location.href = "/cw2/public/volunteers.php?registered=1";</script>';
                     exit;
                 }
 
-                // duplicate email (unique constraint)
-                if (mysqli_errno($conn) === 1062) {
-                    $errors[] = 'That email is already registered. Try logging in (or use a different email).';
-                } else {
-                    $errors[] = 'Something went wrong saving your registration. Please try again.';
-                }
+                // duplicate email
+                $errors[] = $ok;
             }
         }
 
