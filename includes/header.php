@@ -8,9 +8,9 @@
         <p class="tagline">A table set for all</p>
         <nav aria-label="Main navigation">
         <ul>
-            <li><a href="#our-story">Our Story</a></li>
-            <li><a href="#info">Information</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="/cw2/public/index.php#our-story">Our Story</a></li>
+            <li><a href="/cw2/public/index.php#info">Information</a></li>
+            <li><a href="/cw2/public/index.php#contact">Contact</a></li>
         </ul>
         </nav>
     </div>
