@@ -6,7 +6,7 @@ class ShiftsController
     public static function index(mysqli $conn)
     {
         // Convert DB result into an array of rows for the view
-        $result = Shifts::getAll($conn);
+        $result = Shifts::getSignups($conn);
 
         // Pass data to the view
         require __DIR__ . '/../Views/Shifts.php';

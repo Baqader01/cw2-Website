@@ -2,11 +2,14 @@
 
 class Shifts
 {
-    public static function getAll(mysqli $conn)
+    public static function getShift(mysqli $conn)
     {
-        $sql = "SELECT shift_id, shift_date, label, start_time, end_time, required_volunteers, max_volunteers
+        $sql = "
+            SELECT shift_id, shift_date, label, start_time, end_time, required_volunteers, max_volunteers
             FROM shifts
-            ORDER BY shift_id ASC";
+            ORDER BY shift_id ASC
+        
+        ";
 
         $result = mysqli_query($conn, $sql);
 
@@ -15,6 +18,47 @@ class Shifts
         }
 
         return mysqli_fetch_all($result, MYSQLI_ASSOC);
+    }
+
+    public static function getSignups(mysqli $conn): array
+    {
+        $sql = "
+            SELECT 
+                s.shift_id,
+                s.shift_date,
+                s.label,
+                s.start_time,
+                s.end_time,
+                s.required_volunteers,
+                s.max_volunteers,
+                COUNT(ss.signup_id) AS booked_count
+            FROM shifts s
+            LEFT JOIN shift_signups ss ON ss.shift_id = s.shift_id
+            GROUP BY s.shift_id
+            ORDER BY s.shift_date ASC, s.start_time ASC
+        ";
+        
+        $result = mysqli_query($conn, $sql);
+
+        if (!$result) {
+            return [];
+        }
+
+        return mysqli_fetch_all($result, MYSQLI_ASSOC);
+    }
+
+    public static function find(mysqli $conn, int $shift_id): ?array
+    {
+        $sql = "SELECT shift_id, shift_date, label, start_time, end_time, max_volunteers
+                FROM shifts
+                WHERE shift_id = ?";
+
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("i", $shift_id);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+        return $result->fetch_assoc() ?: null;
     }
 }
 
