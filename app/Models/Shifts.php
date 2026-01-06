@@ -5,21 +5,30 @@ class Shifts
     public static function getShift(mysqli $conn)
     {
         $sql = "
-            SELECT shift_id, shift_date, label, start_time, end_time, required_volunteers, max_volunteers
-            FROM shifts
-            ORDER BY shift_id ASC
-        
+            SELECT 
+                s.shift_id,
+                s.shift_date,
+                s.label,
+                s.start_time,
+                s.end_time,
+                s.max_volunteers,
+                COUNT(ss.signup_id) AS booked_count
+            FROM shifts s
+            LEFT JOIN shift_signups ss 
+                ON ss.shift_id = s.shift_id
+            GROUP BY s.shift_id
+            ORDER BY s.shift_date, s.start_time
         ";
 
         $result = mysqli_query($conn, $sql);
 
         if (!$result) {
-            return [];
+            die("SQL ERROR: " . mysqli_error($conn));
         }
 
         return mysqli_fetch_all($result, MYSQLI_ASSOC);
     }
-
+    
     public static function getSignups(mysqli $conn): array
     {
         $sql = "
