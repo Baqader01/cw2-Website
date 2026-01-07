@@ -147,7 +147,7 @@ dl {
 }
 
 /* === Shifts Page === */
-.shifts h2, p {
+.shifts h2, .shifts p {
   margin: 1rem 10rem;
 }
 
