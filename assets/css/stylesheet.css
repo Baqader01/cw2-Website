@@ -146,6 +146,78 @@ dl {
   padding: 2rem 0;
 }
 
+/* === Shifts Page === */
+.shifts h2, p {
+  margin: 1rem 10rem;
+}
+
+/* === Shifts Table === */
+.shifts-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  max-width: 700px;
+  margin: 2rem auto;     
+}
+
+/* Header */
+.shifts-table thead th {
+  text-align: left;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #555;
+  padding: 0.4rem 0.6rem;
+  border-bottom: 2px solid #ddd;
+}
+
+/* Rows */
+.shifts-table tbody tr {
+  border-bottom: 1px solid #e2e6e2;
+}
+
+/* Cells */
+.shifts-table td {
+  padding: 0.45rem 0.6rem; 
+  vertical-align: middle;
+}
+
+/* Columns */
+.shifts-table td:first-child {
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+.shifts-table td:nth-child(2) {
+  color: #356859;
+  font-weight: 500;
+}
+
+.shifts-table td:nth-child(3) {
+  font-family: monospace;
+}
+
+.shifts-table td:nth-child(4) {
+  text-align: center;
+}
+
+.shifts-table td:last-child {
+  text-align: right;
+}
+
+.book-button {
+  padding: 0.3rem 0.7rem;
+  font-size: 0.85rem;
+  background-color: #487d59;
+  color: #fff;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+.book-button:hover {
+  background-color: #356849;
+}
+
 .volunteer-register form {
   max-width: 520px;  
   margin: 40px auto;   

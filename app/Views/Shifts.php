@@ -5,7 +5,7 @@
     <?php if (empty($result)): ?>
         <p>No shifts have been added yet.</p>
     <?php else: ?>
-        <table class="admin-table">
+        <table class="shifts-table">
             <thead>
                 <tr>
                     <th>Date</th>
@@ -29,14 +29,14 @@
                     ?>
                     <tr>
                         <td><?= htmlspecialchars($date) ?></td>
-                        <td><?= htmlspecialchars($s['label']) ?></td>
+                        <td><?= htmlspecialchars($s['role']) ?></td>
                         <td><?= htmlspecialchars($start . ' – ' . $end) ?></td>
                         <td><?= htmlspecialchars($booked . ' / ' . $max) ?></td>
                         <td>
                             <?php if ($isFull): ?>
                                 <span>Full</span>
                             <?php else: ?>
-                                <a class="button" href="/cw2/public/book.php?shift_id=<?= (int)$s['shift_id'] ?>">
+                                <a class="book-button" href="/cw2/public/book.php?shift_id=<?= (int)$s['shift_id'] ?>">
                                     Book
                                 </a>
                             <?php endif; ?>
