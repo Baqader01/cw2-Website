@@ -29,7 +29,7 @@
                     ?>
                     <tr>
                         <td><?= htmlspecialchars($date) ?></td>
-                        <td><?= htmlspecialchars($s['role']) ?></td>
+                        <td><?= htmlspecialchars($s['label']) ?></td>
                         <td><?= htmlspecialchars($start . ' – ' . $end) ?></td>
                         <td><?= htmlspecialchars($booked . ' / ' . $max) ?></td>
                         <td>

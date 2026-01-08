@@ -8,7 +8,7 @@ class Shifts
             SELECT 
                 s.shift_id,
                 s.shift_date,
-                s.role,
+                s.label,
                 s.start_time,
                 s.end_time,
                 s.max_volunteers,
