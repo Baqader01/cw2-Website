@@ -1,10 +1,11 @@
 <div class="opening-times">
     <h3>Opening Times</h3>
 
-    <?php if (!empty($result)): ?>
+    
+    <?php if (!empty($data)): ?>
         <table class="opening-table">
             <tbody>
-                <?php foreach ($result as $row): ?>
+                <?php foreach ($data as $row): ?>
                     <?php
                         // Decide what to show for hours
                         if ((int)$row['is_closed'] === 1) {

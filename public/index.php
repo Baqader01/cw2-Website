@@ -1,6 +1,9 @@
 <?php
 require __DIR__ . '/../lib/dbconnect.php';
 require __DIR__ . '/../app/Controllers/OpeningTimesController.php';
+
+$conn = db_connect();
+$data = OpeningTimesController::index($conn); 
 ?>
 
 <!DOCTYPE html>
@@ -38,11 +41,7 @@ require __DIR__ . '/../app/Controllers/OpeningTimesController.php';
       <h2>Visitor Information</h2>
       <p>We welcome everyone — no referrals or proof of need required. All meals are vegetarian-friendly, with vegan and gluten-free options available daily. The space is fully wheelchair accessible, with step-free entry and accessible bathrooms.</p>
       
-      <?php 
-        $conn = db_connect();
-        OpeningTimesController::index($conn); 
-      ?>
-
+      <?php require __DIR__ . '/../app/Views/OpeningTimes.php';?>
     </section>
 
     <section id="volunteer">
