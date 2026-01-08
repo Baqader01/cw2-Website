@@ -5,9 +5,7 @@ require __DIR__ . '/../app/Controllers/StaffAuthController.php';
 $conn = db_connect();
 
 // This will load the view 
-ob_start();
-StaffAuthController::login($conn);
-$page = ob_get_clean();
+$data = StaffAuthController::login($conn);
 
 ?>
 
@@ -23,7 +21,7 @@ $page = ob_get_clean();
     <?php
         // render layout
         require __DIR__ . '/../includes/header.php';
-        echo $page;
+        require __DIR__ . '/../app/Views/StaffLogin.php';
         require __DIR__ . '/../includes/footer.php';
     ?>
 

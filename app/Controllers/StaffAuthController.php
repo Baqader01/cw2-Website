@@ -3,14 +3,14 @@ require_once __DIR__ . '/../Models/Staff.php';
 
 class StaffAuthController
 {
-    public static function login(mysqli $conn): void
+    public static function login(mysqli $conn): array
     {
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
 
-        $errors = [];
-        $old = ['email' => ''];
+        $errors = $data['errors'] ?? [];
+        $old = $data['old'] ?? ['email' => ''];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -46,8 +46,10 @@ class StaffAuthController
             }
         }
 
-        // Show login view
-        require __DIR__ . '/../Views/StaffLogin.php';
+        return [
+            'errors' => $errors,
+            'old' => $old
+        ];
     }
 
     public static function logout(): void

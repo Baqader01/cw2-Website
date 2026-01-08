@@ -17,7 +17,7 @@
         </div>
     <?php endif; ?>
 
-    <form method="POST">
+    <form method="POST" action="">
         <label>
             Email
             <input type="email" name="email" value="<?= htmlspecialchars($old['email'] ?? '') ?>" required>

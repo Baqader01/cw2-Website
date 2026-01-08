@@ -2,6 +2,11 @@
     <h2>Staff Login</h2>
     <p>Sign in to manage shifts and volunteers.</p>
 
+    <?php
+    $errors = $data['errors'] ?? [];
+    $old    = $data['old'] ?? ['email' => ''];
+    ?>
+
     <?php if (!empty($errors)): ?>
         <div class="error-box">
             <ul>
@@ -15,7 +20,7 @@
     <form method="POST" action="">
         <label>
             Email
-            <input type="email" name="email" value="<?= htmlspecialchars($old['email']) ?>" required>
+            <input type="email" name="email" value="<?= htmlspecialchars($old['email'] ?? '') ?>" required>
         </label>
 
         <label>
