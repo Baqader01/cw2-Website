@@ -12,6 +12,7 @@ if (!isset($_SESSION['volunteer_id']) || $_SESSION['expires_at'] < time()) {
     exit;
 }
 
+$data = ShiftsController::index($conn);
 
 ?>
 
@@ -25,7 +26,7 @@ if (!isset($_SESSION['volunteer_id']) || $_SESSION['expires_at'] < time()) {
 <body>
     <?php
         require __DIR__ . '/../includes/header.php';
-        ShiftsController::index($conn);
+        require __DIR__ . '/../app/Views/shifts.php';
         require __DIR__ . '/../includes/footer.php';
     ?>
 </body>

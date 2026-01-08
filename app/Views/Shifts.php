@@ -2,7 +2,7 @@
     <h2>Available Shifts</h2>
     <p>Pick a shift to book. If it is full, the button disappears automatically.</p>
 
-    <?php if (empty($result)): ?>
+    <?php if (empty($data)): ?>
         <p>No shifts have been added yet.</p>
     <?php else: ?>
         <table class="shifts-table">
@@ -16,7 +16,7 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($result as $s): ?>
+                <?php foreach ($data as $s): ?>
                     <?php
                         $date = date('d M Y', strtotime($s['shift_date']));
                         $start = substr($s['start_time'], 0, 5);
