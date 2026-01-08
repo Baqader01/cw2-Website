@@ -147,6 +147,10 @@ dl {
 }
 
 /* === Shifts Page === */
+.shifts {
+  min-height: 50vh;
+}
+
 .shifts h2, .shifts p {
   margin: 1rem 10rem;
 }
@@ -315,6 +319,7 @@ footer {
   color: #fff;
   text-align: center;
   padding: 1.5rem 1rem;
+  min-height: 50px;
 }
 
 footer h2 {

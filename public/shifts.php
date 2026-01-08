@@ -4,6 +4,15 @@ require __DIR__ . '/../app/Controllers/ShiftsController.php';
 
 $conn = db_connect();
 
+session_start();
+
+if (!isset($_SESSION['volunteer_id']) || $_SESSION['expires_at'] < time()) {
+    session_destroy();
+    header('Location: /cw2/public/login.php');
+    exit;
+}
+
+
 ?>
 
 <!DOCTYPE html>
