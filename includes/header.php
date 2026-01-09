@@ -12,7 +12,7 @@
             <li><a href="/cw2/public/index.php#info">Information</a></li>
             <li><a href="/cw2/public/index.php#contact">Contact</a></li>
             <li><a href="/cw2/public/shifts.php">Shifts</a></li>
-            <li><a href="/cw2/public/register.php">Volunteer</a></li>
+            <li><a href="/cw2/public/volunteer_register.php">Volunteer</a></li>
 
         </ul>
         </nav>

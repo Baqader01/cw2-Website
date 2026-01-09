@@ -2,6 +2,9 @@
 require __DIR__ . '/../lib/dbconnect.php';
 require __DIR__ . '/../app/Controllers/VolunteerRegisterController.php';
 $conn = db_connect();
+
+$data =  VolunteerRegisterController::index($conn);
+
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +18,7 @@ $conn = db_connect();
 <body>
     <?php 
     require __DIR__ . '/../includes/header.php';
-    VolunteerRegisterController::index($conn);
+    require __DIR__ . '/../app/Views/VolunteerRegister.php';
     require __DIR__ . '/../includes/footer.php';
     ?>
 </body>

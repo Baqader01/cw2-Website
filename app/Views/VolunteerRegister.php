@@ -1,4 +1,10 @@
 <div class="volunteer-register">
+
+    <?php
+    $errors = $data['errors'] ?? [];
+    $old    = $data['old'] ?? ['email' => ''];
+    ?>
+    
     <?php if (!empty($errors)): ?>
         <div class="error-box">
             <ul>
@@ -39,7 +45,7 @@
         </label>
 
         <label>
-            <input type="checkbox" name="over18" <?= ($old['over18'] == 1) ? 'checked' : '' ?>>
+            <input type="checkbox" name="over18" <?= (!empty($old['over18'])) ? 'checked' : '' ?> required>
             I confirm I am over 18
         </label>
 

@@ -3,10 +3,10 @@ require_once __DIR__ . '/../Models/Volunteers.php';
 
 class VolunteerRegisterController
 {
-    public static function index(mysqli $conn): void
+    public static function index(mysqli $conn): array
     {
-        $errors = [];
-        $old = [
+        $errors = $data['errors'] ?? [];
+        $old = $data['old'] ??  [
             'full_name' => '',
             'email' => '',
             'phone' => '',
@@ -16,7 +16,7 @@ class VolunteerRegisterController
         // If this is a POST, we validate and insert
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-            // Grab + trim inputs (basic hygiene)
+            // Grab and trim inputs 
             $full_name = trim($_POST['full_name'] ?? '');
             $email     = trim($_POST['email'] ?? '');
             $phone     = trim($_POST['phone'] ?? '');
@@ -75,7 +75,7 @@ class VolunteerRegisterController
 
                 if ($ok) {
                     // redirect after successful POST
-                    echo '<script>window.location.href = "/cw2/public/volunteers.php?registered=1";</script>';
+                    echo 'Location: /cw2/public/volunteers.php?registered=1';
                     exit;
                 }
 
@@ -84,7 +84,9 @@ class VolunteerRegisterController
             }
         }
 
-        // Show the form
-        require __DIR__ . '/../Views/Register.php';
+        return [
+            'errors' => $errors,
+            'old' => $old
+        ];
     }
 }
