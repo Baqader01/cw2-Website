@@ -1,4 +1,4 @@
-<div class="volunteer-list">
+<main class="volunteer-list">
     <h2>Registered Volunteers</h2>
     <p>This page shows everyone who has registered to volunteer.</p>
 
@@ -32,4 +32,4 @@
     <?php else: ?>
         <p>No volunteers have registered yet.</p>
     <?php endif; ?>
-</div>
+</main>

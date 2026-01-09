@@ -1,4 +1,4 @@
-<div class="staff-login">
+<main class="staff-login">
     <h2>Staff Login</h2>
     <p>Sign in to manage shifts and volunteers.</p>
 
@@ -30,4 +30,4 @@
 
         <button type="submit" class="button">Login</button>
     </form>
-</div>
+</main>

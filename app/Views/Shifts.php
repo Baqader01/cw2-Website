@@ -1,4 +1,4 @@
-<div class="shifts">
+<main class="shifts">
     <h2>Available Shifts</h2>
     <p>Pick a shift to book. If it is full, the button disappears automatically.</p>
 
@@ -46,4 +46,4 @@
             </tbody>
         </table>
     <?php endif; ?>
-</div>
+</main>

@@ -1,4 +1,4 @@
-<div class="volunteer-register">
+<main class="volunteer-register">
     <h2>Volunteer Login</h2>
     <p>Please sign in to view and book shifts.</p>
 
@@ -30,4 +30,4 @@
 
         <button type="submit" class="button">Sign In</button>
     </form>
-</div>
+</main>

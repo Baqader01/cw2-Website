@@ -1,4 +1,4 @@
-<div class="volunteer-register">
+<main class="volunteer-register">
     <h2>Book a Shift</h2>
 
     <?php if (!empty($errors)): ?>

@@ -1,4 +1,4 @@
-<div class="volunteer-register">
+<main class="volunteer-register">
 
     <?php
     $errors = $data['errors'] ?? [];
@@ -51,4 +51,4 @@
 
         <button type="submit" class="button">Register</button>
     </form>
-</div>
+</main>

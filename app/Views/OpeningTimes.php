@@ -1,4 +1,4 @@
-<div class="opening-times">
+<main class="opening-times">
     <h3>Opening Times</h3>
 
     
@@ -26,4 +26,4 @@
     <?php else: ?>
         <p>No opening hours have been configured yet.</p>
     <?php endif; ?>
-</div>
+</main>
