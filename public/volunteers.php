@@ -1,6 +1,9 @@
 <?php
 require __DIR__ . '/../lib/dbconnect.php';
 require __DIR__ . '/../app/Controllers/VolunteersController.php';
+
+$conn = db_connect();
+$data = VolunteersController::index($conn); 
 ?>
 
 <!DOCTYPE html>
@@ -15,15 +18,10 @@ require __DIR__ . '/../app/Controllers/VolunteersController.php';
 </head>
 
 <body>
-    <?php require __DIR__ . '/../includes/header.php'; ?>
-
-    <main>
-        <?php 
-            $conn = db_connect();
-            VolunteersController::index($conn); 
-        ?>
-    </main>
-
-    <?php require __DIR__ . '/../includes/footer.php'; ?>
+    <?php
+        require __DIR__ . '/../includes/header.php'; 
+        require __DIR__ . '/../app/Views/Volunteers.php';
+        require __DIR__ . '/../includes/footer.php'; 
+    ?>
 </body>
 </html>

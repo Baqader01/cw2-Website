@@ -2,7 +2,7 @@
     <h2>Registered Volunteers</h2>
     <p>This page shows everyone who has registered to volunteer.</p>
 
-    <?php if (!empty($result)): ?>
+    <?php if (!empty($data)): ?>
         <table class="admin-table">
             <thead>
                 <tr>
@@ -16,7 +16,7 @@
             </thead>
             <tbody>
 
-                <?php foreach ($result as $row): ?>
+                <?php foreach ($data as $row): ?>
                     <tr>
                         <td><?= htmlspecialchars($row['volunteer_id']) ?></td>
                         <td><?= htmlspecialchars($row['full_name']) ?></td>
