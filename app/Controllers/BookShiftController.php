@@ -4,7 +4,7 @@ require_once __DIR__ . '/../Models/ShiftSignups.php';
 
 class BookShiftController
 {
-    public static function index(mysqli $conn): void
+    public static function index(mysqli $conn): array
     {
         $errors = [];
         $old = ['name' => '', 'email' => ''];
@@ -12,15 +12,15 @@ class BookShiftController
         $shift_id = (int)($_GET['shift_id'] ?? 0);
         if ($shift_id <= 0) {
             $errors[] = "No shift selected.";
-            require __DIR__ . '/../Views/BookShift.php';
-            return;
+            $errors[] = "No shift selected.";
+            return compact('errors');
         }
 
         $shift = Shifts::find($conn, $shift_id);
         if (!$shift) {
             $errors[] = "That shift does not exist.";
-            require __DIR__ . '/../Views/BookShift.php';
-            return;
+            $errors[] = "No shift selected.";
+            return compact('errors');
         }   
 
         $booked = ShiftSignups::countForShift($conn, $shift_id);
@@ -46,8 +46,30 @@ class BookShiftController
                 $errors[] = "Please enter a valid email address.";
             }
 
+            if (!isset($_SESSION['volunteer_id'])) {
+                header('Location: /cw2/public/login.php');
+                exit;
+            }
+
+            $volunteer_id = $_SESSION['volunteer_id'];
+
+            $weekStart = date('Y-m-d', strtotime('monday this week'));
+            $weekEnd   = date('Y-m-d', strtotime('sunday this week'));
+
+            $weeklyCount = ShiftSignups::countForVolunteerShifts(
+                $conn,
+                $volunteer_id,
+                $weekStart,
+                $weekEnd
+            );
+
+            if ($weeklyCount >= 2) {
+                $errors[] = "You may only book 2 shifts per week.";
+                return compact('errors', 'shift', 'booked', 'max', 'isFull');
+            }
+
             if (empty($errors)) {
-                $result = ShiftSignups::create($conn, $shift_id, $name, $email);
+                $result = ShiftSignups::create($conn, $shift_id, $volunteer_id);
 
                 if ($result === true) {
                     header("Location: /cw2/public/shifts.php?booked=1");
@@ -58,6 +80,13 @@ class BookShiftController
             }
         }
 
-        require __DIR__ . '/../Views/BookShift.php';
+        return [
+            'errors' => $errors,
+            'old' => $old,
+            'shift' => $shift,
+            'booked' => $booked,
+            'max' => $max,
+            'isFull' => $isFull
+        ];
     }
 }

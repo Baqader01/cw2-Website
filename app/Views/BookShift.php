@@ -1,6 +1,14 @@
 <main class="volunteer-register">
     <h2>Book a Shift</h2>
 
+    <?php
+    $errors = $data['errors'] ?? [];
+    $shift  = $data['shift'] ?? null;
+    $booked = $data['booked'] ?? 0;
+    $max    = $data['max'] ?? 0;
+    $isFull = $data['isFull'] ?? false;
+    ?>
+
     <?php if (!empty($errors)): ?>
         <div class="error-box">
             <ul>
@@ -11,7 +19,7 @@
         </div>
     <?php endif; ?>
 
-    <?php if (!empty($shift)): ?>
+    <?php if (!empty($data)): ?>
         <?php
             $date = date('d M Y', strtotime($shift['shift_date']));
             $start = substr($shift['start_time'], 0, 5);
@@ -28,20 +36,13 @@
             <p>This shift is full.</p>
             <a class="button" href="/cw2/public/shifts.php">Back to shifts</a>
         <?php else: ?>
-            <form method="POST" action="">
-                <label>
-                    Your name
-                    <input type="text" name="name" value="<?= htmlspecialchars($old['name']) ?>" required>
-                </label>
+            <p>
+                You are booking this shift as: <strong><?= htmlspecialchars($_SESSION['volunteer_name']) ?></strong>
+            </p>
 
-                <label>
-                    Email
-                    <input type="email" name="email" value="<?= htmlspecialchars($old['email']) ?>" required>
-                </label>
-
-                <button type="submit" class="button">Confirm booking</button>
-                <a class="button" href="/cw2/public/shifts.php" style="margin-left: 10px;">Cancel</a>
+            <button type="submit" class="button">Confirm booking</button>
+            <a class="button" href="/cw2/public/shifts.php" style="margin-left: 10px;">Cancel</a>
             </form>
         <?php endif; ?>
     <?php endif; ?>
-</div>
+</main>

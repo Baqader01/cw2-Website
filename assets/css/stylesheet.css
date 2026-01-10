@@ -222,19 +222,20 @@ dl {
   background-color: #356849;
 }
 
-.volunteer-register form {
+/* forms */
+form {
   max-width: 520px;  
   margin: 40px auto;   
 }
 
-.volunteer-register form label {
+ form label {
   display: block;       
   margin: 0 0 1rem;   
 }
 
-.volunteer-register form input[type="text"],
-.volunteer-register form input[type="email"],
-.volunteer-register form input[type="password"] {
+input[type="text"],
+input[type="email"],
+form input[type="password"] {
   display: block;       
   width: 100%;
   margin-top: 0.4rem;
@@ -243,11 +244,11 @@ dl {
   border-radius: 6px;
 }
 
-.volunteer-register form input[type="checkbox"] {
+form input[type="checkbox"] {
   margin-right: 0.5rem;
 }
 
-.volunteer-register .error-box {
+.error-box {
   background: #ffecec;
   border-left: 4px solid #c0392b;
   padding: 0.8rem 1rem;

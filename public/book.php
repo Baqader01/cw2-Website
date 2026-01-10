@@ -1,8 +1,11 @@
 <?php
+session_start();
+
 require __DIR__ . '/../lib/dbconnect.php';
 require __DIR__ . '/../app/Controllers/BookShiftController.php';
 
 $conn = db_connect();
+$data = BookShiftController::index($conn);
 
 ?>
 
@@ -16,7 +19,7 @@ $conn = db_connect();
 <body>
     <?php
         require __DIR__ . '/../includes/header.php';
-        BookShiftController::index($conn);
+        require __DIR__ . '/../app/Views/BookShift.php';
         require __DIR__ . '/../includes/footer.php';
     ?>
 </body>
