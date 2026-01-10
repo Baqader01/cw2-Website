@@ -7,7 +7,6 @@ class BookShiftController
     public static function index(mysqli $conn): array
     {
         $errors = [];
-        $old = ['name' => '', 'email' => ''];
 
         $shift_id = (int)($_GET['shift_id'] ?? 0);
         if ($shift_id <= 0) {
@@ -28,24 +27,6 @@ class BookShiftController
         $isFull = ($booked >= $max);
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $name  = trim($_POST['name'] ?? '');
-            $email = trim($_POST['email'] ?? '');
-
-            $old['name'] = $name;
-            $old['email'] = $email;
-
-            if ($isFull) {
-                $errors[] = "Sorry — this shift is already full.";
-            }
-
-            if ($name === '' || strlen($name) < 2) {
-                $errors[] = "Please enter your name.";
-            }
-
-            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                $errors[] = "Please enter a valid email address.";
-            }
-
             if (!isset($_SESSION['volunteer_id'])) {
                 header('Location: /cw2/public/login.php');
                 exit;
@@ -82,7 +63,6 @@ class BookShiftController
 
         return [
             'errors' => $errors,
-            'old' => $old,
             'shift' => $shift,
             'booked' => $booked,
             'max' => $max,

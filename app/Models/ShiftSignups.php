@@ -43,10 +43,10 @@ class ShiftSignups
         return (int)$row['c'];
     }
 
-    public static function create(mysqli $conn, int $shift_id, string $volunteer_id): bool|string
+    public static function create(mysqli $conn, int $shift_id, int $volunteer_id): bool|string
     {
-        $sql = "INSERT INTO shift_signups (signup_id, shift_id, volunteer_id)
-                VALUES (?, ?, ?)";
+        $sql = "INSERT INTO shift_signups (shift_id, volunteer_id)
+                VALUES (?, ?)"; 
 
         $stmt = mysqli_prepare($conn, $sql);
         if (!$stmt) {

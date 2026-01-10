@@ -40,9 +40,11 @@
                 You are booking this shift as: <strong><?= htmlspecialchars($_SESSION['volunteer_name']) ?></strong>
             </p>
 
-            <button type="submit" class="button">Confirm booking</button>
-            <a class="button" href="/cw2/public/shifts.php" style="margin-left: 10px;">Cancel</a>
+            <form method="POST" action="">
+                <button type="submit" class="button">Confirm booking</button>
+                <a class="button" href="/cw2/public/shifts.php" style="margin-left: 10px;">Cancel</a>
             </form>
+            
         <?php endif; ?>
     <?php endif; ?>
 </main>
