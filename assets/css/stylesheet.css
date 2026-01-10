@@ -16,10 +16,6 @@ body {
   background-color: #fafafa;
 }
 
-main {
-  min-height: 45vh;
-}
-
 /* === Header === */
 header {
   display: grid;
@@ -77,6 +73,7 @@ nav a:focus-visible {
 
 /* === Main Content === */
 main {
+  min-height: 45vh;
   max-width: 900px;
   margin: 2rem auto;
   padding: 0 1rem;
@@ -151,7 +148,7 @@ dl {
 }
 
 /* === Shifts Page === */
-.shifts h2, .shifts p {
+.shifts > h2, .shifts > p {
   margin: 1rem 10rem;
 }
 

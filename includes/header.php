@@ -8,11 +8,16 @@
         <p class="tagline">A table set for all</p>
         <nav aria-label="Main navigation">
         <ul>
-            <li><a href="/cw2/public/index.php#our-story">Our Story</a></li>
-            <li><a href="/cw2/public/index.php#info">Information</a></li>
-            <li><a href="/cw2/public/index.php#contact">Contact</a></li>
-            <li><a href="/cw2/public/shifts.php">Shifts</a></li>
-            <li><a href="/cw2/public/volunteer_register.php">Volunteer</a></li>
+            <?php if (isset($_SESSION['volunteer_id'])): ?>
+                <li><a href="/cw2/public/index.php#our-story">Our Story</a></li>
+                <li><a href="/cw2/public/shifts.php">Shifts</a></li>
+                <li><a href="/cw2/public/volunteer_shifts.php">My Shifts</a></li>
+                <li><a href="/cw2/public/volunteer_logout.php">Logout</a></li>
+            <?php else: ?>
+                <li><a href="/cw2/public/index.php#our-story">Our Story</a></li>
+                <li><a href="/cw2/public/shifts.php">Shifts</a></li>
+                <li><a href="/cw2/public/login.php">Login</a></li>
+            <?php endif; ?> 
 
         </ul>
         </nav>
