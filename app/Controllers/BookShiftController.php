@@ -34,8 +34,8 @@ class BookShiftController
 
             $volunteer_id = $_SESSION['volunteer_id'];
 
-            $weekStart = date('Y-m-d', strtotime('monday this week'));
-            $weekEnd   = date('Y-m-d', strtotime('sunday this week'));
+            $weekStart = date('Y-m-d', strtotime('monday this week', strtotime($shift['shift_date'])));
+            $weekEnd   = date('Y-m-d', strtotime('sunday this week', strtotime($shift['shift_date'])));
 
             $weeklyCount = ShiftSignups::countForVolunteerShifts(
                 $conn,

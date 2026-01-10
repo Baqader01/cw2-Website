@@ -256,6 +256,11 @@ form input[type="checkbox"] {
   margin: 1rem 0;
 }
 
+.error-box ul {
+  list-style-type: none;
+}
+
+
 /* === Volunteer Section === */
 #volunteer {
   max-width: 900px;
