@@ -3,7 +3,7 @@ require_once __DIR__ . '/../Models/Staff.php';
 
 class StaffAuthController
 {
-    public static function login(mysqli $conn): array
+    public static function index(mysqli $conn): array
     {
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
