@@ -62,4 +62,25 @@ class ShiftSignups
 
         return true;
     }
+
+    public static function getForVolunteer(mysqli $conn, int $volunteer_id): array
+    {
+        $sql = "
+            SELECT s.shift_date, s.label, s.start_time, s.end_time
+            FROM shift_signups ss
+            JOIN shifts s ON ss.shift_id = s.shift_id
+            WHERE ss.volunteer_id = ?
+            ORDER BY s.shift_date, s.start_time
+        ";
+
+        $stmt = mysqli_prepare($conn, $sql);
+        mysqli_stmt_bind_param($stmt, 'i', $volunteer_id);
+        mysqli_stmt_execute($stmt);
+
+        return mysqli_fetch_all(
+            mysqli_stmt_get_result($stmt),
+            MYSQLI_ASSOC
+        );
+    }
+
 }
