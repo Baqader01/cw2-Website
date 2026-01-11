@@ -48,7 +48,7 @@
 
     <p class="auth-link">
       New here?
-      <a href="/cw2/public/register.php">Register as a volunteer</a>
+      <a href="/cw2/public/volunteer_register.php">Register as a volunteer</a>
     </p>
   </form>
 

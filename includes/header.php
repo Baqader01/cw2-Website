@@ -12,7 +12,7 @@
                 <li><a href="/cw2/public/index.php#our-story">Our Story</a></li>
                 <li><a href="/cw2/public/shifts.php">Shifts</a></li>
                 <li><a href="/cw2/public/volunteer_shifts.php">My Shifts</a></li>
-                <li><a href="/cw2/public/volunteer_logout.php">Logout</a></li>
+                <li><a href="/cw2/public/logout.php">Logout</a></li>
             <?php else: ?>
                 <li><a href="/cw2/public/index.php#our-story">Our Story</a></li>
                 <li><a href="/cw2/public/shifts.php">Shifts</a></li>
