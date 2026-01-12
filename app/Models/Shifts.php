@@ -69,6 +69,33 @@ class Shifts
         $result = $stmt->get_result();
         return $result->fetch_assoc() ?: null;
     }
+
+    public static function update(mysqli $conn, int $shift_id, array $data): bool
+{
+    $sql = "
+        UPDATE shifts
+        SET shift_date = ?, label = ?, start_time = ?, end_time = ?, max_volunteers = ?
+        WHERE shift_id = ?
+    ";
+
+    $stmt = mysqli_prepare($conn, $sql);
+    if (!$stmt) {
+        return false;
+    }
+
+    mysqli_stmt_bind_param(
+        $stmt,
+        "ssssii",
+        $data['shift_date'],
+        $data['label'],
+        $data['start_time'],
+        $data['end_time'],
+        $data['max_volunteers'],
+        $shift_id
+    );
+
+    return mysqli_stmt_execute($stmt);
+}
 }
 
 ?>
