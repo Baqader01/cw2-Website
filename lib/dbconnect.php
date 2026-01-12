@@ -13,7 +13,7 @@ function db_connect(): mysqli
 
     // Create connection
     $conn = mysqli_connect(
-        $db['host'],
+        $db['servername'],
         $db['username'],
         $db['password'],
         $db['dbname']

@@ -16,8 +16,8 @@
                 
             <?php elseif (isset($_SESSION['staff_id'])): ?>
                 <li><a href="/cw2/public/index.php">Our Story</a></li>
-                <li><a href="/cw2/public/shifts.php">Shifts</a></li>
-                <li><a href="/cw2/public/volunteer_shifts.php">My Shifts</a></li>
+                <li><a href="/cw2/public/shifts.php">Manage Shifts</a></li>
+                <li><a href="/cw2/public/volunteers.php">View volunteers</a></li>
                 <li><a href="/cw2/public/logout.php">Logout</a></li>
 
             <?php else: ?>

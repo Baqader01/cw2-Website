@@ -40,7 +40,7 @@ class StaffAuthController
                     $_SESSION['staff_role'] = $staff['role'];
 
                     // Redirect BEFORE output
-                    header('Location: /cw2/public/staff_dashboard.php');
+                    header('Location: /cw2/public/index.php');
                     exit;
                 }
             }

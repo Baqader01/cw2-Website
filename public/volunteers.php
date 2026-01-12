@@ -4,6 +4,11 @@ require __DIR__ . '/../app/Controllers/VolunteersController.php';
 
 $conn = db_connect();
 $data = VolunteersController::index($conn); 
+
+if (session_status() === PHP_SESSION_NONE)
+{
+  session_start();
+}
 ?>
 
 <!DOCTYPE html>
