@@ -46,21 +46,25 @@ class ShiftSignups
     public static function create(mysqli $conn, int $shift_id, int $volunteer_id): bool|string
     {
         $sql = "INSERT INTO shift_signups (shift_id, volunteer_id)
-                VALUES (?, ?)"; 
+                VALUES (?, ?)";
 
-        $stmt = mysqli_prepare($conn, $sql);
-        if (!$stmt) {
-            return "Could not prepare booking.";
+        try {
+            $stmt = mysqli_prepare($conn, $sql);
+            mysqli_stmt_bind_param($stmt, "ii", $shift_id, $volunteer_id);
+            mysqli_stmt_execute($stmt);
+
+            return true;
+
+        } catch (mysqli_sql_exception $e) {
+
+            // Duplicate booking (unique constraint)
+            if ($e->getCode() === 1062) {
+                return "You already booked this shift.";
+            }
+
+            // Any other DB error
+            return "Booking failed. Please try again.";
         }
-
-        mysqli_stmt_bind_param($stmt, "ii", $shift_id, $volunteer_id);
-
-        if (!mysqli_stmt_execute($stmt)) {
-            // Handles duplicate booking due to uniq_shift_email
-            return "Could not book this shift (you may already be booked).";
-        }
-
-        return true;
     }
 
     public static function getForVolunteer(mysqli $conn, int $volunteer_id): array
