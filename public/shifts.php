@@ -1,12 +1,21 @@
 <?php
+session_start();
+
 require __DIR__ . '/../lib/dbconnect.php';
 require __DIR__ . '/../app/Controllers/ShiftsController.php';
 
 $conn = db_connect();
 
-session_start();
 
-if (!isset($_SESSION['volunteer_id']) || $_SESSION['expires_at'] < time()) {
+$notLoggedIn =
+    !isset($_SESSION['volunteer_id']) &&
+    !isset($_SESSION['staff_id']);
+
+$expired =
+    isset($_SESSION['expires_at']) &&
+    $_SESSION['expires_at'] < time();
+
+if ($notLoggedIn || $expired) {
     session_destroy();
     header('Location: /cw2/public/login.php');
     exit;

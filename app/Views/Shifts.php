@@ -33,13 +33,22 @@
                         <td><?= htmlspecialchars($start . ' – ' . $end) ?></td>
                         <td><?= htmlspecialchars($booked . ' / ' . $max) ?></td>
                         <td>
-                            <?php if ($isFull): ?>
-                                <span>Full</span>
-                            <?php else: ?>
-                                <a class="book-button" href="/cw2/public/book.php?shift_id=<?= (int)$s['shift_id'] ?>">
-                                    Book
+                            <?php if (isset($_SESSION['volunteer_id'])): ?>
+                                <?php if ($isFull): ?>
+                                    <span>Full</span>
+                                <?php else: ?>
+                                    <a class="book-button" href="/cw2/public/book.php?shift_id=<?= (int)$s['shift_id'] ?>">
+                                        Book
+                                    </a>
+                                    
+                                <?php endif; ?>
+                            <?php elseif (isset($_SESSION['staff_id'])): ?>
+                                <a class="book-button" href="/cw2/public/edit_shift.php?shift_id=<?= (int)$s['shift_id'] ?>">
+                                    Edit
                                 </a>
-                            <?php endif; ?>
+
+                            <?php endif ?>
+ 
                         </td>
                     </tr>
                 <?php endforeach; ?>

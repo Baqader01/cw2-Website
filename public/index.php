@@ -4,6 +4,11 @@ require __DIR__ . '/../app/Controllers/OpeningTimesController.php';
 
 $conn = db_connect();
 $data = OpeningTimesController::index($conn); 
+
+if (session_status() === PHP_SESSION_NONE)
+{
+  session_start();
+}
 ?>
 
 <!DOCTYPE html>

@@ -11,7 +11,6 @@ class BookShiftController
         $shift_id = (int)($_GET['shift_id'] ?? 0);
         if ($shift_id <= 0) {
             $errors[] = "No shift selected.";
-            $errors[] = "No shift selected.";
             return compact('errors');
         }
 
