@@ -1,0 +1,21 @@
+{
+    "name": "communitytable/foodbank",
+    "description": "Community Table Management System",
+    "type": "project",
+    "require": {
+        "twig/twig": "^3.22",
+        "composer": "^2.9"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Communitytable\\Foodbank\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Mysarah Baqader"
+        }
+    ],
+    "minimum-stability": "stable"
+}
