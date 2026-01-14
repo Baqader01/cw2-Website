@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title|default('The Community Table') }}</title>
+
+  <link rel="stylesheet" href="/cw2/assets/css/stylesheet.css">
+</head>
+
+<body>
+
+  {% include 'includes/header.twig' %}
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  {% include 'includes/footer.twig' %}
+
+</body>
+</html>

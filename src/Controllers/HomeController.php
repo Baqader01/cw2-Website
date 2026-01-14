@@ -15,7 +15,8 @@ class HomeController extends Controller
 
         $this->render('home', [
             'openingTimes' => $openingTimes,
-            'isLoggedIn' => isset($_SESSION['volunteer_id']) || isset($_SESSION['staff_id'])
+            'isVolunteer' => isset($_SESSION['volunteer_id']),
+            'isStaff' => isset($_SESSION['staff_id'])
         ]);
     }
 }

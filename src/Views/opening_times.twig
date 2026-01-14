@@ -1,0 +1,24 @@
+<section class="opening-times">
+  <h3>Opening Times</h3>
+
+  {% if openingTimes is not empty %}
+    <table class="opening-table">
+      <tbody>
+        {% for row in openingTimes %}
+          <tr>
+            <td>{{ row.day_name }}</td>
+            <td>
+              {% if row.is_closed == 1 %}
+                Closed
+              {% else %}
+                {{ row.open_time|date('g a') }} – {{ row.close_time|date('g a') }}
+              {% endif %}
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>No opening hours have been configured yet.</p>
+  {% endif %}
+</section>

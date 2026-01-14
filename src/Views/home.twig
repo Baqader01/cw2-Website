@@ -1,33 +1,7 @@
-<?php
-require __DIR__ . '/../lib/dbconnect.php';
-require __DIR__ . '/../app/Controllers/OpeningTimesController.php';
+{% extends 'layout/base.twig' %}
 
-$conn = db_connect();
-$data = OpeningTimesController::index($conn); 
-
-if (session_status() === PHP_SESSION_NONE)
-{
-  session_start();
-}
-?>
-
-<!DOCTYPE html>
-<html lang="en-GB">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="The Community Table – a community hub tackling food insecurity and social isolation in East London.">
-  <meta name="author" content="Mysarah Baqader">
-  <title>The Community Table</title>
-  <link rel="stylesheet" href="/cw2/assets/css/stylesheet.css">
-</head>
-
-<body>
-
-  <?php require __DIR__ . '/../includes/header.php'; ?>
-
-  <main id="main-content">
-    <section id="our-story">
+{% block content %}
+  <section id="our-story">
       <h2>Our Story</h2>
       <p><strong>The Community Table</strong> was established in 2018 by local organiser <strong>Maya Patel</strong> and chef <strong>David Green</strong> as a neighbourhood initiative to tackle food insecurity and social isolation in the heart of East London. What began as a small food bank and soup kitchen in a church hall has evolved into a vibrant community hub where people cook, share, and learn together.</p>
       <p>Today, The Community Table runs a zero-waste café, weekly community meals, and cooking workshops that celebrate seasonal, affordable, and culturally diverse food. All proceeds go back into supporting local families through meal donations, skills training, and volunteer opportunities.</p>
@@ -80,8 +54,5 @@ if (session_status() === PHP_SESSION_NONE)
         Read all 7 testimonials (PDF)
       </a>
     </section>
-  </main>
-
-   <?php require __DIR__ . '/../includes/footer.php'; ?>
-</body>
-</html>
+  {% include 'opening_times.twig' %}
+{% endblock %}
