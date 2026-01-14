@@ -1,6 +1,7 @@
 <?php
 
 use Communitytable\Foodbank\Controllers\HomeController;
+use Communitytable\Foodbank\Controllers\ShiftController;
 
 // Public
 $router->get('/', HomeController::class, 'index');
@@ -11,7 +12,7 @@ $router->get('/', HomeController::class, 'index');
 // $router->get('/logout', AuthController::class, 'logout');
 
 // // Volunteer
-// $router->get('/shifts', ShiftController::class, 'index');
+ $router->get('/shifts', ShiftController::class, 'index');
 // $router->post('/shifts/book', ShiftController::class, 'book');
 // $router->get('/my-shifts', ShiftController::class, 'myShifts');
 

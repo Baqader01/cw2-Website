@@ -1,5 +1,8 @@
 <?php
 
+namespace Communitytable\Foodbank\Models;
+use mysqli;
+
 class Shifts
 {
     public static function getShift(mysqli $conn)
