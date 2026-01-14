@@ -1,14 +1,16 @@
 <?php
 
+namespace Communitytable\Foodbank\Models;
+use mysqli;
+
+
 class OpeningTimes
 {
-    public static function getAll()
+    public static function getAll(mysqli $conn)
     {
         $sql = "SELECT day_name, open_time, close_time, is_closed
             FROM opening_hours
             ORDER BY opening_id ASC";
-
-        $conn = db_connect();
 
         $result = mysqli_query($conn, $sql);
 

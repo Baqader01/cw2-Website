@@ -1,7 +1,10 @@
 <?php
+require_once __DIR__ . '/../lib/dbconnect.php';
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use Communitytable\Foodbank\Core\Router;
+
+session_start();
 
 $router = new Router;
 

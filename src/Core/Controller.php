@@ -2,12 +2,14 @@
 
 namespace Communitytable\Foodbank\Core;
 
+use mysqli;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 
 abstract class Controller
 {
     protected Environment $twig;
+    protected mysqli $db;
 
     public function __construct()
     {
@@ -18,6 +20,7 @@ abstract class Controller
         ]);
 
         $this->twig->addGlobal('session', $_SESSION);
+        $this->db = db_connect();
     }
 
     protected function render(string $view, array $data = []): void

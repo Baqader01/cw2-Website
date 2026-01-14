@@ -1,15 +1,17 @@
 <?php
 
-namespace communitytable\foodbank\Controllers;
+namespace  Communitytable\Foodbank\Controllers;
 
-use communitytable\foodbank\Core\Controller;
-use OpeningTimes;
+use Communitytable\Foodbank\Core\Controller;
+use Communitytable\Foodbank\Models\OpeningTimes;
 
 class HomeController extends Controller
 {
     public function index(): void
     {
-        $openingTimes = OpeningTimes::getAll();
+        $conn = $this->db; // injected via base Controller
+
+        $openingTimes = OpeningTimes::getAll($conn);
 
         $this->render('home', [
             'openingTimes' => $openingTimes,
