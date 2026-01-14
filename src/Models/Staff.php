@@ -1,5 +1,8 @@
 <?php
 
+namespace Communitytable\Foodbank\Models;
+use mysqli;
+
 class Staff
 {
     // Find a staff user by email

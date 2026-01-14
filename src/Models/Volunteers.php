@@ -1,5 +1,8 @@
 <?php
 
+namespace Communitytable\Foodbank\Models;
+use mysqli;
+
 class Volunteers
 {
     public static function getAll(mysqli $conn)

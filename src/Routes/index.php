@@ -2,12 +2,13 @@
 
 use Communitytable\Foodbank\Controllers\HomeController;
 use Communitytable\Foodbank\Controllers\ShiftController;
+use Communitytable\Foodbank\Controllers\AuthController;
 
 // Public
 $router->get('/', HomeController::class, 'index');
 
 // Auth
-// $router->get('/login', AuthController::class, 'login');
+$router->get('/login', AuthController::class, 'login');
 // $router->post('/login', AuthController::class, 'login');
 // $router->get('/logout', AuthController::class, 'logout');
 

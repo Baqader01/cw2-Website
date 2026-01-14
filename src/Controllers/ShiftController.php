@@ -10,10 +10,10 @@ class ShiftController extends Controller
     public function index(): void
     {
 
-        $shift = Shifts::getShift($this->db);
+        $shifts = Shifts::getShift($this->db);
 
-        $this->render('shift', [
-            'shift' => $shift,
+        $this->render('shifts', [
+            'shifts' => $shifts,
             'isVolunteer' => isset($_SESSION['volunteer_id']),
             'isStaff' => isset($_SESSION['staff_id'])
         ]);
