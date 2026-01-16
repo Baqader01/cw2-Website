@@ -33,6 +33,7 @@ class __TwigTemplate_73c917a59193b928fc124f74ad76130a extends Template
 
         $this->blocks = [
             'content' => [$this, 'block_content'],
+            'scripts' => [$this, 'block_scripts'],
         ];
     }
 
@@ -72,7 +73,11 @@ class __TwigTemplate_73c917a59193b928fc124f74ad76130a extends Template
         yield from $this->load("includes/footer.twig", 19)->unwrap()->yield($context);
         // line 20
         yield "
-</body>
+  ";
+        // line 21
+        yield from $this->unwrap()->yieldBlock('scripts', $context, $blocks);
+        // line 22
+        yield "</body>
 </html>
 ";
         yield from [];
@@ -83,6 +88,16 @@ class __TwigTemplate_73c917a59193b928fc124f74ad76130a extends Template
      * @return iterable<null|scalar|\Stringable>
      */
     public function block_content(array $context, array $blocks = []): iterable
+    {
+        $macros = $this->macros;
+        yield from [];
+    }
+
+    // line 21
+    /**
+     * @return iterable<null|scalar|\Stringable>
+     */
+    public function block_scripts(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
         yield from [];
@@ -109,7 +124,7 @@ class __TwigTemplate_73c917a59193b928fc124f74ad76130a extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  82 => 16,  74 => 20,  72 => 19,  68 => 17,  66 => 16,  62 => 14,  60 => 13,  50 => 6,  43 => 1,);
+        return array (  97 => 21,  87 => 16,  80 => 22,  78 => 21,  75 => 20,  73 => 19,  69 => 17,  67 => 16,  63 => 14,  61 => 13,  51 => 6,  44 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -134,6 +149,7 @@ class __TwigTemplate_73c917a59193b928fc124f74ad76130a extends Template
 
   {% include 'includes/footer.twig' %}
 
+  {% block scripts %}{% endblock %}
 </body>
 </html>
 ", "layout/base.twig", "/var/www/html/cw2/src/Views/layout/base.twig");

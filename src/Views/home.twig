@@ -20,7 +20,7 @@
       <h2>Visitor Information</h2>
       <p>We welcome everyone — no referrals or proof of need required. All meals are vegetarian-friendly, with vegan and gluten-free options available daily. The space is fully wheelchair accessible, with step-free entry and accessible bathrooms.</p>
       
-      <?php require __DIR__ . '/../app/Views/OpeningTimes.php';?>
+      {% include 'opening_times.twig' %}
     </section>
 
     <section id="volunteer">
@@ -54,5 +54,4 @@
         Read all 7 testimonials (PDF)
       </a>
     </section>
-  {% include 'opening_times.twig' %}
 {% endblock %}

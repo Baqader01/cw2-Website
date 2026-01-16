@@ -49,33 +49,32 @@ class __TwigTemplate_9b019e4a56190697416da3723477f141 extends Template
         <p class=\"tagline\">A table set for all</p>
         <nav aria-label=\"Main navigation\">
         <ul>
+            <li><a href=\"/cw2/public\">Our Story</a></li>
+
             ";
-        // line 11
+        // line 13
         if ((($tmp = ($context["isVolunteer"] ?? null)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
-            // line 12
-            yield "                <li><a href=\"/cw2/public/index.php\">Our Story</a></li>
-                <li><a href=\"/cw2/public/shifts.php\">Shifts</a></li>
+            // line 14
+            yield "                <li><a href=\"/cw2/public/shifts.php\">Shifts</a></li>
                 <li><a href=\"/cw2/public/volunteer_shifts.php\">My Shifts</a></li>
                 <li><a href=\"/cw2/public/logout.php\">Logout</a></li>
             
             ";
-        } elseif ((($tmp =         // line 17
+        } elseif ((($tmp =         // line 18
 ($context["isStaff"] ?? null)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
-            // line 18
-            yield "                <li><a href=\"/cw2/public/index.php\">Our Story</a></li>
-                <li><a href=\"/cw2/public/shifts.php\">Manage Shifts</a></li>
+            // line 19
+            yield "                <li><a href=\"/cw2/public/shifts.php\">Manage Shifts</a></li>
                 <li><a href=\"/cw2/public/volunteers.php\">View volunteers</a></li>
                 <li><a href=\"/cw2/public/logout.php\">Logout</a></li>
 
             ";
         } else {
             // line 24
-            yield "                <li><a href=\"/cw2/public/index.php\">Our Story</a></li>
-                <li><a href=\"/cw2/public/shifts.php\">Shifts</a></li>
+            yield "                <li><a href=\"/cw2/public/shifts.php\">Shifts</a></li>
                 <li><a href=\"/cw2/public/login.php\">Login</a></li>
             ";
         }
-        // line 28
+        // line 27
         yield "
         </ul>
         </nav>
@@ -105,7 +104,7 @@ class __TwigTemplate_9b019e4a56190697416da3723477f141 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  79 => 28,  73 => 24,  65 => 18,  63 => 17,  56 => 12,  54 => 11,  42 => 1,);
+        return array (  78 => 27,  73 => 24,  66 => 19,  64 => 18,  58 => 14,  56 => 13,  42 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -120,20 +119,19 @@ class __TwigTemplate_9b019e4a56190697416da3723477f141 extends Template
         <p class=\"tagline\">A table set for all</p>
         <nav aria-label=\"Main navigation\">
         <ul>
+            <li><a href=\"/cw2/public\">Our Story</a></li>
+
             {% if isVolunteer %}
-                <li><a href=\"/cw2/public/index.php\">Our Story</a></li>
                 <li><a href=\"/cw2/public/shifts.php\">Shifts</a></li>
                 <li><a href=\"/cw2/public/volunteer_shifts.php\">My Shifts</a></li>
                 <li><a href=\"/cw2/public/logout.php\">Logout</a></li>
             
             {% elseif isStaff %}
-                <li><a href=\"/cw2/public/index.php\">Our Story</a></li>
                 <li><a href=\"/cw2/public/shifts.php\">Manage Shifts</a></li>
                 <li><a href=\"/cw2/public/volunteers.php\">View volunteers</a></li>
                 <li><a href=\"/cw2/public/logout.php\">Logout</a></li>
 
             {% else %}
-                <li><a href=\"/cw2/public/index.php\">Our Story</a></li>
                 <li><a href=\"/cw2/public/shifts.php\">Shifts</a></li>
                 <li><a href=\"/cw2/public/login.php\">Login</a></li>
             {% endif %}
