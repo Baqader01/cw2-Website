@@ -58,13 +58,54 @@ class __TwigTemplate_4679753ef0973bf83195cee7eee3da6b extends Template
         // line 4
         yield "<main class=\"auth\">
 
+  ";
+        // line 6
+        if ((($tmp =  !Twig\Extension\CoreExtension::testEmpty(($context["errors"] ?? null))) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
+            // line 7
+            yield "    <div class=\"error-box\">
+      <ul>
+        ";
+            // line 9
+            $context['_parent'] = $context;
+            $context['_seq'] = CoreExtension::ensureTraversable(($context["errors"] ?? null));
+            foreach ($context['_seq'] as $context["_key"] => $context["e"]) {
+                // line 10
+                yield "          <li>";
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($context["e"], "html", null, true);
+                yield "</li>
+        ";
+            }
+            $_parent = $context['_parent'];
+            unset($context['_seq'], $context['_key'], $context['e'], $context['_parent']);
+            $context = array_intersect_key($context, $_parent) + $_parent;
+            // line 12
+            yield "      </ul>
+    </div>
+  ";
+        }
+        // line 15
+        yield "
   <div class=\"role-toggle\">
-    <button type=\"button\" class=\"role-btn active\" data-role=\"volunteer\">
-      Volunteer
-    </button>
-    <button type=\"button\" class=\"role-btn\" data-role=\"staff\">
-      Staff
-    </button>
+  <button
+    type=\"button\"
+    class=\"role-btn ";
+        // line 19
+        yield (((($context["role"] ?? null) == "volunteer")) ? ("active") : (""));
+        yield "\"
+    data-role=\"volunteer\">
+    Volunteer
+  </button>
+
+  <button
+    type=\"button\"
+    class=\"role-btn ";
+        // line 26
+        yield (((($context["role"] ?? null) == "staff")) ? ("active") : (""));
+        yield "\"
+    data-role=\"staff\">
+    Staff
+  </button>
+
     <div class=\"slider\"></div>
   </div>
 
@@ -113,14 +154,14 @@ class __TwigTemplate_4679753ef0973bf83195cee7eee3da6b extends Template
         yield from [];
     }
 
-    // line 59
+    // line 77
     /**
      * @return iterable<null|scalar|\Stringable>
      */
     public function block_scripts(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
-        // line 60
+        // line 78
         yield "  <script src=\"/cw2/assets/js/auth.js\"></script>
 ";
         yield from [];
@@ -147,7 +188,7 @@ class __TwigTemplate_4679753ef0973bf83195cee7eee3da6b extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  124 => 60,  117 => 59,  59 => 4,  52 => 3,  41 => 1,);
+        return array (  165 => 78,  158 => 77,  103 => 26,  93 => 19,  87 => 15,  82 => 12,  73 => 10,  69 => 9,  65 => 7,  63 => 6,  59 => 4,  52 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -157,13 +198,31 @@ class __TwigTemplate_4679753ef0973bf83195cee7eee3da6b extends Template
 {% block content %}
 <main class=\"auth\">
 
+  {% if errors is not empty %}
+    <div class=\"error-box\">
+      <ul>
+        {% for e in errors %}
+          <li>{{ e }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+
   <div class=\"role-toggle\">
-    <button type=\"button\" class=\"role-btn active\" data-role=\"volunteer\">
-      Volunteer
-    </button>
-    <button type=\"button\" class=\"role-btn\" data-role=\"staff\">
-      Staff
-    </button>
+  <button
+    type=\"button\"
+    class=\"role-btn {{ role == 'volunteer' ? 'active' : '' }}\"
+    data-role=\"volunteer\">
+    Volunteer
+  </button>
+
+  <button
+    type=\"button\"
+    class=\"role-btn {{ role == 'staff' ? 'active' : '' }}\"
+    data-role=\"staff\">
+    Staff
+  </button>
+
     <div class=\"slider\"></div>
   </div>
 

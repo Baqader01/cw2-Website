@@ -25,3 +25,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+  const roleInput = document.getElementById('role-input');
+  const slider = document.querySelector('.slider');
+
+  if (roleInput.value === 'staff') {
+    slider.style.transform = 'translateX(100%)';
+  } else {
+    slider.style.transform = 'translateX(0)';
+  }
+});

@@ -3,13 +3,31 @@
 {% block content %}
 <main class="auth">
 
+  {% if errors is not empty %}
+    <div class="error-box">
+      <ul>
+        {% for e in errors %}
+          <li>{{ e }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+
   <div class="role-toggle">
-    <button type="button" class="role-btn active" data-role="volunteer">
-      Volunteer
-    </button>
-    <button type="button" class="role-btn" data-role="staff">
-      Staff
-    </button>
+  <button
+    type="button"
+    class="role-btn {{ role == 'volunteer' ? 'active' : '' }}"
+    data-role="volunteer">
+    Volunteer
+  </button>
+
+  <button
+    type="button"
+    class="role-btn {{ role == 'staff' ? 'active' : '' }}"
+    data-role="staff">
+    Staff
+  </button>
+
     <div class="slider"></div>
   </div>
 

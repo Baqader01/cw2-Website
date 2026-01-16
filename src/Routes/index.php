@@ -9,13 +9,13 @@ $router->get('/', HomeController::class, 'index');
 
 // Auth
 $router->get('/login', AuthController::class, 'login');
-// $router->post('/login', AuthController::class, 'login');
-// $router->get('/logout', AuthController::class, 'logout');
+$router->post('/login', AuthController::class, 'login');
+$router->get('/logout', AuthController::class, 'logout');
 
-// // Volunteer
- $router->get('/shifts', ShiftController::class, 'index');
-// $router->post('/shifts/book', ShiftController::class, 'book');
-// $router->get('/my-shifts', ShiftController::class, 'myShifts');
+// Volunteer
+$router->get('/shifts', ShiftController::class, 'index');
+$router->post('/shifts/book', ShiftController::class, 'book');
+$router->get('/my-shifts', ShiftController::class, 'myShifts');
 
 // // Staff
 // $router->get('/staff/shifts', StaffController::class, 'index');
