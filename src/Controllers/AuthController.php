@@ -152,7 +152,7 @@ class AuthController extends Controller
             }
         }
 
-        $this->render('auth/register', [
+        $this->render('register', [
             'errors' => $errors,
             'old' => $old
         ]);

@@ -1,0 +1,73 @@
+{% extends 'layout/base.twig' %}
+
+{% block content %}
+
+  {% if errors is not empty %}
+    <div class="error-box">
+      <ul>
+        {% for e in errors %}
+          <li>{{ e }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+
+  <form method="POST" action="">
+    <h2>Volunteer Registration</h2>
+    <p>Fill in the form below to register as a volunteer.</p>
+
+    <label>
+      Full name
+      <input
+        type="text"
+        name="full_name"
+        value="{{ old.full_name|default('') }}"
+        required
+      >
+    </label>
+
+    <label>
+      Email
+      <input
+        type="email"
+        name="email"
+        value="{{ old.email|default('') }}"
+        required
+      >
+    </label>
+
+    <label>
+      Phone
+      <input
+        type="text"
+        name="phone"
+        value="{{ old.phone|default('') }}"
+      >
+    </label>
+
+    <label>
+      Password
+      <input type="password" name="password" required>
+    </label>
+
+    <label>
+      Confirm password
+      <input type="password" name="password_confirm" required>
+    </label>
+
+    <label>
+      <input
+        type="checkbox"
+        name="over18"
+        {% if old.over18 is defined and old.over18 %}
+          checked
+        {% endif %}
+        required
+      >
+      I confirm I am over 18
+    </label>
+
+    <button type="submit" class="button">Register</button>
+  </form>
+
+{% endblock %}
