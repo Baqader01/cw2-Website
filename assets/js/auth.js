@@ -1,38 +1,35 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const buttons = document.querySelectorAll('.role-btn');
-  const forms = document.querySelectorAll('.login-form');
-  const slider = document.querySelector('.slider');
+document.querySelectorAll('.role-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const role = btn.dataset.role;
 
-  buttons.forEach((btn, index) => {
-    btn.addEventListener('click', () => {
-      const role = btn.dataset.role;
+    /* Toggle active button */
+    document.querySelectorAll('.role-btn').forEach(b =>
+      b.classList.toggle('active', b === btn)
+    );
 
-      // Toggle active button
-      buttons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
+    /* Toggle forms */
+    document.querySelectorAll('.login-form').forEach(form => {
+      const isTarget = form.querySelector('input[name="role"]').value === role;
+      form.classList.toggle('show', isTarget);
 
-      // Toggle forms
-      forms.forEach(form => {
-        form.classList.toggle(
-          'show',
-          form.dataset.role === role
+      if (isTarget) {
+        /* Clear password ONLY */
+        const passwordInputs = form.querySelectorAll(
+          'input[type="password"]'
         );
-      });
-
-      // Move slider
-      slider.style.transform =
-        role === 'staff' ? 'translateX(100%)' : 'translateX(0)';
+        passwordInputs.forEach(i => (i.value = ''));
+      }
     });
+
+    /* Remove error box */
+    const errorBox = document.querySelector('.error-box');
+    if (errorBox) {
+      errorBox.remove();
+    }
+
+    /* Move slider */
+    const slider = document.querySelector('.slider');
+    slider.style.transform =
+      role === 'staff' ? 'translateX(100%)' : 'translateX(0)';
   });
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-  const roleInput = document.getElementById('role-input');
-  const slider = document.querySelector('.slider');
-
-  if (roleInput.value === 'staff') {
-    slider.style.transform = 'translateX(100%)';
-  } else {
-    slider.style.transform = 'translateX(0)';
-  }
 });

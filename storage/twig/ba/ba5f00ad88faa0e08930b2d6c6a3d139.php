@@ -62,7 +62,9 @@ class __TwigTemplate_4679753ef0973bf83195cee7eee3da6b extends Template
         // line 6
         if ((($tmp =  !Twig\Extension\CoreExtension::testEmpty(($context["errors"] ?? null))) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
             // line 7
-            yield "    <div class=\"error-box\">
+            yield "    <div class=\"error-box\" data-role=\"";
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["role"] ?? null), "html", null, true);
+            yield "\">
       <ul>
         ";
             // line 9
@@ -86,38 +88,28 @@ class __TwigTemplate_4679753ef0973bf83195cee7eee3da6b extends Template
         // line 15
         yield "
   <div class=\"role-toggle\">
-  <button
-    type=\"button\"
-    class=\"role-btn ";
-        // line 19
+    <button type=\"button\" class=\"role-btn ";
+        // line 17
         yield (((($context["role"] ?? null) == "volunteer")) ? ("active") : (""));
-        yield "\"
-    data-role=\"volunteer\">
-    Volunteer
-  </button>
-
-  <button
-    type=\"button\"
-    class=\"role-btn ";
-        // line 26
+        yield "\" data-role=\"volunteer\"> Volunteer</button>
+    <button type=\"button\" class=\"role-btn ";
+        // line 18
         yield (((($context["role"] ?? null) == "staff")) ? ("active") : (""));
-        yield "\"
-    data-role=\"staff\">
-    Staff
-  </button>
-
+        yield "\" data-role=\"staff\"> Staff</button>
     <div class=\"slider\"></div>
   </div>
 
   <div class=\"forms\">
-
     <form method=\"POST\" class=\"login-form show\" data-role=\"volunteer\">
       <input type=\"hidden\" name=\"role\" value=\"volunteer\">
 
       <h2>Volunteer Login</h2>
 
       <label>Email
-        <input type=\"email\" name=\"email\" required>
+        <input type=\"email\" name=\"email\" value=\"";
+        // line 29
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["old"] ?? null), "email", [], "any", false, false, false, 29));
+        yield "\" required>
       </label>
 
       <label>Password
@@ -138,7 +130,10 @@ class __TwigTemplate_4679753ef0973bf83195cee7eee3da6b extends Template
       <h2>Staff Login</h2>
 
       <label>Email
-        <input type=\"email\" name=\"email\" required>
+        <input type=\"email\" name=\"email\" value=\"";
+        // line 50
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["old"] ?? null), "email", [], "any", false, false, false, 50));
+        yield "\" required>
       </label>
 
       <label>Password
@@ -150,18 +145,19 @@ class __TwigTemplate_4679753ef0973bf83195cee7eee3da6b extends Template
 
   </div>
 </main>
+
 ";
         yield from [];
     }
 
-    // line 77
+    // line 65
     /**
      * @return iterable<null|scalar|\Stringable>
      */
     public function block_scripts(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
-        // line 78
+        // line 66
         yield "  <script src=\"/cw2/assets/js/auth.js\"></script>
 ";
         yield from [];
@@ -188,7 +184,7 @@ class __TwigTemplate_4679753ef0973bf83195cee7eee3da6b extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  165 => 78,  158 => 77,  103 => 26,  93 => 19,  87 => 15,  82 => 12,  73 => 10,  69 => 9,  65 => 7,  63 => 6,  59 => 4,  52 => 3,  41 => 1,);
+        return array (  161 => 66,  154 => 65,  135 => 50,  111 => 29,  97 => 18,  93 => 17,  89 => 15,  84 => 12,  75 => 10,  71 => 9,  65 => 7,  63 => 6,  59 => 4,  52 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -199,7 +195,7 @@ class __TwigTemplate_4679753ef0973bf83195cee7eee3da6b extends Template
 <main class=\"auth\">
 
   {% if errors is not empty %}
-    <div class=\"error-box\">
+    <div class=\"error-box\" data-role=\"{{ role }}\">
       <ul>
         {% for e in errors %}
           <li>{{ e }}</li>
@@ -209,32 +205,19 @@ class __TwigTemplate_4679753ef0973bf83195cee7eee3da6b extends Template
   {% endif %}
 
   <div class=\"role-toggle\">
-  <button
-    type=\"button\"
-    class=\"role-btn {{ role == 'volunteer' ? 'active' : '' }}\"
-    data-role=\"volunteer\">
-    Volunteer
-  </button>
-
-  <button
-    type=\"button\"
-    class=\"role-btn {{ role == 'staff' ? 'active' : '' }}\"
-    data-role=\"staff\">
-    Staff
-  </button>
-
+    <button type=\"button\" class=\"role-btn {{ role == 'volunteer' ? 'active' : '' }}\" data-role=\"volunteer\"> Volunteer</button>
+    <button type=\"button\" class=\"role-btn {{ role == 'staff' ? 'active' : '' }}\" data-role=\"staff\"> Staff</button>
     <div class=\"slider\"></div>
   </div>
 
   <div class=\"forms\">
-
     <form method=\"POST\" class=\"login-form show\" data-role=\"volunteer\">
       <input type=\"hidden\" name=\"role\" value=\"volunteer\">
 
       <h2>Volunteer Login</h2>
 
       <label>Email
-        <input type=\"email\" name=\"email\" required>
+        <input type=\"email\" name=\"email\" value=\"{{ old.email|e }}\" required>
       </label>
 
       <label>Password
@@ -255,7 +238,7 @@ class __TwigTemplate_4679753ef0973bf83195cee7eee3da6b extends Template
       <h2>Staff Login</h2>
 
       <label>Email
-        <input type=\"email\" name=\"email\" required>
+        <input type=\"email\" name=\"email\" value=\"{{ old.email|e }}\" required>
       </label>
 
       <label>Password
@@ -267,6 +250,7 @@ class __TwigTemplate_4679753ef0973bf83195cee7eee3da6b extends Template
 
   </div>
 </main>
+
 {% endblock %}
 
 {% block scripts %}

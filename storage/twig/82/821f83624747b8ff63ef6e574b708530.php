@@ -74,8 +74,11 @@ class __TwigTemplate_a1b97e61daa82a54d089e5a5b8e374fd extends Template
       <h2>Visitor Information</h2>
       <p>We welcome everyone — no referrals or proof of need required. All meals are vegetarian-friendly, with vegan and gluten-free options available daily. The space is fully wheelchair accessible, with step-free entry and accessible bathrooms.</p>
       
-      <?php require __DIR__ . '/../app/Views/OpeningTimes.php';?>
-    </section>
+      ";
+        // line 23
+        yield from $this->load("opening_times.twig", 23)->unwrap()->yield($context);
+        // line 24
+        yield "    </section>
 
     <section id=\"volunteer\">
       <h2>Volunteer With Us</h2>
@@ -108,9 +111,7 @@ class __TwigTemplate_a1b97e61daa82a54d089e5a5b8e374fd extends Template
         Read all 7 testimonials (PDF)
       </a>
     </section>
-  ";
-        // line 57
-        yield from $this->load("opening_times.twig", 57)->unwrap()->yield($context);
+";
         yield from [];
     }
 
@@ -135,7 +136,7 @@ class __TwigTemplate_a1b97e61daa82a54d089e5a5b8e374fd extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  113 => 57,  58 => 4,  51 => 3,  40 => 1,);
+        return array (  81 => 24,  79 => 23,  58 => 4,  51 => 3,  40 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -162,7 +163,7 @@ class __TwigTemplate_a1b97e61daa82a54d089e5a5b8e374fd extends Template
       <h2>Visitor Information</h2>
       <p>We welcome everyone — no referrals or proof of need required. All meals are vegetarian-friendly, with vegan and gluten-free options available daily. The space is fully wheelchair accessible, with step-free entry and accessible bathrooms.</p>
       
-      <?php require __DIR__ . '/../app/Views/OpeningTimes.php';?>
+      {% include 'opening_times.twig' %}
     </section>
 
     <section id=\"volunteer\">
@@ -196,7 +197,6 @@ class __TwigTemplate_a1b97e61daa82a54d089e5a5b8e374fd extends Template
         Read all 7 testimonials (PDF)
       </a>
     </section>
-  {% include 'opening_times.twig' %}
 {% endblock %}", "home.twig", "/var/www/html/cw2/src/Views/home.twig");
     }
 }

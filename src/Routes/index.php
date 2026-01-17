@@ -12,6 +12,9 @@ $router->get('/login', AuthController::class, 'login');
 $router->post('/login', AuthController::class, 'login');
 $router->get('/logout', AuthController::class, 'logout');
 
+$router->get('/register', AuthController::class, 'register');
+$router->post('/register', AuthController::class, 'register');
+
 // Volunteer
 $router->get('/shifts', ShiftController::class, 'index');
 $router->post('/shifts/book', ShiftController::class, 'book');

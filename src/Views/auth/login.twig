@@ -4,7 +4,7 @@
 <main class="auth">
 
   {% if errors is not empty %}
-    <div class="error-box">
+    <div class="error-box" data-role="{{ role }}">
       <ul>
         {% for e in errors %}
           <li>{{ e }}</li>
@@ -14,32 +14,19 @@
   {% endif %}
 
   <div class="role-toggle">
-  <button
-    type="button"
-    class="role-btn {{ role == 'volunteer' ? 'active' : '' }}"
-    data-role="volunteer">
-    Volunteer
-  </button>
-
-  <button
-    type="button"
-    class="role-btn {{ role == 'staff' ? 'active' : '' }}"
-    data-role="staff">
-    Staff
-  </button>
-
+    <button type="button" class="role-btn {{ role == 'volunteer' ? 'active' : '' }}" data-role="volunteer"> Volunteer</button>
+    <button type="button" class="role-btn {{ role == 'staff' ? 'active' : '' }}" data-role="staff"> Staff</button>
     <div class="slider"></div>
   </div>
 
   <div class="forms">
-
     <form method="POST" class="login-form show" data-role="volunteer">
       <input type="hidden" name="role" value="volunteer">
 
       <h2>Volunteer Login</h2>
 
       <label>Email
-        <input type="email" name="email" required>
+        <input type="email" name="email" value="{{ old.email|e }}" required>
       </label>
 
       <label>Password
@@ -60,7 +47,7 @@
       <h2>Staff Login</h2>
 
       <label>Email
-        <input type="email" name="email" required>
+        <input type="email" name="email" value="{{ old.email|e }}" required>
       </label>
 
       <label>Password
@@ -72,6 +59,7 @@
 
   </div>
 </main>
+
 {% endblock %}
 
 {% block scripts %}
