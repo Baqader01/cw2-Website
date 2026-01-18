@@ -14,8 +14,8 @@ use Twig\Source;
 use Twig\Template;
 use Twig\TemplateWrapper;
 
-/* shifts.twig */
-class __TwigTemplate_be302ce6681ca9e93c496c75c7f7bf2c extends Template
+/* shifts/index.twig */
+class __TwigTemplate_819c970ddeabe6514b4533a746739d83 extends Template
 {
     private Source $source;
     /**
@@ -188,7 +188,7 @@ class __TwigTemplate_be302ce6681ca9e93c496c75c7f7bf2c extends Template
      */
     public function getTemplateName(): string
     {
-        return "shifts.twig";
+        return "shifts/index.twig";
     }
 
     /**
@@ -269,6 +269,6 @@ class __TwigTemplate_be302ce6681ca9e93c496c75c7f7bf2c extends Template
 
 {% block script %}    
     <script src=\"/cw2/assets/auth-toggle.js\" defer></script>
-{% endblock %}", "shifts.twig", "/var/www/html/cw2/src/Views/shifts.twig");
+{% endblock %}", "shifts/index.twig", "/var/www/html/cw2/src/Views/shifts/index.twig");
     }
 }

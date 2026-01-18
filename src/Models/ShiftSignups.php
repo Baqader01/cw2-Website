@@ -1,5 +1,8 @@
 <?php
 
+namespace Communitytable\Foodbank\Models;
+use mysqli;
+
 class ShiftSignups
 {
     public static function countForShift(mysqli $conn, int $shift_id): int
@@ -43,28 +46,15 @@ class ShiftSignups
         return (int)$row['c'];
     }
 
-    public static function create(mysqli $conn, int $shift_id, int $volunteer_id): bool|string
+    public static function create(mysqli $conn, int $shift_id, int $volunteer_id): void
     {
         $sql = "INSERT INTO shift_signups (shift_id, volunteer_id)
                 VALUES (?, ?)";
 
-        try {
             $stmt = mysqli_prepare($conn, $sql);
             mysqli_stmt_bind_param($stmt, "ii", $shift_id, $volunteer_id);
             mysqli_stmt_execute($stmt);
 
-            return true;
-
-        } catch (mysqli_sql_exception $e) {
-
-            // Duplicate booking (unique constraint)
-            if ($e->getCode() === 1062) {
-                return "You already booked this shift.";
-            }
-
-            // Any other DB error
-            return "Booking failed. Please try again.";
-        }
     }
 
     public static function getForVolunteer(mysqli $conn, int $volunteer_id): array

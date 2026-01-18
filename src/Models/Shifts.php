@@ -5,7 +5,7 @@ use mysqli;
 
 class Shifts
 {
-    public static function getShift(mysqli $conn)
+    public static function getShifts(mysqli $conn)
     {
         $sql = "
             SELECT 

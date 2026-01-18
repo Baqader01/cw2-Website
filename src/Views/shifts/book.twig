@@ -1,0 +1,42 @@
+{% extends 'layout/base.twig' %}
+
+{% block content %}
+<main class="volunteer-register">
+
+  <h2>Book a Shift</h2>
+
+  {% if errors is not empty %}
+    <div class="error-box">
+      <ul>
+        {% for e in errors %}
+          <li>{{ e }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+
+  {% if shift is defined %}
+    <p>
+      <strong>{{ shift.label }}</strong><br>
+      {{ shift.shift_date|date('d M Y') }},
+      {{ shift.start_time|slice(0,5) }} – {{ shift.end_time|slice(0,5) }}<br>
+      {{ booked }} / {{ max }} booked
+    </p>
+
+    <p>
+      You are booking this shift as:
+      <strong>{{ volunteerName }}</strong>
+    </p>
+
+    {% if not isFull %}
+      <form method="POST">
+        <button type="submit" class="button">Confirm booking</button>
+        <a class="button" href="/shifts">Cancel</a>
+      </form>
+    {% else %}
+      <p>This shift is full.</p>
+    {% endif %}
+  {% endif %}
+
+</main>
+{% endblock %}
