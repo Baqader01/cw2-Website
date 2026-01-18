@@ -9,9 +9,8 @@ class HomeController extends Controller
 {
     public function index(): void
     {
-        $conn = $this->db; // injected via base Controller
 
-        $openingTimes = OpeningTimes::getAll($conn);
+        $openingTimes = OpeningTimes::getAll($this->db);
 
         $this->render('home', [
             'openingTimes' => $openingTimes,

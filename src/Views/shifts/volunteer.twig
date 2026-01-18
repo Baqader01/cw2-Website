@@ -1,0 +1,28 @@
+{% extends 'layout/base.twig' %}
+
+{% block content %}
+    <h2>My Shifts</h2>
+
+    {% if shifts is empty %}
+        <p>You have not booked any shifts yet.</p>
+    {% else %}
+        <table class="shifts-table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Role</th>
+                    <th>Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for s in shifts %}
+                    <tr>
+                        <td>{{ s.shift_date|date('D d M Y') }}</td>
+                        <td>{{ s.label }}</td>
+                        <td>{{ s.start_time|slice(0,5) }} – {{ s.end_time|slice(0,5) }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% endblock %}

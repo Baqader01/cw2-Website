@@ -67,6 +67,19 @@ class ShiftsController extends Controller
             'errors' => $errors
         ]);
     }
+    public function myShifts(): void
+    {
+        if (!isset($_SESSION['volunteer_id'])) {
+            header('Location: /cw2/public/login.php');
+            exit;
+        }
+
+        $shifts = ShiftSignups::getForVolunteer($this->db, $_SESSION['volunteer_id']);
+
+        $this->render('shifts/volunteer', [
+            'shifts' => $shifts,
+        ]);
+    }
 
     public function edit(): void
     {

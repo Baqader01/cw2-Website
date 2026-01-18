@@ -43,7 +43,7 @@ class AuthController extends Controller
                         $_SESSION['staff_role'] = $user['role'];
                         $_SESSION['expires_at'] = time() + (8 * 3600);
 
-                        header('Location: /staff/shifts');
+                        header('Location: /cw2/public/');
                         exit;
                     }
 
@@ -57,7 +57,7 @@ class AuthController extends Controller
                         $_SESSION['volunteer_name'] = $user['full_name'];
                         $_SESSION['expires_at'] = time() + 3600;
 
-                        header('Location: /shifts');
+                        header('Location: /cw2/public/');
                         exit;
                     }
                 }

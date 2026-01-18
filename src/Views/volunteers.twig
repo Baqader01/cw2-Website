@@ -1,0 +1,39 @@
+{% extends 'layout/base.twig' %}
+
+{% block content %}
+    <h2>Registered Volunteers</h2>
+    <p>This page shows everyone who has registered to volunteer.</p>
+
+   {% if volunteers is not empty %}
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Over 18?</th>
+                    <th>Registered</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                {% for v in volunteers %}
+                    <tr>
+                        <td>{{v.volunteer_id}}</td>
+                        <td>{{v.full_name}}</td>
+                        <td>{{v.email}}</td>
+                        <td>{{v.phone}}</td>
+                        <td>{{v.over18 == 1 ? 'Yes' : 'No'}}</td>
+                        <td>{{v.created_at|date('d M Y H:i')}}</td>
+                    </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+    {% else %}
+        <p>No volunteers have registered yet.</p>
+    {% endif %}
+
+{% endblock %}
+

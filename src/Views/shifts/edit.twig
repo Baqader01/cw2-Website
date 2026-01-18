@@ -1,0 +1,61 @@
+{% extends 'layout/base.twig' %}
+
+{% block content %}
+    <h2>Edit Shift</h2>
+
+    {% if errors is not empty %}
+        <div class="error-box">
+            <ul>
+                {% for e in errors %}
+                    <li>{{ e }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+
+    <form method="POST">
+        <label>
+            Date
+            <input type="date"
+                   name="shift_date"
+                   value="{{ shift.shift_date }}"
+                   required>
+        </label>
+
+        <label>
+            Label
+            <input type="text"
+                   name="label"
+                   value="{{ shift.label }}"
+                   required>
+        </label>
+
+        <label>
+            Start time
+            <input type="time"
+                   name="start_time"
+                   value="{{ shift.start_time|slice(0,5) }}"
+                   required>
+        </label>
+
+        <label>
+            End time
+            <input type="time"
+                   name="end_time"
+                   value="{{ shift.end_time|slice(0,5) }}"
+                   required>
+        </label>
+
+        <label>
+            Max volunteers
+            <input type="number"
+                   name="max_volunteers"
+                   min="1"
+                   value="{{ shift.max_volunteers }}"
+                   required>
+        </label>
+
+        <button type="submit" class="button">Save changes</button>
+        <a href="/shifts" class="button">Cancel</a>
+    </form>
+{% endblock %}

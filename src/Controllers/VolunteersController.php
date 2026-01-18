@@ -1,12 +1,18 @@
 <?php
-require_once __DIR__ . '/../Models/Volunteers.php';
 
-class VolunteersController
+namespace Communitytable\Foodbank\Controllers;
+
+use Communitytable\Foodbank\Core\Controller;
+use Communitytable\Foodbank\Models\Volunteers;
+
+class VolunteersController extends Controller
 {
-    public static function index(mysqli $conn): array
+    public function index(): void
     {
-        // The view expects $result, so name it $result here
-        return $result = Volunteers::getAll($conn);
+        $volunteers = Volunteers::getAll($this->db);
 
+        $this->render('volunteers', [
+            'volunteers' => $volunteers,
+        ]);
     }
 }

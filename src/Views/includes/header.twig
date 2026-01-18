@@ -12,7 +12,7 @@
             <li><a href="/cw2/public/shifts">Shifts</a></li>
 
             {% if isVolunteer %}
-                <li><a href="/cw2/public/volunteer_shifts">My Shifts</a></li>
+                <li><a href="/cw2/public/shifts/myShifts">My Shifts</a></li>
                 <li><a href="/cw2/public/logout">Logout</a></li>
             
             {% elseif isStaff %}
@@ -22,8 +22,7 @@
             {% else %}
                 <li><a href="/cw2/public/login">Login</a></li>
             {% endif %}
-
-        </ul>
+            </ul>
         </nav>
     </div>
 </header>

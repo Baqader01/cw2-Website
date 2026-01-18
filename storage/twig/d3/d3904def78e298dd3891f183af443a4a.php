@@ -56,7 +56,7 @@ class __TwigTemplate_9b019e4a56190697416da3723477f141 extends Template
         // line 14
         if ((($tmp = ($context["isVolunteer"] ?? null)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
             // line 15
-            yield "                <li><a href=\"/cw2/public/volunteer_shifts\">My Shifts</a></li>
+            yield "                <li><a href=\"/cw2/public/shifts/myShifts\">My Shifts</a></li>
                 <li><a href=\"/cw2/public/logout\">Logout</a></li>
             
             ";
@@ -73,8 +73,7 @@ class __TwigTemplate_9b019e4a56190697416da3723477f141 extends Template
             ";
         }
         // line 25
-        yield "
-        </ul>
+        yield "            </ul>
         </nav>
     </div>
 </header>";
@@ -121,7 +120,7 @@ class __TwigTemplate_9b019e4a56190697416da3723477f141 extends Template
             <li><a href=\"/cw2/public/shifts\">Shifts</a></li>
 
             {% if isVolunteer %}
-                <li><a href=\"/cw2/public/volunteer_shifts\">My Shifts</a></li>
+                <li><a href=\"/cw2/public/shifts/myShifts\">My Shifts</a></li>
                 <li><a href=\"/cw2/public/logout\">Logout</a></li>
             
             {% elseif isStaff %}
@@ -131,8 +130,7 @@ class __TwigTemplate_9b019e4a56190697416da3723477f141 extends Template
             {% else %}
                 <li><a href=\"/cw2/public/login\">Login</a></li>
             {% endif %}
-
-        </ul>
+            </ul>
         </nav>
     </div>
 </header>", "includes/header.twig", "/var/www/html/cw2/src/Views/includes/header.twig");

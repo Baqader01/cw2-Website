@@ -3,6 +3,7 @@
 use Communitytable\Foodbank\Controllers\HomeController;
 use Communitytable\Foodbank\Controllers\ShiftsController;
 use Communitytable\Foodbank\Controllers\AuthController;
+use Communitytable\Foodbank\Controllers\VolunteersController;
 
 // Public
 $router->get('/', HomeController::class, 'index');
@@ -18,7 +19,9 @@ $router->post('/register', AuthController::class, 'register');
 // Volunteer
 $router->get('/shifts', ShiftsController::class, 'index');
 $router->post('/shifts/book', ShiftsController::class, 'book');
-$router->get('/my-shifts', ShiftsController::class, 'myShifts');
+$router->get('/shifts/myShifts', ShiftsController::class, 'myShifts');
+
+$router->get('/volunteers', VolunteersController::class, 'index');
 
 // // Staff
 // $router->get('/staff/shifts', ShiftsController::class, 'index');
