@@ -23,7 +23,6 @@ $router->get('/shifts/myShifts', ShiftsController::class, 'myShifts');
 
 $router->get('/volunteers', VolunteersController::class, 'index');
 
-// // Staff
-// $router->get('/staff/shifts', ShiftsController::class, 'index');
-// $router->get('/staff/shifts/edit', ShiftsController::class, 'edit');
-// $router->post('/staff/shifts/update', ShiftsController::class, 'update');
+// Staff
+$router->get('/shifts/edit', ShiftsController::class, 'edit');
+$router->post('/shifts/update', ShiftsController::class, 'update');

@@ -51,11 +51,11 @@ class ShiftsController extends Controller
         $shift = Shifts::find($this->db, $shift_id);
 
         if (!$shift) {
-            header('Location: /staff/shifts');
+            header('Location: /shifts?updated=1');
             exit;
         }
 
-        $this->render('staff/edit_shift', [
+        $this->render('shifts/edit', [
             'shift' => $shift
         ]);
     }
@@ -74,10 +74,18 @@ class ShiftsController extends Controller
             'max_volunteers' => (int)($_POST['max_volunteers'] ?? 2),
         ];
 
-        Shifts::update($this->db, $_POST['shift_id'], $data);
+        $shiftId = (int)($_POST['shift_id'] ?? 0);
 
-        header('Location: /staff/shifts?updated=1');
+        if ($shiftId <= 0) {
+            header('Location:  /cw2/public/shifts?error=invalid_shift');
+            exit;
+        }
+
+        Shifts::update($this->db, $shiftId, $data);
+
+        header('Location: /cw2/public/shifts?updated=1');
         exit;
+
     }
 
     public function book(): void

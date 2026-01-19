@@ -125,7 +125,7 @@ class __TwigTemplate_819c970ddeabe6514b4533a746739d83 extends Template
                 ";
                     } else {
                         // line 35
-                        yield "                    <a class=\"book-button\" href=\"/shifts/book?shift_id=";
+                        yield "                    <a class=\"book-button\" href=\"/cw2/public/shifts/book?shift_id=";
                         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["s"], "shift_id", [], "any", false, false, false, 35), "html", null, true);
                         yield "\">
                     Book
@@ -141,11 +141,11 @@ class __TwigTemplate_819c970ddeabe6514b4533a746739d83 extends Template
                 // line 41
                 if ((($tmp = ($context["isStaff"] ?? null)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
                     // line 42
-                    yield "                <a class=\"book-button\" href=\"/staff/shifts/edit?shift_id=";
+                    yield "                    <a class=\"book-button\" href=\"/cw2/public/shifts/edit?shift_id=";
                     yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["s"], "shift_id", [], "any", false, false, false, 42), "html", null, true);
                     yield "\">
-                    Edit
-                </a>
+                        Edit
+                    </a>
                 ";
                 }
                 // line 46
@@ -230,16 +230,16 @@ class __TwigTemplate_819c970ddeabe6514b4533a746739d83 extends Template
                 {% if isFull %}
                     <span class=\"full\">Full</span>
                 {% else %}
-                    <a class=\"book-button\" href=\"/shifts/book?shift_id={{ s.shift_id }}\">
+                    <a class=\"book-button\" href=\"/cw2/public/shifts/book?shift_id={{ s.shift_id }}\">
                     Book
                     </a>
                 {% endif %}
                 {% endif %}
 
                 {% if isStaff %}
-                <a class=\"book-button\" href=\"/staff/shifts/edit?shift_id={{ s.shift_id }}\">
-                    Edit
-                </a>
+                    <a class=\"book-button\" href=\"/cw2/public/shifts/edit?shift_id={{ s.shift_id }}\">
+                        Edit
+                    </a>
                 {% endif %}
             </td>
             </tr>

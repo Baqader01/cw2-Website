@@ -32,16 +32,16 @@
                 {% if isFull %}
                     <span class="full">Full</span>
                 {% else %}
-                    <a class="book-button" href="/shifts/book?shift_id={{ s.shift_id }}">
+                    <a class="book-button" href="/cw2/public/shifts/book?shift_id={{ s.shift_id }}">
                     Book
                     </a>
                 {% endif %}
                 {% endif %}
 
                 {% if isStaff %}
-                <a class="book-button" href="/staff/shifts/edit?shift_id={{ s.shift_id }}">
-                    Edit
-                </a>
+                    <a class="book-button" href="/cw2/public/shifts/edit?shift_id={{ s.shift_id }}">
+                        Edit
+                    </a>
                 {% endif %}
             </td>
             </tr>

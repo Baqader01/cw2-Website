@@ -76,9 +76,13 @@ class Shifts
     public static function update(mysqli $conn, int $shift_id, array $data): bool
     {
         $sql = "
-            UPDATE shifts
-            SET shift_date = ?, label = ?, start_time = ?, end_time = ?, max_volunteers = ?
-            WHERE shift_id = ?
+        UPDATE shifts
+        SET
+            label = ?,
+            start_time = ?,
+            end_time = ?,
+            max_volunteers = ?
+        WHERE shift_id = ?
         ";
 
         $stmt = mysqli_prepare($conn, $sql);
@@ -88,8 +92,7 @@ class Shifts
 
         mysqli_stmt_bind_param(
             $stmt,
-            "ssssii",
-            $data['shift_date'],
+            "sssii",
             $data['label'],
             $data['start_time'],
             $data['end_time'],
