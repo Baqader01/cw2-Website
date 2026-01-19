@@ -26,3 +26,4 @@ $router->get('/volunteers', VolunteersController::class, 'index');
 // Staff
 $router->get('/shifts/edit', ShiftsController::class, 'edit');
 $router->post('/shifts/update', ShiftsController::class, 'update');
+$router->post('/shifts/delete', ShiftsController::class, 'delete');

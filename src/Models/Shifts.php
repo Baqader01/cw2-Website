@@ -107,32 +107,43 @@ class Shifts
     mysqli $db,
     string $startDate,
     string $endDate
-): array {
-    $sql = "
-        SELECT s.*,
-               COUNT(ss.shift_id) AS booked_count
-        FROM shifts s
-        LEFT JOIN shift_signups ss ON s.shift_id = ss.shift_id
-        WHERE s.shift_date BETWEEN ? AND ?
-        GROUP BY s.shift_id
-        ORDER BY s.shift_date, s.start_time
-    ";
+    ): array {
+        $sql = "
+            SELECT s.*,
+                COUNT(ss.shift_id) AS booked_count
+            FROM shifts s
+            LEFT JOIN shift_signups ss ON s.shift_id = ss.shift_id
+            WHERE s.shift_date BETWEEN ? AND ?
+            GROUP BY s.shift_id
+            ORDER BY s.shift_date, s.start_time
+        ";
 
-    $stmt = $db->prepare($sql);
-    $stmt->bind_param("ss", $startDate, $endDate);
-    $stmt->execute();
+        $stmt = $db->prepare($sql);
+        $stmt->bind_param("ss", $startDate, $endDate);
+        $stmt->execute();
 
-    $result = $stmt->get_result();
-    $rows = $result->fetch_all(MYSQLI_ASSOC);
+        $result = $stmt->get_result();
+        $rows = $result->fetch_all(MYSQLI_ASSOC);
 
-    // Group by date
-    $grouped = [];
-    foreach ($rows as $shift) {
-        $grouped[$shift['shift_date']][] = $shift;
+        // Group by date
+        $grouped = [];
+        foreach ($rows as $shift) {
+            $grouped[$shift['shift_date']][] = $shift;
+        }
+
+        return $grouped;
     }
 
-    return $grouped;
-}
+    public static function delete(mysqli $conn, int $shift_id): void
+    {
+        $stmt = $conn->prepare(
+            "DELETE FROM shifts WHERE shift_id = ?"
+        );
+
+        $stmt->bind_param('i', $shift_id);
+        $stmt->execute();
+    }
+
 
 }
 

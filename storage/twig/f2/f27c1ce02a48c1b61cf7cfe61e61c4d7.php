@@ -141,14 +141,40 @@ class __TwigTemplate_819c970ddeabe6514b4533a746739d83 extends Template
                 // line 41
                 if ((($tmp = ($context["isStaff"] ?? null)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
                     // line 42
-                    yield "                    <a class=\"book-button\" href=\"/cw2/public/shifts/edit?shift_id=";
-                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["s"], "shift_id", [], "any", false, false, false, 42), "html", null, true);
+                    yield "                    <div class=\"shift-actions\">
+                        <a class=\"book-button\" href=\"/cw2/public/shifts/edit?shift_id=";
+                    // line 43
+                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["s"], "shift_id", [], "any", false, false, false, 43), "html", null, true);
                     yield "\">
-                        Edit
-                    </a>
+                            Edit
+                        </a>
+
+                        <span style=\"margin-left: 0.75rem;\"></span>
+                        ";
+                    // line 48
+                    if ((CoreExtension::getAttribute($this->env, $this->source, $context["s"], "booked_count", [], "any", false, false, false, 48) == 0)) {
+                        // line 49
+                        yield "                            <form method=\"post\"
+                                action=\"/cw2/public/shifts/delete\"
+                                style=\"display:inline\"
+                                onsubmit=\"return confirm('Delete this shift?');\">
+                            <input type=\"hidden\" name=\"shift_id\" value=\"";
+                        // line 53
+                        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["s"], "shift_id", [], "any", false, false, false, 53), "html", null, true);
+                        yield "\">
+                            <button type=\"submit\">Delete</button>
+                            </form>
+                        ";
+                    } else {
+                        // line 57
+                        yield "                            <span style=\"color: #888;\">Delete disabled</span>
+                        ";
+                    }
+                    // line 59
+                    yield "                    </div>
                 ";
                 }
-                // line 46
+                // line 61
                 yield "            </td>
             </tr>
         ";
@@ -156,7 +182,7 @@ class __TwigTemplate_819c970ddeabe6514b4533a746739d83 extends Template
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_key'], $context['s'], $context['_parent']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 49
+            // line 64
             yield "        </tbody>
     </table>
     ";
@@ -164,7 +190,7 @@ class __TwigTemplate_819c970ddeabe6514b4533a746739d83 extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['date'], $context['shifts'], $context['_parent']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 52
+        // line 67
         yield "
 ";
         yield from [];
@@ -191,7 +217,7 @@ class __TwigTemplate_819c970ddeabe6514b4533a746739d83 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  168 => 52,  160 => 49,  152 => 46,  144 => 42,  142 => 41,  139 => 40,  136 => 39,  128 => 35,  124 => 33,  121 => 32,  119 => 31,  112 => 29,  106 => 28,  102 => 27,  98 => 25,  95 => 24,  91 => 23,  75 => 11,  71 => 10,  68 => 9,  64 => 7,  62 => 6,  51 => 3,  40 => 1,);
+        return array (  194 => 67,  186 => 64,  178 => 61,  174 => 59,  170 => 57,  163 => 53,  157 => 49,  155 => 48,  147 => 43,  144 => 42,  142 => 41,  139 => 40,  136 => 39,  128 => 35,  124 => 33,  121 => 32,  119 => 31,  112 => 29,  106 => 28,  102 => 27,  98 => 25,  95 => 24,  91 => 23,  75 => 11,  71 => 10,  68 => 9,  64 => 7,  62 => 6,  51 => 3,  40 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -237,9 +263,24 @@ class __TwigTemplate_819c970ddeabe6514b4533a746739d83 extends Template
                 {% endif %}
 
                 {% if isStaff %}
-                    <a class=\"book-button\" href=\"/cw2/public/shifts/edit?shift_id={{ s.shift_id }}\">
-                        Edit
-                    </a>
+                    <div class=\"shift-actions\">
+                        <a class=\"book-button\" href=\"/cw2/public/shifts/edit?shift_id={{ s.shift_id }}\">
+                            Edit
+                        </a>
+
+                        <span style=\"margin-left: 0.75rem;\"></span>
+                        {% if s.booked_count == 0 %}
+                            <form method=\"post\"
+                                action=\"/cw2/public/shifts/delete\"
+                                style=\"display:inline\"
+                                onsubmit=\"return confirm('Delete this shift?');\">
+                            <input type=\"hidden\" name=\"shift_id\" value=\"{{ s.shift_id }}\">
+                            <button type=\"submit\">Delete</button>
+                            </form>
+                        {% else %}
+                            <span style=\"color: #888;\">Delete disabled</span>
+                        {% endif %}
+                    </div>
                 {% endif %}
             </td>
             </tr>

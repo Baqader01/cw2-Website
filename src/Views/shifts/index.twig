@@ -39,9 +39,24 @@
                 {% endif %}
 
                 {% if isStaff %}
-                    <a class="book-button" href="/cw2/public/shifts/edit?shift_id={{ s.shift_id }}">
-                        Edit
-                    </a>
+                    <div class="shift-actions">
+                        <a class="book-button" href="/cw2/public/shifts/edit?shift_id={{ s.shift_id }}">
+                            Edit
+                        </a>
+
+                        <span style="margin-left: 0.75rem;"></span>
+                        {% if s.booked_count == 0 %}
+                            <form method="post"
+                                action="/cw2/public/shifts/delete"
+                                style="display:inline"
+                                onsubmit="return confirm('Delete this shift?');">
+                            <input type="hidden" name="shift_id" value="{{ s.shift_id }}">
+                            <button type="submit">Delete</button>
+                            </form>
+                        {% else %}
+                            <span style="color: #888;">Delete disabled</span>
+                        {% endif %}
+                    </div>
                 {% endif %}
             </td>
             </tr>

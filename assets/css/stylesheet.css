@@ -119,7 +119,6 @@ dl {
   border-collapse: collapse;
 }
 
-/* Make the first column take a fixed width */
 .opening-table td:first-child {
   width: 180px;       
   padding-right: 12rem; 
@@ -325,7 +324,7 @@ dl {
   border-collapse: collapse;
   font-size: 0.95rem;
   max-width: 700px;
-  margin: 2rem auto;     
+  margin: 2rem auto;   
 }
 
 /* Header */
@@ -337,6 +336,10 @@ dl {
   color: #555;
   padding: 0.4rem 0.6rem;
   border-bottom: 2px solid #ddd;
+}
+
+.shift-actions {
+  gap: 0.75rem;
 }
 
 /* Rows */
@@ -366,10 +369,6 @@ dl {
 }
 
 .shifts-table td:nth-child(4) {
-  text-align: center;
-}
-
-.shifts-table td:last-child {
   text-align: right;
 }
 

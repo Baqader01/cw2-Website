@@ -189,4 +189,31 @@ class ShiftsController extends Controller
         header('Location: /cw2/public/shifts/myShifts');
         exit;
     }
+
+    public function delete(): void
+    {
+        if (!isset($_SESSION['staff_id'])) {
+            header('Location: /login');
+            exit;
+        }
+
+        $shiftId = (int)($_POST['shift_id'] ?? 0);
+
+        if ($shiftId <= 0) {
+            header('Location: /cw2/public/shifts?error=invalid_shift');
+            exit;
+        }
+
+        // prevent deleting booked shifts
+        if (ShiftSignups::countForShift($this->db, $shiftId) > 0) {
+            header('Location: /cw2/public/shifts?error=shift_has_bookings');
+            exit;
+        }
+
+        Shifts::delete($this->db, $shiftId);
+
+        header('Location: /cw2/public/shifts?deleted=1');
+        exit;
+    }
+
 }
