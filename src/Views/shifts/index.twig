@@ -2,56 +2,52 @@
 
 {% block content %}    
     <h2>Available Shifts</h2>
-    <p>Pick a shift to book. If it is full, the button disappears automatically.</p>
 
-    {% if shifts is empty %}
-        <p>No shifts have been added yet.</p>
-    {% else %}
-        <table class="shifts-table">
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Label</th>
-                    <th>Time</th>
-                    <th>Booked</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for s in shifts %}
-                    {% set booked = s.booked_count %}
-                    {% set max = s.max_volunteers %}
-                    {% set isFull = booked >= max %}
-
-                    <tr>
-                        <td>{{ s.shift_date|date('d M Y') }}</td>
-                        <td>{{ s.label }}</td>
-                        <td>
-                            {{ s.start_time|slice(0,5) }}
-                            –
-                            {{ s.end_time|slice(0,5) }}
-                        </td>
-                        <td>{{ booked }} / {{ max }}</td>
-                        <td>
-                            {% if isVolunteer %}
-                                {% if isFull %}
-                                    <span>Full</span>
-                                {% else %}
-                                    <a href="/cw2/public/shifts/book?shift_id={{ s.shift_id }}" class="book-button">
-                                    Book
-                                    </a>
-
-                                {% endif %}
-                            {% elseif isStaff %}
-                                <a class="book-button"
-                                href="/staff/shifts/edit?shift_id={{ s.shift_id }}">
-                                    Edit
-                                </a>
-                            {% endif %}
-                        </td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+    {% if shiftsByDay is empty %}
+    <p>No upcoming shifts.</p>
     {% endif %}
+
+    {% for date, shifts in shiftsByDay %}
+    <h3>{{ date|date('l d M Y') }}</h3>
+
+    <table class="shifts-table">
+        <thead>
+        <tr>
+            <th>Label</th>
+            <th>Time</th>
+            <th>Booked</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for s in shifts %}
+            {% set isFull = s.booked_count >= s.max_volunteers %}
+
+            <tr>
+            <td>{{ s.label }}</td>
+            <td>{{ s.start_time|slice(0,5) }} – {{ s.end_time|slice(0,5) }}</td>
+            <td>{{ s.booked_count }} / {{ s.max_volunteers }}</td>
+            <td>
+                {% if isVolunteer %}
+                {% if isFull %}
+                    <span class="full">Full</span>
+                {% else %}
+                    <a class="book-button" href="/shifts/book?shift_id={{ s.shift_id }}">
+                    Book
+                    </a>
+                {% endif %}
+                {% endif %}
+
+                {% if isStaff %}
+                <a class="book-button" href="/staff/shifts/edit?shift_id={{ s.shift_id }}">
+                    Edit
+                </a>
+                {% endif %}
+            </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% endfor %}
+
 {% endblock %}

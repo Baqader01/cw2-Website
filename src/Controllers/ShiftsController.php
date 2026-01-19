@@ -9,14 +9,22 @@ class ShiftsController extends Controller
 {
     public function index(): void
     {
-        $shifts = Shifts::getShifts($this->db);
+        $today = date('Y-m-d');
+        $end   = date('Y-m-d', strtotime('+7 days'));
+
+        $shiftsByDay = Shifts::getByDateRange(
+            $this->db,
+            $today,
+            $end
+        );
 
         $this->render('shifts/index', [
-            'shifts' => $shifts,
+            'shiftsByDay' => $shiftsByDay,
             'isVolunteer' => isset($_SESSION['volunteer_id']),
-            'isStaff' => isset($_SESSION['staff_id'])
+            'isStaff'     => isset($_SESSION['staff_id'])
         ]);
     }
+
 
     public function myShifts(): void
     {
