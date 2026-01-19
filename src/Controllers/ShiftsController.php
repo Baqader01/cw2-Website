@@ -108,7 +108,7 @@ class ShiftsController extends Controller
         ]);
     }
 
-    public function confirm(): void
+  public function confirm(): void
     {
         if (!isset($_SESSION['volunteer_id'])) {
             header('Location: /login');
@@ -123,16 +123,54 @@ class ShiftsController extends Controller
             exit;
         }
 
-        $result = ShiftSignups::create($this->db, $shiftId, $volunteerId);
+        $shift = Shifts::find($this->db, $shiftId);
 
-        if ($result !== true) {
+        if (!$shift) {
             $this->render('shifts/book', [
-                'errors' => [$result]
+                'errors' => ['That shift does not exist.']
             ]);
             return;
         }
 
-        header('Location: /my-shifts');
+        // Already booked?
+        if (ShiftSignups::alreadyBooked($this->db, $shiftId, $volunteerId)) {
+            $this->render('shifts/book', [
+                'shift' => $shift,
+                'errors' => ['You have already booked this shift.']
+            ]);
+            return;
+        }
+
+        // Daily limit
+        $dailyCount = ShiftSignups::countForVolunteerOnDate(
+            $this->db,
+            $volunteerId,
+            $shift['shift_date']
+        );
+
+        if ($dailyCount >= 2) {
+            $this->render('shifts/book', [
+                'shift' => $shift,
+                'errors' => ['You may only book 2 shifts per day.']
+            ]);
+            return;
+        }
+
+        // Shift capacity
+        $booked = ShiftSignups::countForShift($this->db, $shiftId);
+
+        if ($booked >= (int)$shift['max_volunteers']) {
+            $this->render('shifts/book', [
+                'shift' => $shift,
+                'errors' => ['This shift is already full.']
+            ]);
+            return;
+        }
+
+        // create booking
+        ShiftSignups::create($this->db, $shiftId, $volunteerId);
+
+        header('Location: /cw2/public/shifts/myShifts');
         exit;
     }
 }

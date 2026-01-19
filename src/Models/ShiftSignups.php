@@ -22,29 +22,28 @@ class ShiftSignups
         return (int)($row['c'] ?? 0);
     }
 
-    public static function countForVolunteerShifts(
-        mysqli $conn,
-        int $volunteer_id,
-        string $week_start,
-        string $week_end
+    public static function countForVolunteerOnDate(
+        mysqli $db,
+        int $volunteerId,
+        string $date
     ): int {
         $sql = "
-            SELECT COUNT(*) AS c
+            SELECT COUNT(*) 
             FROM shift_signups ss
             JOIN shifts s ON ss.shift_id = s.shift_id
             WHERE ss.volunteer_id = ?
-              AND s.shift_date BETWEEN ? AND ?
+            AND s.shift_date = ?
         ";
 
-        $stmt = mysqli_prepare($conn, $sql);
-        mysqli_stmt_bind_param($stmt, "iss", $volunteer_id, $week_start, $week_end);
-        mysqli_stmt_execute($stmt);
+        $stmt = $db->prepare($sql);
+        $stmt->bind_param("is", $volunteerId, $date);
+        $stmt->execute();
+        $stmt->bind_result($count);
+        $stmt->fetch();
 
-        $res = mysqli_stmt_get_result($stmt);
-        $row = mysqli_fetch_assoc($res);
-
-        return (int)$row['c'];
+        return (int)$count;
     }
+
 
     public static function create(mysqli $conn, int $shift_id, int $volunteer_id): void
     {
@@ -76,5 +75,20 @@ class ShiftSignups
             MYSQLI_ASSOC
         );
     }
+
+    public static function alreadyBooked(mysqli $db, int $shiftId, int $volunteerId): bool
+    {
+        $sql = "SELECT 1 FROM shift_signups 
+                WHERE shift_id = ? AND volunteer_id = ?
+                LIMIT 1";
+
+        $stmt = $db->prepare($sql);
+        $stmt->bind_param("ii", $shiftId, $volunteerId);
+        $stmt->execute();
+        $stmt->store_result();
+
+        return $stmt->num_rows > 0;
+    }
+
 
 }
