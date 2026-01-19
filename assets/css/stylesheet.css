@@ -73,7 +73,7 @@ nav a:focus-visible {
 
 /* === Main Content === */
 main {
-  min-height: 45vh;
+  min-height: 50vh;
   max-width: 900px;
   margin: 2rem auto;
   padding: 0 1rem;
@@ -124,6 +124,116 @@ dl {
   width: 180px;       
   padding-right: 12rem; 
   white-space: nowrap; 
+}
+
+.admin-table {
+  width: 100%;
+  max-width: 1000px;
+  margin: 2rem auto;
+  border-collapse: collapse;
+  background: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  font-size: 0.95rem;
+}
+
+/* Header */
+.admin-table thead {
+  background-color: #487d59;
+  color: #ffffff;
+}
+
+.admin-table th {
+  text-align: left;
+  padding: 0.9rem 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+}
+
+/* Body rows */
+.admin-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #e2e6e2;
+  vertical-align: middle;
+}
+
+.admin-table tbody tr:nth-child(even) {
+  background-color: #f7faf7;
+}
+
+.admin-table tbody tr:hover {
+  background-color: #eef5f0;
+}
+
+/* Over 18 badge */
+.admin-table td:nth-child(5) {
+  font-weight: 600;
+  color: #356859;
+}
+
+/* Date column */
+.admin-table td:last-child {
+  font-size: 0.85rem;
+  color: #555;
+  white-space: nowrap;
+}
+
+/* ID column */
+.admin-table td:first-child {
+  font-weight: 600;
+  color: #487d59;
+}
+
+/* === Responsive (Mobile) === */
+@media (max-width: 800px) {
+  .admin-table {
+    font-size: 0.85rem;
+  }
+
+  .admin-table th,
+  .admin-table td {
+    padding: 0.6rem 0.7rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .admin-table thead {
+    display: none;
+  }
+
+  .admin-table,
+  .admin-table tbody,
+  .admin-table tr,
+  .admin-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .admin-table tr {
+    margin-bottom: 1rem;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    padding: 0.8rem;
+  }
+
+  .admin-table td {
+    border: none;
+    padding: 0.4rem 0;
+  }
+
+  .admin-table td::before {
+    content: attr(data-label);
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #777;
+    margin-bottom: 0.2rem;
+  }
 }
 
 /* Carousel */

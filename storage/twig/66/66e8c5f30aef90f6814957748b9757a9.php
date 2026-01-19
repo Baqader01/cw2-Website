@@ -122,9 +122,6 @@ class __TwigTemplate_00806815c5630f899178183c0b6b7357 extends Template
             yield "        <p>No volunteers have registered yet.</p>
     ";
         }
-        // line 37
-        yield "
-";
         yield from [];
     }
 
@@ -149,7 +146,7 @@ class __TwigTemplate_00806815c5630f899178183c0b6b7357 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  126 => 37,  122 => 35,  116 => 31,  107 => 28,  103 => 27,  99 => 26,  95 => 25,  91 => 24,  87 => 23,  84 => 22,  80 => 21,  65 => 8,  63 => 7,  58 => 4,  51 => 3,  40 => 1,);
+        return array (  122 => 35,  116 => 31,  107 => 28,  103 => 27,  99 => 26,  95 => 25,  91 => 24,  87 => 23,  84 => 22,  80 => 21,  65 => 8,  63 => 7,  58 => 4,  51 => 3,  40 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -190,7 +187,6 @@ class __TwigTemplate_00806815c5630f899178183c0b6b7357 extends Template
     {% else %}
         <p>No volunteers have registered yet.</p>
     {% endif %}
-
 {% endblock %}
 
 ", "volunteers.twig", "/var/www/html/cw2/src/Views/volunteers.twig");

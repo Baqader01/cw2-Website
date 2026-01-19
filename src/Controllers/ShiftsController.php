@@ -18,55 +18,6 @@ class ShiftsController extends Controller
         ]);
     }
 
-    public function book(): void
-    {
-        if (!isset($_SESSION['volunteer_id'])) {
-            header('Location: /login');
-            exit;
-        }
-
-        $errors = []; 
-        $shift_id = (int)($_GET['shift_id'] ?? 0);
-
-        $shift = Shifts::find($this->db, $shift_id);
-        if (!$shift) {
-            $errors[] = 'Shift not found.';
-        }
-
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && empty($errors)) {
-
-            $weekStart = date('Y-m-d', strtotime('monday this week', strtotime($shift['shift_date'])));
-            $weekEnd   = date('Y-m-d', strtotime('sunday this week', strtotime($shift['shift_date'])));
-
-            $dailyCount = ShiftSignups::countForVolunteerShifts(
-                $this->db,
-                $_SESSION['volunteer_id'],
-                $weekStart, $weekEnd
-            );
-
-            if ($dailyCount >= 2) {
-                $errors[] = 'You may only book 2 shifts per day.';
-            } else {
-                $ok = ShiftSignups::create(
-                    $this->db,
-                    $shift_id,
-                    $_SESSION['volunteer_id']
-                );
-
-                if ($ok === true) {
-                    header('Location: /shifts?booked=1');
-                    exit;
-                }
-
-                $errors[] = 'You are already booked on this shift.';
-            }
-        }
-
-        $this->render('shifts/book', [
-            'shift' => $shift,
-            'errors' => $errors
-        ]);
-    }
     public function myShifts(): void
     {
         if (!isset($_SESSION['volunteer_id'])) {
@@ -118,6 +69,70 @@ class ShiftsController extends Controller
         Shifts::update($this->db, $_POST['shift_id'], $data);
 
         header('Location: /staff/shifts?updated=1');
+        exit;
+    }
+
+    public function book(): void
+    {
+        // must be logged in as volunteer
+        if (!isset($_SESSION['volunteer_id'])) {
+            header('Location: /login');
+            exit;
+        }
+
+        $errors = [];
+        $shiftId = (int)($_GET['shift_id'] ?? 0);
+
+        if ($shiftId <= 0) {
+            $errors[] = 'No shift selected.';
+            $this->render('shifts/book', compact('errors'));
+            return;
+        }
+
+        $shift = Shifts::find($this->db, $shiftId);
+
+        if (!$shift) {
+            $errors[] = 'That shift does not exist.';
+            $this->render('shifts/book', compact('errors'));
+            return;
+        }
+
+        $booked = ShiftSignups::countForShift($this->db, $shiftId);
+        $isFull = $booked >= (int)$shift['max_volunteers'];
+
+        $this->render('shifts/book', [
+            'shift'  => $shift,
+            'booked' => $booked,
+            'isFull' => $isFull,
+            'errors' => $errors
+        ]);
+    }
+
+    public function confirm(): void
+    {
+        if (!isset($_SESSION['volunteer_id'])) {
+            header('Location: /login');
+            exit;
+        }
+
+        $shiftId = (int)($_POST['shift_id'] ?? 0);
+        $volunteerId = (int)$_SESSION['volunteer_id'];
+
+        if ($shiftId <= 0) {
+            header('Location: /shifts');
+            exit;
+        }
+
+        $result = ShiftSignups::create($this->db, $shiftId, $volunteerId);
+
+        if ($result !== true) {
+            $this->render('shifts/book', [
+                'errors' => [$result]
+            ]);
+            return;
+        }
+
+        header('Location: /my-shifts');
         exit;
     }
 }

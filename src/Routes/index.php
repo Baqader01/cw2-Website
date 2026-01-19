@@ -16,9 +16,9 @@ $router->get('/logout', AuthController::class, 'logout');
 $router->get('/register', AuthController::class, 'register');
 $router->post('/register', AuthController::class, 'register');
 
-// Volunteer
 $router->get('/shifts', ShiftsController::class, 'index');
-$router->post('/shifts/book', ShiftsController::class, 'book');
+$router->get('/shifts/book', ShiftsController::class, 'book');
+$router->post('/shifts/book', ShiftsController::class, 'confirm');
 $router->get('/shifts/myShifts', ShiftsController::class, 'myShifts');
 
 $router->get('/volunteers', VolunteersController::class, 'index');

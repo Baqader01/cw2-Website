@@ -31,7 +31,6 @@ class __TwigTemplate_819c970ddeabe6514b4533a746739d83 extends Template
 
         $this->blocks = [
             'content' => [$this, 'block_content'],
-            'script' => [$this, 'block_script'],
         ];
     }
 
@@ -132,13 +131,12 @@ class __TwigTemplate_819c970ddeabe6514b4533a746739d83 extends Template
                                 ";
                     } else {
                         // line 40
-                        yield "                                    <a class=\"book-button\"
-                                    href=\"/book?shift_id=";
-                        // line 41
-                        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["s"], "shift_id", [], "any", false, false, false, 41), "html", null, true);
-                        yield "\">
-                                        Book
+                        yield "                                    <a href=\"/cw2/public/shifts/book?shift_id=";
+                        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["s"], "shift_id", [], "any", false, false, false, 40), "html", null, true);
+                        yield "\" class=\"book-button\">
+                                    Book
                                     </a>
+
                                 ";
                     }
                     // line 45
@@ -170,19 +168,6 @@ class __TwigTemplate_819c970ddeabe6514b4533a746739d83 extends Template
         yield from [];
     }
 
-    // line 59
-    /**
-     * @return iterable<null|scalar|\Stringable>
-     */
-    public function block_script(array $context, array $blocks = []): iterable
-    {
-        $macros = $this->macros;
-        yield "    
-    <script src=\"/cw2/assets/auth-toggle.js\" defer></script>
-";
-        yield from [];
-    }
-
     /**
      * @codeCoverageIgnore
      */
@@ -204,7 +189,7 @@ class __TwigTemplate_819c970ddeabe6514b4533a746739d83 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  174 => 59,  166 => 54,  158 => 51,  151 => 47,  148 => 46,  145 => 45,  138 => 41,  135 => 40,  131 => 38,  128 => 37,  126 => 36,  119 => 34,  114 => 32,  109 => 30,  104 => 28,  100 => 27,  96 => 25,  93 => 24,  90 => 23,  87 => 22,  83 => 21,  70 => 10,  66 => 8,  64 => 7,  52 => 3,  41 => 1,);
+        return array (  164 => 54,  156 => 51,  149 => 47,  146 => 46,  143 => 45,  134 => 40,  130 => 38,  127 => 37,  125 => 36,  118 => 34,  113 => 32,  108 => 30,  103 => 28,  99 => 27,  95 => 25,  92 => 24,  89 => 23,  86 => 22,  82 => 21,  69 => 10,  65 => 8,  63 => 7,  51 => 3,  40 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -248,10 +233,10 @@ class __TwigTemplate_819c970ddeabe6514b4533a746739d83 extends Template
                                 {% if isFull %}
                                     <span>Full</span>
                                 {% else %}
-                                    <a class=\"book-button\"
-                                    href=\"/book?shift_id={{ s.shift_id }}\">
-                                        Book
+                                    <a href=\"/cw2/public/shifts/book?shift_id={{ s.shift_id }}\" class=\"book-button\">
+                                    Book
                                     </a>
+
                                 {% endif %}
                             {% elseif isStaff %}
                                 <a class=\"book-button\"
@@ -265,10 +250,6 @@ class __TwigTemplate_819c970ddeabe6514b4533a746739d83 extends Template
             </tbody>
         </table>
     {% endif %}
-{% endblock %}
-
-{% block script %}    
-    <script src=\"/cw2/assets/auth-toggle.js\" defer></script>
 {% endblock %}", "shifts/index.twig", "/var/www/html/cw2/src/Views/shifts/index.twig");
     }
 }

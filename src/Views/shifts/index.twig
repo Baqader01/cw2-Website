@@ -37,10 +37,10 @@
                                 {% if isFull %}
                                     <span>Full</span>
                                 {% else %}
-                                    <a class="book-button"
-                                    href="/book?shift_id={{ s.shift_id }}">
-                                        Book
+                                    <a href="/cw2/public/shifts/book?shift_id={{ s.shift_id }}" class="book-button">
+                                    Book
                                     </a>
+
                                 {% endif %}
                             {% elseif isStaff %}
                                 <a class="book-button"
