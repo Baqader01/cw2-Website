@@ -216,4 +216,50 @@ class ShiftsController extends Controller
         exit;
     }
 
+    public function create(): void
+    {
+        if (!isset($_SESSION['staff_id'])) {
+            header('Location: /login');
+            exit;
+        }
+
+        $this->render('shifts/create');
+    }
+
+    public function store(): void
+    {
+        if (!isset($_SESSION['staff_id'])) {
+            header('Location: /login');
+            exit;
+        }
+
+        $data = [
+            'shift_date'           => $_POST['shift_date'] ?? '',
+            'label'                => trim($_POST['label'] ?? ''),
+            'start_time'           => $_POST['start_time'] ?? '',
+            'end_time'             => $_POST['end_time'] ?? '',
+            'required_volunteers'  => (int)($_POST['required_volunteers'] ?? 0),
+            'max_volunteers'       => (int)($_POST['max_volunteers'] ?? 0),
+        ];
+
+        // Basic validation
+        if (
+            !$data['shift_date'] ||
+            !$data['label'] ||
+            !$data['start_time'] ||
+            !$data['end_time'] ||
+            $data['start_time'] >= $data['end_time']
+        ) {
+            $this->render('shifts/create', [
+                'error' => 'Please fill in all fields correctly.',
+                'data'  => $data
+            ]);
+            return;
+        }
+
+        Shifts::create($this->db, $data);
+
+        header('Location: /cw2/public/shifts?created=1');
+        exit;
+    }
 }

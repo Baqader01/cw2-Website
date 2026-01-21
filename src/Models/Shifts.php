@@ -143,7 +143,31 @@ class Shifts
         $stmt->bind_param('i', $shift_id);
         $stmt->execute();
     }
+        
+    public static function create(mysqli $conn, array $data): void
+    {
+        $stmt = $conn->prepare(
+            "INSERT INTO shifts
+                (shift_date, label, start_time, end_time, required_volunteers, max_volunteers)
+            VALUES (?, ?, ?, ?, ?, ?)"
+        );
 
+        $stmt->bind_param(
+            'ssssii',
+            $data['shift_date'],
+            $data['label'],
+            $data['start_time'],
+            $data['end_time'],
+            $data['required_volunteers'],
+            $data['max_volunteers']
+        );
+
+        $stmt->execute();
+
+        if ($stmt->errno) {
+            throw new \RuntimeException($stmt->error);
+        }
+    }
 
 }
 

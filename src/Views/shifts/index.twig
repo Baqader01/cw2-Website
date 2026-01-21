@@ -3,6 +3,12 @@
 {% block content %}    
     <h2>Available Shifts</h2>
 
+    {% if isStaff %}
+        <a href="/cw2/public/shifts/create" class="create-button">
+            + Create Shift
+        </a>
+    {% endif %}
+
     {% if shiftsByDay is empty %}
     <p>No upcoming shifts.</p>
     {% endif %}

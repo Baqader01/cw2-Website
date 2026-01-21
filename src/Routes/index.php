@@ -27,3 +27,6 @@ $router->get('/volunteers', VolunteersController::class, 'index');
 $router->get('/shifts/edit', ShiftsController::class, 'edit');
 $router->post('/shifts/update', ShiftsController::class, 'update');
 $router->post('/shifts/delete', ShiftsController::class, 'delete');
+
+$router->get('/shifts/create', ShiftsController::class, 'create');
+$router->post('/shifts/store', ShiftsController::class, 'store');

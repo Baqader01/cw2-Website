@@ -1,0 +1,60 @@
+{% extends 'layout/base.twig' %}
+
+{% block content %}
+<h2>Create Shift</h2>
+
+{% if error %}
+  <p class="error">{{ error }}</p>
+{% endif %}
+
+<form method="post" action="/cw2/public/shifts/store">
+
+  <label>
+    Date
+    <input type="date" name="shift_date"
+           value="{{ data.shift_date ?? '' }}" required>
+  </label>
+
+  <label>
+    Label
+    <input type="text" name="label"
+           value="{{ data.label ?? '' }}" required>
+  </label>
+
+  <label>
+    Start Time
+    <input type="time" name="start_time"
+           value="{{ data.start_time ?? '' }}" required>
+  </label>
+
+  <label>
+    End Time
+    <input type="time" name="end_time"
+           value="{{ data.end_time ?? '' }}" required>
+  </label>
+
+    <label>
+    Required Volunteers
+    <input type="number"
+            name="required_volunteers"
+            min="1"
+            max="10"
+            value="{{ data.required_volunteers ?? 2 }}"
+            required>
+    </label>
+
+    <label>
+    Max Volunteers
+    <input type="number"
+            name="max_volunteers"
+            min="1"
+            max="10"
+            value="{{ data.max_volunteers ?? 2 }}"
+            required>
+    </label>
+
+  <button type="submit">Create Shift</button>
+  <a href="/cw2/public/shifts">Cancel</a>
+
+</form>
+{% endblock %}
