@@ -34,6 +34,6 @@ $router->post('/shifts/store', ShiftsController::class, 'store');
 
 $router->get('/opening', OpeningTimesController::class, 'index');
 $router->get('/opening/manage', OpeningTimesController::class, 'manage');
-$router->get('/opening-hours/edit', OpeningTimesController::class, 'edit');
-$router->post('/opening-hours/save', OpeningTimesController::class, 'save');
+$router->get('/opening/edit', OpeningTimesController::class, 'edit');
+$router->post('/opening/save', OpeningTimesController::class, 'save');
 

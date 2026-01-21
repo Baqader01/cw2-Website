@@ -1,0 +1,55 @@
+{% extends 'layout/base.twig' %}
+
+{% block content %}
+<h2>Edit Opening Hours</h2>
+
+<p class="week-label">
+  Week commencing {{ weekStart|date('l d M Y') }}
+</p>
+
+<form method="post" action="/cw2/public/opening/save">
+  <input type="hidden" name="week" value="{{ week }}">
+
+  <table class="shifts-table">
+    <thead>
+      <tr>
+        <th>Day</th>
+        <th>Open</th>
+        <th>Close</th>
+        <th>Closed</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for h in hours %}
+        <tr>
+          <td>{{ h.day_name }}</td>
+
+          <td>
+            <input type="time"
+                name="days[{{ h.day_name }}][open_time]"
+                value="{{ h.open_time ? h.open_time|slice(0,5) : '' }}"
+                {% if h.is_closed %}readonly{% endif %}>
+
+          </td>
+
+          <td>
+            <input type="time"
+                   name="days[{{ h.day_name }}][close_time]"
+                   value="{{ h.close_time ? h.close_time|slice(0,5) : '' }}"
+                   {% if h.is_closed %}readonly{% endif %}>
+          </td>
+
+          <td>
+            <input type="checkbox"
+                   name="days[{{ h.day_name }}][is_closed]"
+                   {% if h.is_closed %}checked{% endif %}>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <button type="submit">Save Changes</button>
+  <a href="/cw2/public/opening/manage">Cancel</a>
+</form>
+{% endblock %}

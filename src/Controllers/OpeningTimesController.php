@@ -40,4 +40,70 @@ class OpeningTimesController extends Controller
             'nextWeekStart'  => $nextWeekStart
         ]);
     }
+
+    public function edit(): void
+    {
+        if (!isset($_SESSION['staff_id'])) {
+            header('Location: /cw2/public/login');
+            exit;
+        }
+
+        // current | next
+        $week = $_GET['week'] ?? 'current';
+
+        // Determine week start (Monday)
+        if ($week === 'next') {
+            $weekStart = date('Y-m-d', strtotime('monday next week'));
+        } else {
+            $weekStart = date('Y-m-d', strtotime('monday this week'));
+        }
+
+        // Fetch opening hours for that week
+        $hours = OpeningTimes::getForWeek($this->db, $weekStart);
+
+        $this->render('open/edit', [
+            'hours'     => $hours,
+            'week'      => $week,
+            'weekStart' => $weekStart
+        ]);
+    }
+
+    public function save(): void
+    {
+        if (!isset($_SESSION['staff_id'])) {
+            header('Location: /cw2/public/login');
+            exit;
+        }
+
+        // current | next
+        $week = $_POST['week'] ?? 'current';
+
+        // Determine week start (Monday)
+        if ($week === 'next') {
+            $weekStart = date('Y-m-d', strtotime('monday next week'));
+        } else {
+            $weekStart = date('Y-m-d', strtotime('monday this week'));
+        }
+
+        // Loop through submitted days
+        foreach ($_POST['days'] as $dayName => $data) {
+
+            $openTime  = $data['open_time'] ?? null;
+            $closeTime = $data['close_time'] ?? null;
+            $isClosed  = isset($data['is_closed']);
+
+            OpeningTimes::create(
+                $this->db,
+                $weekStart,
+                $dayName,
+                $openTime,
+                $closeTime,
+                $isClosed
+            );
+        }
+
+        // Redirect back to manage page
+        header('Location: /cw2/public/opening/manage?updated=1');
+        exit;
+    }
 }
