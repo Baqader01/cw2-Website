@@ -60,28 +60,41 @@
 
 {% if isStaff %}
   <div class="shift-actions">
-    <a href="/cw2/public/opening/edit?week=current"
+    <a id="edit-week-btn"
+       href="/cw2/public/opening/edit?week=current"
        class="book-button">
-      Edit This Week
+      Edit Opening Hours
     </a>
   </div>
 {% endif %}
+
 
 <script>
 const thisWeekLabel = "Week commencing {{ thisWeekStart|date('l d M Y') }}";
 const nextWeekLabel = "Week commencing {{ nextWeekStart|date('l d M Y') }}";
 
+const editBtn = document.getElementById('edit-week-btn');
+
 document.getElementById('show-this-week').onclick = () => {
   document.getElementById('this-week-table').style.display = 'table';
   document.getElementById('next-week-table').style.display = 'none';
   document.getElementById('week-label').textContent = thisWeekLabel;
+
+  if (editBtn) {
+    editBtn.href = "/cw2/public/opening/edit?week=current";
+  }
 };
 
 document.getElementById('show-next-week').onclick = () => {
   document.getElementById('this-week-table').style.display = 'none';
   document.getElementById('next-week-table').style.display = 'table';
   document.getElementById('week-label').textContent = nextWeekLabel;
+
+  if (editBtn) {
+    editBtn.href = "/cw2/public/opening/edit?week=next";
+  }
 };
 </script>
+
 
 {% endblock %}

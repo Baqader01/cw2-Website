@@ -168,37 +168,50 @@ class __TwigTemplate_a883501611d0ae2fc4c1b8864e2448db extends Template
         if ((($tmp = ($context["isStaff"] ?? null)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
             // line 62
             yield "  <div class=\"shift-actions\">
-    <a href=\"/cw2/public/opening/edit?week=current\"
+    <a id=\"edit-week-btn\"
+       href=\"/cw2/public/opening/edit?week=current\"
        class=\"book-button\">
-      Edit This Week
+      Edit Opening Hours
     </a>
   </div>
 ";
         }
-        // line 69
+        // line 70
         yield "
+
 <script>
 const thisWeekLabel = \"Week commencing ";
-        // line 71
+        // line 73
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Twig\Extension\CoreExtension']->formatDate(($context["thisWeekStart"] ?? null), "l d M Y"), "html", null, true);
         yield "\";
 const nextWeekLabel = \"Week commencing ";
-        // line 72
+        // line 74
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Twig\Extension\CoreExtension']->formatDate(($context["nextWeekStart"] ?? null), "l d M Y"), "html", null, true);
         yield "\";
+
+const editBtn = document.getElementById('edit-week-btn');
 
 document.getElementById('show-this-week').onclick = () => {
   document.getElementById('this-week-table').style.display = 'table';
   document.getElementById('next-week-table').style.display = 'none';
   document.getElementById('week-label').textContent = thisWeekLabel;
+
+  if (editBtn) {
+    editBtn.href = \"/cw2/public/opening/edit?week=current\";
+  }
 };
 
 document.getElementById('show-next-week').onclick = () => {
   document.getElementById('this-week-table').style.display = 'none';
   document.getElementById('next-week-table').style.display = 'table';
   document.getElementById('week-label').textContent = nextWeekLabel;
+
+  if (editBtn) {
+    editBtn.href = \"/cw2/public/opening/edit?week=next\";
+  }
 };
 </script>
+
 
 ";
         yield from [];
@@ -225,7 +238,7 @@ document.getElementById('show-next-week').onclick = () => {
      */
     public function getDebugInfo(): array
     {
-        return array (  187 => 72,  183 => 71,  179 => 69,  170 => 62,  168 => 61,  163 => 58,  155 => 55,  147 => 53,  143 => 51,  141 => 50,  136 => 48,  133 => 47,  129 => 46,  116 => 35,  108 => 32,  100 => 30,  96 => 28,  94 => 27,  89 => 25,  86 => 24,  82 => 23,  68 => 12,  58 => 4,  51 => 3,  40 => 1,);
+        return array (  189 => 74,  185 => 73,  180 => 70,  170 => 62,  168 => 61,  163 => 58,  155 => 55,  147 => 53,  143 => 51,  141 => 50,  136 => 48,  133 => 47,  129 => 46,  116 => 35,  108 => 32,  100 => 30,  96 => 28,  94 => 27,  89 => 25,  86 => 24,  82 => 23,  68 => 12,  58 => 4,  51 => 3,  40 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -292,29 +305,42 @@ document.getElementById('show-next-week').onclick = () => {
 
 {% if isStaff %}
   <div class=\"shift-actions\">
-    <a href=\"/cw2/public/opening/edit?week=current\"
+    <a id=\"edit-week-btn\"
+       href=\"/cw2/public/opening/edit?week=current\"
        class=\"book-button\">
-      Edit This Week
+      Edit Opening Hours
     </a>
   </div>
 {% endif %}
+
 
 <script>
 const thisWeekLabel = \"Week commencing {{ thisWeekStart|date('l d M Y') }}\";
 const nextWeekLabel = \"Week commencing {{ nextWeekStart|date('l d M Y') }}\";
 
+const editBtn = document.getElementById('edit-week-btn');
+
 document.getElementById('show-this-week').onclick = () => {
   document.getElementById('this-week-table').style.display = 'table';
   document.getElementById('next-week-table').style.display = 'none';
   document.getElementById('week-label').textContent = thisWeekLabel;
+
+  if (editBtn) {
+    editBtn.href = \"/cw2/public/opening/edit?week=current\";
+  }
 };
 
 document.getElementById('show-next-week').onclick = () => {
   document.getElementById('this-week-table').style.display = 'none';
   document.getElementById('next-week-table').style.display = 'table';
   document.getElementById('week-label').textContent = nextWeekLabel;
+
+  if (editBtn) {
+    editBtn.href = \"/cw2/public/opening/edit?week=next\";
+  }
 };
 </script>
+
 
 {% endblock %}
 ", "open/index.twig", "/var/www/html/cw2/src/Views/open/index.twig");
