@@ -6,20 +6,30 @@ use mysqli;
 
 class OpeningTimes
 {
-    public static function getAll(mysqli $conn)
+    public static function getForWeek(mysqli $db, string $weekStart): array
     {
-        $sql = "SELECT day_name, open_time, close_time, is_closed
+        $stmt = $db->prepare(
+            "SELECT *
             FROM opening_hours
-            ORDER BY opening_id ASC";
+            WHERE week_start = ?
+            ORDER BY FIELD(
+                day_name,
+                'Monday',
+                'Tuesday',
+                'Wednesday',
+                'Thursday',
+                'Friday',
+                'Saturday',
+                'Sunday'
+            )"
+        );
 
-        $result = mysqli_query($conn, $sql);
+        $stmt->bind_param('s', $weekStart);
+        $stmt->execute();
 
-        if (!$result) {
-            return [];
-        }
-
-        return mysqli_fetch_all($result, MYSQLI_ASSOC);
+        return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
     }
+
 }
 
 ?>

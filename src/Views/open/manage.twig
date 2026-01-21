@@ -1,0 +1,90 @@
+{% extends 'layout/base.twig' %}
+
+{% block content %}
+<h2>Manage Opening Hours</h2>
+
+<div class="week-toggle">
+  <button id="show-this-week">This Week</button>
+  <button id="show-next-week">Next Week</button>
+</div>
+
+<p id="week-label" class="week-label">
+  Week commencing {{ thisWeekStart|date('l d M Y') }}
+</p>
+
+<table id="this-week-table" class="opening-table">
+  <thead>
+    <tr>
+      <th>Day</th>
+      <th>Hours</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for h in thisWeek %}
+      <tr>
+        <td>{{ h.day_name }}</td>
+        <td>
+          {% if h.is_closed %}
+            Closed
+          {% else %}
+            {{ h.open_time|slice(0,5) }} – {{ h.close_time|slice(0,5) }}
+          {% endif %}
+        </td>
+        <td>
+          <a href="/cw2/public/opening-hours/edit?week=current"  class="book-button">
+            Edit
+          </a>
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<table id="next-week-table" class="opening-table" style="display:none">
+  <thead>
+    <tr>
+      <th>Day</th>
+      <th>Hours</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for h in nextWeek %}
+      <tr>
+        <td>{{ h.day_name }}</td>
+        <td>
+          {% if h.is_closed %}
+            Closed
+          {% else %}
+            {{ h.open_time|slice(0,5) }} – {{ h.close_time|slice(0,5) }}
+          {% endif %}
+        </td>
+        <td>
+          <a href="/cw2/public/opening-hours/edit?week=next" class="book-button">
+            Edit
+          </a>
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<script>
+const thisWeekLabel = "Week commencing {{ thisWeekStart|date('l d M Y') }}";
+const nextWeekLabel = "Week commencing {{ nextWeekStart|date('l d M Y') }}";
+
+document.getElementById('show-this-week').onclick = () => {
+  document.getElementById('this-week-table').style.display = 'table';
+  document.getElementById('next-week-table').style.display = 'none';
+  document.getElementById('week-label').textContent = thisWeekLabel;
+};
+
+document.getElementById('show-next-week').onclick = () => {
+  document.getElementById('this-week-table').style.display = 'none';
+  document.getElementById('next-week-table').style.display = 'table';
+  document.getElementById('week-label').textContent = nextWeekLabel;
+};
+</script>
+
+{% endblock %}

@@ -3,6 +3,7 @@
 use Communitytable\Foodbank\Controllers\HomeController;
 use Communitytable\Foodbank\Controllers\ShiftsController;
 use Communitytable\Foodbank\Controllers\AuthController;
+use Communitytable\Foodbank\Controllers\OpeningTimesController;
 use Communitytable\Foodbank\Controllers\VolunteersController;
 
 // Public
@@ -30,3 +31,9 @@ $router->post('/shifts/delete', ShiftsController::class, 'delete');
 
 $router->get('/shifts/create', ShiftsController::class, 'create');
 $router->post('/shifts/store', ShiftsController::class, 'store');
+
+$router->get('/opening', OpeningTimesController::class, 'index');
+$router->get('/opening/manage', OpeningTimesController::class, 'manage');
+$router->get('/opening-hours/edit', OpeningTimesController::class, 'edit');
+$router->post('/opening-hours/save', OpeningTimesController::class, 'save');
+
