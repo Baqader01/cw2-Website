@@ -153,7 +153,7 @@ class __TwigTemplate_bf180156a4c795532b469b355271a440 extends Template
   </table>
 
   <button type=\"submit\">Save Changes</button>
-  <a href=\"/cw2/public/opening/manage\">Cancel</a>
+  <a href=\"/cw2/public/opening\">Cancel</a>
 </form>
 ";
         yield from [];
@@ -237,7 +237,7 @@ class __TwigTemplate_bf180156a4c795532b469b355271a440 extends Template
   </table>
 
   <button type=\"submit\">Save Changes</button>
-  <a href=\"/cw2/public/opening/manage\">Cancel</a>
+  <a href=\"/cw2/public/opening\">Cancel</a>
 </form>
 {% endblock %}
 ", "open/edit.twig", "/var/www/html/cw2/src/Views/open/edit.twig");

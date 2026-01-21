@@ -24,23 +24,6 @@ class OpeningTimesController extends Controller
         ]);
     }
 
-    public function manage(): void
-    {
-        $thisWeekStart = date('Y-m-d', strtotime('monday this week'));
-        $nextWeekStart = date('Y-m-d', strtotime('monday next week'));
-
-        $thisWeek = OpeningTimes::getForWeek($this->db, $thisWeekStart);
-        $nextWeek = OpeningTimes::getForWeek($this->db, $nextWeekStart);
-
-        $this->render('open/manage', [
-            'thisWeek'   => $thisWeek,
-            'nextWeek'   => $nextWeek,
-            'isStaff'    => isset($_SESSION['staff_id']),
-            'thisWeekStart'  => $thisWeekStart,
-            'nextWeekStart'  => $nextWeekStart
-        ]);
-    }
-
     public function edit(): void
     {
         if (!isset($_SESSION['staff_id'])) {
@@ -51,7 +34,7 @@ class OpeningTimesController extends Controller
         // current | next
         $week = $_GET['week'] ?? 'current';
 
-        // Determine week start (Monday)
+        // Determine week start 
         if ($week === 'next') {
             $weekStart = date('Y-m-d', strtotime('monday next week'));
         } else {
@@ -103,7 +86,7 @@ class OpeningTimesController extends Controller
         }
 
         // Redirect back to manage page
-        header('Location: /cw2/public/opening/manage?updated=1');
+        header('Location: /cw2/public/opening?updated=1');
         exit;
     }
 }

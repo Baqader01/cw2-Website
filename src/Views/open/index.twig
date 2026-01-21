@@ -58,6 +58,15 @@
   </tbody>
 </table>
 
+{% if isStaff %}
+  <div class="shift-actions">
+    <a href="/cw2/public/opening/edit?week=current"
+       class="book-button">
+      Edit This Week
+    </a>
+  </div>
+{% endif %}
+
 <script>
 const thisWeekLabel = "Week commencing {{ thisWeekStart|date('l d M Y') }}";
 const nextWeekLabel = "Week commencing {{ nextWeekStart|date('l d M Y') }}";

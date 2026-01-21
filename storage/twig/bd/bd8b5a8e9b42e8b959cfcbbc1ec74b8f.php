@@ -163,13 +163,27 @@ class __TwigTemplate_a883501611d0ae2fc4c1b8864e2448db extends Template
         yield "  </tbody>
 </table>
 
+";
+        // line 61
+        if ((($tmp = ($context["isStaff"] ?? null)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
+            // line 62
+            yield "  <div class=\"shift-actions\">
+    <a href=\"/cw2/public/opening/edit?week=current\"
+       class=\"book-button\">
+      Edit This Week
+    </a>
+  </div>
+";
+        }
+        // line 69
+        yield "
 <script>
 const thisWeekLabel = \"Week commencing ";
-        // line 62
+        // line 71
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Twig\Extension\CoreExtension']->formatDate(($context["thisWeekStart"] ?? null), "l d M Y"), "html", null, true);
         yield "\";
 const nextWeekLabel = \"Week commencing ";
-        // line 63
+        // line 72
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Twig\Extension\CoreExtension']->formatDate(($context["nextWeekStart"] ?? null), "l d M Y"), "html", null, true);
         yield "\";
 
@@ -211,7 +225,7 @@ document.getElementById('show-next-week').onclick = () => {
      */
     public function getDebugInfo(): array
     {
-        return array (  173 => 63,  169 => 62,  163 => 58,  155 => 55,  147 => 53,  143 => 51,  141 => 50,  136 => 48,  133 => 47,  129 => 46,  116 => 35,  108 => 32,  100 => 30,  96 => 28,  94 => 27,  89 => 25,  86 => 24,  82 => 23,  68 => 12,  58 => 4,  51 => 3,  40 => 1,);
+        return array (  187 => 72,  183 => 71,  179 => 69,  170 => 62,  168 => 61,  163 => 58,  155 => 55,  147 => 53,  143 => 51,  141 => 50,  136 => 48,  133 => 47,  129 => 46,  116 => 35,  108 => 32,  100 => 30,  96 => 28,  94 => 27,  89 => 25,  86 => 24,  82 => 23,  68 => 12,  58 => 4,  51 => 3,  40 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -275,6 +289,15 @@ document.getElementById('show-next-week').onclick = () => {
     {% endfor %}
   </tbody>
 </table>
+
+{% if isStaff %}
+  <div class=\"shift-actions\">
+    <a href=\"/cw2/public/opening/edit?week=current\"
+       class=\"book-button\">
+      Edit This Week
+    </a>
+  </div>
+{% endif %}
 
 <script>
 const thisWeekLabel = \"Week commencing {{ thisWeekStart|date('l d M Y') }}\";
