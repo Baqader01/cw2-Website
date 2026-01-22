@@ -371,6 +371,70 @@ dl {
 .shifts-table td:nth-child(4) {
   text-align: right;
 }
+
+/* === Admin Tables (Volunteers, Staff Views) === */
+.admin-table {
+  width: 100%;
+  max-width: 900px;
+  margin: 1.5rem auto 2rem;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+/* Header */
+.admin-table thead th {
+  text-align: left;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #555;
+  padding: 0.6rem 0.75rem;
+  border-bottom: 2px solid #ddd;
+  background-color: #f6f6f6;
+}
+
+/* Rows */
+.volunteers-table tbody tr {
+  border-bottom: 1px solid #e3e3e3;
+}
+
+.volunteers-table tbody tr:hover {
+  background-color: #fafafa;
+}
+
+/* Cells */
+.volunteers-table td {
+  padding: 0.55rem 0.75rem;
+  vertical-align: middle;
+}
+
+/* Column emphasis */
+.volunteers-table td:first-child {
+  font-family: monospace;
+  color: #777;
+}
+
+.volunteers-table td:nth-child(2) {
+  font-weight: 600;
+}
+
+.volunteers-table td:nth-child(3) {
+  color: #356859;
+}
+
+/* Boolean column (Over 18?) */
+.volunteers-table td:nth-child(5) {
+  font-weight: 500;
+}
+
+/* Date column */
+.volunteers-table td:last-child {
+  white-space: nowrap;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* opening table */
 .opening-table {
   width: 100%;
   max-width: 700px;

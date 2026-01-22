@@ -41,7 +41,7 @@ class __TwigTemplate_9b019e4a56190697416da3723477f141 extends Template
         // line 1
         yield "<header>
     <figure class=\"logo\">
-        <img src=\"../assets/logos/CommunityTable-logo.png\" alt=\"The Community Table logo\">
+        <img src=\"/cw2/assets/logos/CommunityTable-logo.png\" alt=\"The Community Table logo\">
     </figure>
 
     <div class=\"title\">
@@ -108,7 +108,7 @@ class __TwigTemplate_9b019e4a56190697416da3723477f141 extends Template
     {
         return new Source("<header>
     <figure class=\"logo\">
-        <img src=\"../assets/logos/CommunityTable-logo.png\" alt=\"The Community Table logo\">
+        <img src=\"/cw2/assets/logos/CommunityTable-logo.png\" alt=\"The Community Table logo\">
     </figure>
 
     <div class=\"title\">

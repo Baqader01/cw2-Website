@@ -15,4 +15,4 @@ class VolunteersController extends Controller
             'volunteers' => $volunteers,
         ]);
     }
-}
+}   

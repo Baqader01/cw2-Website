@@ -37,6 +37,8 @@ class ShiftsController extends Controller
 
         $this->render('shifts/volunteer', [
             'shifts' => $shifts,
+            'isVolunteer' => isset($_SESSION['volunteer_id']),
+            'isStaff'     => isset($_SESSION['staff_id'])
         ]);
     }
 
