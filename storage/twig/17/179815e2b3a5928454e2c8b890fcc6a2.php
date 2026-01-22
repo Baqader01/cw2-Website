@@ -152,7 +152,12 @@ class __TwigTemplate_d766b868a0f8e550fabcca3a4c670a92 extends Template
       I confirm I am over 18
     </label>
 
-    <button type=\"submit\" class=\"button\">Register</button>
+      <button type=\"submit\" class=\"button\">Register</button>
+
+      <a href=\"/cw2/public/login\" class=\"button\">
+        Cancel
+      </a>
+
   </form>
 
 ";
@@ -254,7 +259,12 @@ class __TwigTemplate_d766b868a0f8e550fabcca3a4c670a92 extends Template
       I confirm I am over 18
     </label>
 
-    <button type=\"submit\" class=\"button\">Register</button>
+      <button type=\"submit\" class=\"button\">Register</button>
+
+      <a href=\"/cw2/public/login\" class=\"button\">
+        Cancel
+      </a>
+
   </form>
 
 {% endblock %}

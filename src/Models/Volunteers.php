@@ -66,33 +66,6 @@ class Volunteers
         $row = $res->fetch_assoc();
         return $row ?: null;
     }
-
-    public static function setRemember(mysqli $conn, int $volunteerId, string $tokenHash, string $expiresAt): bool
-    {
-        $sql = "UPDATE volunteers
-                SET remember_token = ?, remember_expires = ?
-                WHERE volunteer_id = ?";
-
-        $stmt = $conn->prepare($sql);
-        if (!$stmt) return false;
-
-        $stmt->bind_param('ssi', $tokenHash, $expiresAt, $volunteerId);
-        return $stmt->execute();
-    }
-
-        public static function clearRemember(mysqli $conn, int $volunteerId): void
-    {
-        $sql = "UPDATE volunteers
-                SET remember_token = NULL, remember_expires = NULL
-                WHERE volunteer_id = ?";
-
-        $stmt = $conn->prepare($sql);
-        if (!$stmt) return;
-
-        $stmt->bind_param('i', $volunteerId);
-        $stmt->execute();
-    }
-
 }
 
 ?>

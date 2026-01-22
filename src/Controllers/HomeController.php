@@ -19,6 +19,7 @@ class HomeController extends Controller
             'thisWeek'   => $thisWeek,
             'nextWeek'   => $nextWeek,
             'isStaff'    => isset($_SESSION['staff_id']),
+            'isVolunteer'    => isset($_SESSION['volunteer_id']),
             'thisWeekStart'  => $thisWeekStart,
             'nextWeekStart'  => $nextWeekStart
         ]);

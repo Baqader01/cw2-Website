@@ -62,7 +62,7 @@ class __TwigTemplate_00806815c5630f899178183c0b6b7357 extends Template
         // line 7
         if ((($tmp =  !Twig\Extension\CoreExtension::testEmpty(($context["volunteers"] ?? null))) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
             // line 8
-            yield "        <table class=\"admin-table\">
+            yield "        <table class=\"volunteers-table\">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -158,7 +158,7 @@ class __TwigTemplate_00806815c5630f899178183c0b6b7357 extends Template
     <p>This page shows everyone who has registered to volunteer.</p>
 
    {% if volunteers is not empty %}
-        <table class=\"admin-table\">
+        <table class=\"volunteers-table\">
             <thead>
                 <tr>
                     <th>ID</th>

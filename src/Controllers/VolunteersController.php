@@ -13,6 +13,8 @@ class VolunteersController extends Controller
 
         $this->render('volunteers', [
             'volunteers' => $volunteers,
+            'isVolunteer' => isset($_SESSION['volunteer_id']),
+            'isStaff'     => isset($_SESSION['staff_id'])
         ]);
     }
 }   
