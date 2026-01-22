@@ -20,7 +20,32 @@
       <h2>Visitor Information</h2>
       <p>We welcome everyone — no referrals or proof of need required. All meals are vegetarian-friendly, with vegan and gluten-free options available daily. The space is fully wheelchair accessible, with step-free entry and accessible bathrooms.</p>
       
-      {% include 'opening_times.twig' %}
+      <h2>Opening Hours</h2>
+
+      <div class="week-toggle">
+        <button id="show-this-week">This Week</button>
+        <button id="show-next-week">Next Week</button>
+      </div>
+
+      <p id="week-label"
+        class="week-label"
+        data-this-week="Week commencing {{ thisWeekStart|date('l d M Y') }}"
+        data-next-week="Week commencing {{ nextWeekStart|date('l d M Y') }}">
+        Week commencing {{ thisWeekStart|date('l d M Y') }}
+      </p>
+
+      {% include 'open/table.twig' with {
+        hours: thisWeek,
+        table_id: 'this-week-table',
+        table_display: 'table'
+      } %}
+
+      {% include 'open/table.twig' with {
+        hours: nextWeek,
+        table_id: 'next-week-table',
+        table_display: 'none'
+      } %}
+
     </section>
 
     <section id="volunteer">
@@ -54,4 +79,8 @@
         Read all 7 testimonials (PDF)
       </a>
     </section>
+{% endblock %}
+
+{% block scripts %}
+  <script src="/cw2/assets/js/opening-hours.js"></script>
 {% endblock %}

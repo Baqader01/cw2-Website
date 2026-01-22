@@ -31,6 +31,7 @@ class __TwigTemplate_a1b97e61daa82a54d089e5a5b8e374fd extends Template
 
         $this->blocks = [
             'content' => [$this, 'block_content'],
+            'scripts' => [$this, 'block_scripts'],
         ];
     }
 
@@ -74,11 +75,42 @@ class __TwigTemplate_a1b97e61daa82a54d089e5a5b8e374fd extends Template
       <h2>Visitor Information</h2>
       <p>We welcome everyone — no referrals or proof of need required. All meals are vegetarian-friendly, with vegan and gluten-free options available daily. The space is fully wheelchair accessible, with step-free entry and accessible bathrooms.</p>
       
+      <h2>Opening Hours</h2>
+
+      <div class=\"week-toggle\">
+        <button id=\"show-this-week\">This Week</button>
+        <button id=\"show-next-week\">Next Week</button>
+      </div>
+
+      <p id=\"week-label\"
+        class=\"week-label\"
+        data-this-week=\"Week commencing ";
+        // line 32
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Twig\Extension\CoreExtension']->formatDate(($context["thisWeekStart"] ?? null), "l d M Y"), "html", null, true);
+        yield "\"
+        data-next-week=\"Week commencing ";
+        // line 33
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Twig\Extension\CoreExtension']->formatDate(($context["nextWeekStart"] ?? null), "l d M Y"), "html", null, true);
+        yield "\">
+        Week commencing ";
+        // line 34
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Twig\Extension\CoreExtension']->formatDate(($context["thisWeekStart"] ?? null), "l d M Y"), "html", null, true);
+        yield "
+      </p>
+
       ";
-        // line 23
-        yield from $this->load("opening_times.twig", 23)->unwrap()->yield($context);
-        // line 24
-        yield "    </section>
+        // line 37
+        yield from $this->load("open/table.twig", 37)->unwrap()->yield(CoreExtension::merge($context, ["hours" =>         // line 38
+($context["thisWeek"] ?? null), "table_id" => "this-week-table", "table_display" => "table"]));
+        // line 42
+        yield "
+      ";
+        // line 43
+        yield from $this->load("open/table.twig", 43)->unwrap()->yield(CoreExtension::merge($context, ["hours" =>         // line 44
+($context["nextWeek"] ?? null), "table_id" => "next-week-table", "table_display" => "none"]));
+        // line 48
+        yield "
+    </section>
 
     <section id=\"volunteer\">
       <h2>Volunteer With Us</h2>
@@ -115,6 +147,19 @@ class __TwigTemplate_a1b97e61daa82a54d089e5a5b8e374fd extends Template
         yield from [];
     }
 
+    // line 84
+    /**
+     * @return iterable<null|scalar|\Stringable>
+     */
+    public function block_scripts(array $context, array $blocks = []): iterable
+    {
+        $macros = $this->macros;
+        // line 85
+        yield "  <script src=\"/cw2/assets/js/opening-hours.js\"></script>
+";
+        yield from [];
+    }
+
     /**
      * @codeCoverageIgnore
      */
@@ -136,7 +181,7 @@ class __TwigTemplate_a1b97e61daa82a54d089e5a5b8e374fd extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  81 => 24,  79 => 23,  58 => 4,  51 => 3,  40 => 1,);
+        return array (  158 => 85,  151 => 84,  112 => 48,  110 => 44,  109 => 43,  106 => 42,  104 => 38,  103 => 37,  97 => 34,  93 => 33,  89 => 32,  59 => 4,  52 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -163,7 +208,32 @@ class __TwigTemplate_a1b97e61daa82a54d089e5a5b8e374fd extends Template
       <h2>Visitor Information</h2>
       <p>We welcome everyone — no referrals or proof of need required. All meals are vegetarian-friendly, with vegan and gluten-free options available daily. The space is fully wheelchair accessible, with step-free entry and accessible bathrooms.</p>
       
-      {% include 'opening_times.twig' %}
+      <h2>Opening Hours</h2>
+
+      <div class=\"week-toggle\">
+        <button id=\"show-this-week\">This Week</button>
+        <button id=\"show-next-week\">Next Week</button>
+      </div>
+
+      <p id=\"week-label\"
+        class=\"week-label\"
+        data-this-week=\"Week commencing {{ thisWeekStart|date('l d M Y') }}\"
+        data-next-week=\"Week commencing {{ nextWeekStart|date('l d M Y') }}\">
+        Week commencing {{ thisWeekStart|date('l d M Y') }}
+      </p>
+
+      {% include 'open/table.twig' with {
+        hours: thisWeek,
+        table_id: 'this-week-table',
+        table_display: 'table'
+      } %}
+
+      {% include 'open/table.twig' with {
+        hours: nextWeek,
+        table_id: 'next-week-table',
+        table_display: 'none'
+      } %}
+
     </section>
 
     <section id=\"volunteer\">
@@ -197,6 +267,10 @@ class __TwigTemplate_a1b97e61daa82a54d089e5a5b8e374fd extends Template
         Read all 7 testimonials (PDF)
       </a>
     </section>
+{% endblock %}
+
+{% block scripts %}
+  <script src=\"/cw2/assets/js/opening-hours.js\"></script>
 {% endblock %}", "home.twig", "/var/www/html/cw2/src/Views/home.twig");
     }
 }

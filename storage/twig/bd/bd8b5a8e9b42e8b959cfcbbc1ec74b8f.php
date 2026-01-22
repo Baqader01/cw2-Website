@@ -31,6 +31,7 @@ class __TwigTemplate_a883501611d0ae2fc4c1b8864e2448db extends Template
 
         $this->blocks = [
             'content' => [$this, 'block_content'],
+            'scripts' => [$this, 'block_scripts'],
         ];
     }
 
@@ -62,12 +63,22 @@ class __TwigTemplate_a883501611d0ae2fc4c1b8864e2448db extends Template
   <button id=\"show-next-week\">Next Week</button>
 </div>
 
-<p id=\"week-label\" class=\"week-label\">
+<p id=\"week-label\"
+   class=\"week-label\"
+   data-this-week=\"Week commencing ";
+        // line 13
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Twig\Extension\CoreExtension']->formatDate(($context["thisWeekStart"] ?? null), "l d M Y"), "html", null, true);
+        yield "\"
+   data-next-week=\"Week commencing ";
+        // line 14
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Twig\Extension\CoreExtension']->formatDate(($context["nextWeekStart"] ?? null), "l d M Y"), "html", null, true);
+        yield "\">
   Week commencing ";
-        // line 12
+        // line 15
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Twig\Extension\CoreExtension']->formatDate(($context["thisWeekStart"] ?? null), "l d M Y"), "html", null, true);
         yield "
 </p>
+
 
 <table id=\"this-week-table\" class=\"opening-table\">
   <thead>
@@ -78,33 +89,33 @@ class __TwigTemplate_a883501611d0ae2fc4c1b8864e2448db extends Template
   </thead>
   <tbody>
     ";
-        // line 23
+        // line 27
         $context['_parent'] = $context;
         $context['_seq'] = CoreExtension::ensureTraversable(($context["thisWeek"] ?? null));
         foreach ($context['_seq'] as $context["_key"] => $context["h"]) {
-            // line 24
+            // line 28
             yield "      <tr>
         <td>";
-            // line 25
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["h"], "day_name", [], "any", false, false, false, 25), "html", null, true);
+            // line 29
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["h"], "day_name", [], "any", false, false, false, 29), "html", null, true);
             yield "</td>
         <td>
           ";
-            // line 27
-            if ((($tmp = CoreExtension::getAttribute($this->env, $this->source, $context["h"], "is_closed", [], "any", false, false, false, 27)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
-                // line 28
+            // line 31
+            if ((($tmp = CoreExtension::getAttribute($this->env, $this->source, $context["h"], "is_closed", [], "any", false, false, false, 31)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
+                // line 32
                 yield "            Closed
           ";
             } else {
-                // line 30
+                // line 34
                 yield "            ";
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(Twig\Extension\CoreExtension::slice($this->env->getCharset(), CoreExtension::getAttribute($this->env, $this->source, $context["h"], "open_time", [], "any", false, false, false, 30), 0, 5), "html", null, true);
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(Twig\Extension\CoreExtension::slice($this->env->getCharset(), CoreExtension::getAttribute($this->env, $this->source, $context["h"], "open_time", [], "any", false, false, false, 34), 0, 5), "html", null, true);
                 yield " – ";
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(Twig\Extension\CoreExtension::slice($this->env->getCharset(), CoreExtension::getAttribute($this->env, $this->source, $context["h"], "close_time", [], "any", false, false, false, 30), 0, 5), "html", null, true);
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(Twig\Extension\CoreExtension::slice($this->env->getCharset(), CoreExtension::getAttribute($this->env, $this->source, $context["h"], "close_time", [], "any", false, false, false, 34), 0, 5), "html", null, true);
                 yield "
           ";
             }
-            // line 32
+            // line 36
             yield "        </td>
       </tr>
     ";
@@ -112,7 +123,7 @@ class __TwigTemplate_a883501611d0ae2fc4c1b8864e2448db extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_key'], $context['h'], $context['_parent']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 35
+        // line 39
         yield "  </tbody>
 </table>
 
@@ -125,33 +136,33 @@ class __TwigTemplate_a883501611d0ae2fc4c1b8864e2448db extends Template
   </thead>
   <tbody>
     ";
-        // line 46
+        // line 50
         $context['_parent'] = $context;
         $context['_seq'] = CoreExtension::ensureTraversable(($context["nextWeek"] ?? null));
         foreach ($context['_seq'] as $context["_key"] => $context["h"]) {
-            // line 47
+            // line 51
             yield "      <tr>
         <td>";
-            // line 48
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["h"], "day_name", [], "any", false, false, false, 48), "html", null, true);
+            // line 52
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["h"], "day_name", [], "any", false, false, false, 52), "html", null, true);
             yield "</td>
         <td>
           ";
-            // line 50
-            if ((($tmp = CoreExtension::getAttribute($this->env, $this->source, $context["h"], "is_closed", [], "any", false, false, false, 50)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
-                // line 51
+            // line 54
+            if ((($tmp = CoreExtension::getAttribute($this->env, $this->source, $context["h"], "is_closed", [], "any", false, false, false, 54)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
+                // line 55
                 yield "            Closed
           ";
             } else {
-                // line 53
+                // line 57
                 yield "            ";
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(Twig\Extension\CoreExtension::slice($this->env->getCharset(), CoreExtension::getAttribute($this->env, $this->source, $context["h"], "open_time", [], "any", false, false, false, 53), 0, 5), "html", null, true);
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(Twig\Extension\CoreExtension::slice($this->env->getCharset(), CoreExtension::getAttribute($this->env, $this->source, $context["h"], "open_time", [], "any", false, false, false, 57), 0, 5), "html", null, true);
                 yield " – ";
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(Twig\Extension\CoreExtension::slice($this->env->getCharset(), CoreExtension::getAttribute($this->env, $this->source, $context["h"], "close_time", [], "any", false, false, false, 53), 0, 5), "html", null, true);
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(Twig\Extension\CoreExtension::slice($this->env->getCharset(), CoreExtension::getAttribute($this->env, $this->source, $context["h"], "close_time", [], "any", false, false, false, 57), 0, 5), "html", null, true);
                 yield "
           ";
             }
-            // line 55
+            // line 59
             yield "        </td>
       </tr>
     ";
@@ -159,14 +170,14 @@ class __TwigTemplate_a883501611d0ae2fc4c1b8864e2448db extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_key'], $context['h'], $context['_parent']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 58
+        // line 62
         yield "  </tbody>
 </table>
 
 ";
-        // line 61
+        // line 65
         if ((($tmp = ($context["isStaff"] ?? null)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
-            // line 62
+            // line 66
             yield "  <div class=\"shift-actions\">
     <a id=\"edit-week-btn\"
        href=\"/cw2/public/opening/edit?week=current\"
@@ -176,43 +187,21 @@ class __TwigTemplate_a883501611d0ae2fc4c1b8864e2448db extends Template
   </div>
 ";
         }
-        // line 70
-        yield "
-
-<script>
-const thisWeekLabel = \"Week commencing ";
-        // line 73
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Twig\Extension\CoreExtension']->formatDate(($context["thisWeekStart"] ?? null), "l d M Y"), "html", null, true);
-        yield "\";
-const nextWeekLabel = \"Week commencing ";
         // line 74
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Twig\Extension\CoreExtension']->formatDate(($context["nextWeekStart"] ?? null), "l d M Y"), "html", null, true);
-        yield "\";
+        yield "
+";
+        yield from [];
+    }
 
-const editBtn = document.getElementById('edit-week-btn');
-
-document.getElementById('show-this-week').onclick = () => {
-  document.getElementById('this-week-table').style.display = 'table';
-  document.getElementById('next-week-table').style.display = 'none';
-  document.getElementById('week-label').textContent = thisWeekLabel;
-
-  if (editBtn) {
-    editBtn.href = \"/cw2/public/opening/edit?week=current\";
-  }
-};
-
-document.getElementById('show-next-week').onclick = () => {
-  document.getElementById('this-week-table').style.display = 'none';
-  document.getElementById('next-week-table').style.display = 'table';
-  document.getElementById('week-label').textContent = nextWeekLabel;
-
-  if (editBtn) {
-    editBtn.href = \"/cw2/public/opening/edit?week=next\";
-  }
-};
-</script>
-
-
+    // line 77
+    /**
+     * @return iterable<null|scalar|\Stringable>
+     */
+    public function block_scripts(array $context, array $blocks = []): iterable
+    {
+        $macros = $this->macros;
+        // line 78
+        yield "  <script src=\"/cw2/assets/js/opening-hours.js\"></script>
 ";
         yield from [];
     }
@@ -238,7 +227,7 @@ document.getElementById('show-next-week').onclick = () => {
      */
     public function getDebugInfo(): array
     {
-        return array (  189 => 74,  185 => 73,  180 => 70,  170 => 62,  168 => 61,  163 => 58,  155 => 55,  147 => 53,  143 => 51,  141 => 50,  136 => 48,  133 => 47,  129 => 46,  116 => 35,  108 => 32,  100 => 30,  96 => 28,  94 => 27,  89 => 25,  86 => 24,  82 => 23,  68 => 12,  58 => 4,  51 => 3,  40 => 1,);
+        return array (  204 => 78,  197 => 77,  191 => 74,  181 => 66,  179 => 65,  174 => 62,  166 => 59,  158 => 57,  154 => 55,  152 => 54,  147 => 52,  144 => 51,  140 => 50,  127 => 39,  119 => 36,  111 => 34,  107 => 32,  105 => 31,  100 => 29,  97 => 28,  93 => 27,  78 => 15,  74 => 14,  70 => 13,  59 => 4,  52 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -253,9 +242,13 @@ document.getElementById('show-next-week').onclick = () => {
   <button id=\"show-next-week\">Next Week</button>
 </div>
 
-<p id=\"week-label\" class=\"week-label\">
+<p id=\"week-label\"
+   class=\"week-label\"
+   data-this-week=\"Week commencing {{ thisWeekStart|date('l d M Y') }}\"
+   data-next-week=\"Week commencing {{ nextWeekStart|date('l d M Y') }}\">
   Week commencing {{ thisWeekStart|date('l d M Y') }}
 </p>
+
 
 <table id=\"this-week-table\" class=\"opening-table\">
   <thead>
@@ -313,36 +306,10 @@ document.getElementById('show-next-week').onclick = () => {
   </div>
 {% endif %}
 
-
-<script>
-const thisWeekLabel = \"Week commencing {{ thisWeekStart|date('l d M Y') }}\";
-const nextWeekLabel = \"Week commencing {{ nextWeekStart|date('l d M Y') }}\";
-
-const editBtn = document.getElementById('edit-week-btn');
-
-document.getElementById('show-this-week').onclick = () => {
-  document.getElementById('this-week-table').style.display = 'table';
-  document.getElementById('next-week-table').style.display = 'none';
-  document.getElementById('week-label').textContent = thisWeekLabel;
-
-  if (editBtn) {
-    editBtn.href = \"/cw2/public/opening/edit?week=current\";
-  }
-};
-
-document.getElementById('show-next-week').onclick = () => {
-  document.getElementById('this-week-table').style.display = 'none';
-  document.getElementById('next-week-table').style.display = 'table';
-  document.getElementById('week-label').textContent = nextWeekLabel;
-
-  if (editBtn) {
-    editBtn.href = \"/cw2/public/opening/edit?week=next\";
-  }
-};
-</script>
-
-
 {% endblock %}
-", "open/index.twig", "/var/www/html/cw2/src/Views/open/index.twig");
+
+{% block scripts %}
+  <script src=\"/cw2/assets/js/opening-hours.js\"></script>
+{% endblock %}", "open/index.twig", "/var/www/html/cw2/src/Views/open/index.twig");
     }
 }

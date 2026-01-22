@@ -8,9 +8,13 @@
   <button id="show-next-week">Next Week</button>
 </div>
 
-<p id="week-label" class="week-label">
+<p id="week-label"
+   class="week-label"
+   data-this-week="Week commencing {{ thisWeekStart|date('l d M Y') }}"
+   data-next-week="Week commencing {{ nextWeekStart|date('l d M Y') }}">
   Week commencing {{ thisWeekStart|date('l d M Y') }}
 </p>
+
 
 <table id="this-week-table" class="opening-table">
   <thead>
@@ -68,33 +72,8 @@
   </div>
 {% endif %}
 
+{% endblock %}
 
-<script>
-const thisWeekLabel = "Week commencing {{ thisWeekStart|date('l d M Y') }}";
-const nextWeekLabel = "Week commencing {{ nextWeekStart|date('l d M Y') }}";
-
-const editBtn = document.getElementById('edit-week-btn');
-
-document.getElementById('show-this-week').onclick = () => {
-  document.getElementById('this-week-table').style.display = 'table';
-  document.getElementById('next-week-table').style.display = 'none';
-  document.getElementById('week-label').textContent = thisWeekLabel;
-
-  if (editBtn) {
-    editBtn.href = "/cw2/public/opening/edit?week=current";
-  }
-};
-
-document.getElementById('show-next-week').onclick = () => {
-  document.getElementById('this-week-table').style.display = 'none';
-  document.getElementById('next-week-table').style.display = 'table';
-  document.getElementById('week-label').textContent = nextWeekLabel;
-
-  if (editBtn) {
-    editBtn.href = "/cw2/public/opening/edit?week=next";
-  }
-};
-</script>
-
-
+{% block scripts %}
+  <script src="/cw2/assets/js/opening-hours.js"></script>
 {% endblock %}

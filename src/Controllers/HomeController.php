@@ -9,13 +9,18 @@ class HomeController extends Controller
 {
     public function index(): void
     {
+        $thisWeekStart = date('Y-m-d', strtotime('monday this week'));
+        $nextWeekStart = date('Y-m-d', strtotime('monday next week'));
 
-        $openingTimes = OpeningTimes::getAll($this->db);
+        $thisWeek = OpeningTimes::getForWeek($this->db, $thisWeekStart);
+        $nextWeek = OpeningTimes::getForWeek($this->db, $nextWeekStart);
 
         $this->render('home', [
-            'openingTimes' => $openingTimes,
-            'isVolunteer' => isset($_SESSION['volunteer_id']),
-            'isStaff' => isset($_SESSION['staff_id'])
+            'thisWeek'   => $thisWeek,
+            'nextWeek'   => $nextWeek,
+            'isStaff'    => isset($_SESSION['staff_id']),
+            'thisWeekStart'  => $thisWeekStart,
+            'nextWeekStart'  => $nextWeekStart
         ]);
     }
 }

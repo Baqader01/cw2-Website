@@ -1,0 +1,22 @@
+<table id="{{ table_id }}" class="opening-table" style="display:{{table_display}}">
+  <thead>
+    <tr>
+      <th>Day</th>
+      <th>Hours</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for h in hours %}
+      <tr>
+        <td>{{ h.day_name }}</td>
+        <td>
+          {% if h.is_closed %}
+            <span class="closed">Closed</span>
+          {% else %}
+            {{ h.open_time|slice(0,5) }} – {{ h.close_time|slice(0,5) }}
+          {% endif %}
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
