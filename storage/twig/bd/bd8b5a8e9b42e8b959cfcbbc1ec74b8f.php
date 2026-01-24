@@ -180,7 +180,7 @@ class __TwigTemplate_a883501611d0ae2fc4c1b8864e2448db extends Template
             // line 66
             yield "  <div class=\"shift-actions\">
     <a id=\"edit-week-btn\"
-       href=\"/website/public/opening/edit?week=current\"
+       href=\"/website/opening/edit?week=current\"
        class=\"book-button\">
       Edit Opening Hours
     </a>
@@ -299,7 +299,7 @@ class __TwigTemplate_a883501611d0ae2fc4c1b8864e2448db extends Template
 {% if isStaff %}
   <div class=\"shift-actions\">
     <a id=\"edit-week-btn\"
-       href=\"/website/public/opening/edit?week=current\"
+       href=\"/website/opening/edit?week=current\"
        class=\"book-button\">
       Edit Opening Hours
     </a>

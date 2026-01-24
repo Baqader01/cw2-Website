@@ -118,7 +118,7 @@ class __TwigTemplate_320899ed02b01b0e18b5d95dd9cd9beb extends Template
         <img src=\"../assets/volunteers/people_w_1.jpeg\" alt=\"Portrait of a volunteer woman with crossed arms in a dimly lit setting.\">
       </figure>
       <p>Our volunteers are at the heart of everything we do. Whether you’re helping prepare meals, welcoming visitors, or organising food donations, your time makes a real difference.</p>
-      <a href=\"/website/public/register.php\" class=\"button\">Become a Volunteer</a>
+      <a href=\"/website/register.php\" class=\"button\">Become a Volunteer</a>
     </section>
     <section id=\"testimonials\" class=\"testimonials\">
       <h2>What People Say</h2>
@@ -242,7 +242,7 @@ class __TwigTemplate_320899ed02b01b0e18b5d95dd9cd9beb extends Template
         <img src=\"../assets/volunteers/people_w_1.jpeg\" alt=\"Portrait of a volunteer woman with crossed arms in a dimly lit setting.\">
       </figure>
       <p>Our volunteers are at the heart of everything we do. Whether you’re helping prepare meals, welcoming visitors, or organising food donations, your time makes a real difference.</p>
-      <a href=\"/website/public/register.php\" class=\"button\">Become a Volunteer</a>
+      <a href=\"/website/register.php\" class=\"button\">Become a Volunteer</a>
     </section>
     <section id=\"testimonials\" class=\"testimonials\">
       <h2>What People Say</h2>

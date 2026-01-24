@@ -15,7 +15,7 @@ use Twig\Template;
 use Twig\TemplateWrapper;
 
 /* shifts/index.twig */
-class __TwigTemplate_819c970ddeabe6514b4533a746739d83 extends Template
+class __TwigTemplate_b92a803ead49e0810863869962bbbd35 extends Template
 {
     private Source $source;
     /**

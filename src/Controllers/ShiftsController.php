@@ -29,7 +29,7 @@ class ShiftsController extends Controller
     public function myShifts(): void
     {
         if (!isset($_SESSION['volunteer_id'])) {
-            header('Location: /website/public/login.php');
+            header('Location: /website/login.php');
             exit;
         }
 
@@ -79,13 +79,13 @@ class ShiftsController extends Controller
         $shiftId = (int)($_POST['shift_id'] ?? 0);
 
         if ($shiftId <= 0) {
-            header('Location:  /website/public/shifts?error=invalid_shift');
+            header('Location:  /website/shifts?error=invalid_shift');
             exit;
         }
 
         Shifts::update($this->db, $shiftId, $data);
 
-        header('Location: /website/public/shifts?updated=1');
+        header('Location: /website/shifts?updated=1');
         exit;
 
     }
@@ -188,7 +188,7 @@ class ShiftsController extends Controller
         // create booking
         ShiftSignups::create($this->db, $shiftId, $volunteerId);
 
-        header('Location: /website/public/shifts/myShifts');
+        header('Location: /website/shifts/myShifts');
         exit;
     }
 
@@ -202,19 +202,19 @@ class ShiftsController extends Controller
         $shiftId = (int)($_POST['shift_id'] ?? 0);
 
         if ($shiftId <= 0) {
-            header('Location: /website/public/shifts?error=invalid_shift');
+            header('Location: /website/shifts?error=invalid_shift');
             exit;
         }
 
         // prevent deleting booked shifts
         if (ShiftSignups::countForShift($this->db, $shiftId) > 0) {
-            header('Location: /website/public/shifts?error=shift_has_bookings');
+            header('Location: /website/shifts?error=shift_has_bookings');
             exit;
         }
 
         Shifts::delete($this->db, $shiftId);
 
-        header('Location: /website/public/shifts?deleted=1');
+        header('Location: /website/shifts?deleted=1');
         exit;
     }
 
@@ -261,7 +261,7 @@ class ShiftsController extends Controller
 
         Shifts::create($this->db, $data);
 
-        header('Location: /website/public/shifts?created=1');
+        header('Location: /website/shifts?created=1');
         exit;
     }
 }

@@ -84,7 +84,7 @@ class __TwigTemplate_8b4360ef3a7e41ac70abb270d04a3b2c extends Template
         }
         // line 15
         yield "
-    <form method=\"POST\" action=\"/website/public/shifts/update\">
+    <form method=\"POST\" action=\"/website/shifts/update\">
         <input type=\"hidden\" name=\"shift_id\" value=\"";
         // line 17
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["shift"] ?? null), "shift_id", [], "any", false, false, false, 17), "html", null, true);
@@ -146,7 +146,7 @@ class __TwigTemplate_8b4360ef3a7e41ac70abb270d04a3b2c extends Template
         </label>
 
         <button type=\"submit\" class=\"button\">Save changes</button>
-        <a href=\"/website/public/shifts\" class=\"button\">Cancel</a>
+        <a href=\"/website/shifts\" class=\"button\">Cancel</a>
     </form>
 ";
         yield from [];
@@ -193,7 +193,7 @@ class __TwigTemplate_8b4360ef3a7e41ac70abb270d04a3b2c extends Template
         </div>
     {% endif %}
 
-    <form method=\"POST\" action=\"/website/public/shifts/update\">
+    <form method=\"POST\" action=\"/website/shifts/update\">
         <input type=\"hidden\" name=\"shift_id\" value=\"{{ shift.shift_id }}\">
         <label>
             Date
@@ -237,7 +237,7 @@ class __TwigTemplate_8b4360ef3a7e41ac70abb270d04a3b2c extends Template
         </label>
 
         <button type=\"submit\" class=\"button\">Save changes</button>
-        <a href=\"/website/public/shifts\" class=\"button\">Cancel</a>
+        <a href=\"/website/shifts\" class=\"button\">Cancel</a>
     </form>
 {% endblock %}
 ", "shifts/edit.twig", "/var/www/html/website/src/Views/shifts/edit.twig");

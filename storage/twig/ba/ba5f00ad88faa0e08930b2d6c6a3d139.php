@@ -120,7 +120,7 @@ class __TwigTemplate_4679753ef0973bf83195cee7eee3da6b extends Template
 
       <p class=\"auth-link\">
         New here?
-        <a href=\"website/public/register\">Register as a volunteer</a>
+        <a href=\"website/register\">Register as a volunteer</a>
       </p>
     </form>
 
@@ -228,7 +228,7 @@ class __TwigTemplate_4679753ef0973bf83195cee7eee3da6b extends Template
 
       <p class=\"auth-link\">
         New here?
-        <a href=\"website/public/register\">Register as a volunteer</a>
+        <a href=\"website/register\">Register as a volunteer</a>
       </p>
     </form>
 

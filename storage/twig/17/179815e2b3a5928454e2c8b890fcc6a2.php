@@ -154,7 +154,7 @@ class __TwigTemplate_d766b868a0f8e550fabcca3a4c670a92 extends Template
 
       <button type=\"submit\" class=\"button\">Register</button>
 
-      <a href=\"/website/public/login\" class=\"button\">
+      <a href=\"/website/login\" class=\"button\">
         Cancel
       </a>
 
@@ -261,7 +261,7 @@ class __TwigTemplate_d766b868a0f8e550fabcca3a4c670a92 extends Template
 
       <button type=\"submit\" class=\"button\">Register</button>
 
-      <a href=\"/website/public/login\" class=\"button\">
+      <a href=\"/website/login\" class=\"button\">
         Cancel
       </a>
 

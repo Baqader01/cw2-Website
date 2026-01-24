@@ -27,7 +27,7 @@ class OpeningTimesController extends Controller
     public function edit(): void
     {
         if (!isset($_SESSION['staff_id'])) {
-            header('Location: /website/public/login');
+            header('Location: /website/login');
             exit;
         }
 
@@ -54,7 +54,7 @@ class OpeningTimesController extends Controller
     public function save(): void
     {
         if (!isset($_SESSION['staff_id'])) {
-            header('Location: /website/public/login');
+            header('Location: /website/login');
             exit;
         }
 
@@ -86,7 +86,7 @@ class OpeningTimesController extends Controller
         }
 
         // Redirect back to manage page
-        header('Location: /website/public/opening?updated=1');
+        header('Location: /website/opening?updated=1');
         exit;
     }
 }

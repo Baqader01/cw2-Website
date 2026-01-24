@@ -64,7 +64,7 @@ class __TwigTemplate_bf180156a4c795532b469b355271a440 extends Template
         yield "
 </p>
 
-<form method=\"post\" action=\"/website/public/opening/save\">
+<form method=\"post\" action=\"/website/opening/save\">
   <input type=\"hidden\" name=\"week\" value=\"";
         // line 11
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["week"] ?? null), "html", null, true);
@@ -153,7 +153,7 @@ class __TwigTemplate_bf180156a4c795532b469b355271a440 extends Template
   </table>
 
   <button type=\"submit\">Save Changes</button>
-  <a href=\"/website/public/opening\">Cancel</a>
+  <a href=\"/website/opening\">Cancel</a>
 </form>
 ";
         yield from [];
@@ -194,7 +194,7 @@ class __TwigTemplate_bf180156a4c795532b469b355271a440 extends Template
   Week commencing {{ weekStart|date('l d M Y') }}
 </p>
 
-<form method=\"post\" action=\"/website/public/opening/save\">
+<form method=\"post\" action=\"/website/opening/save\">
   <input type=\"hidden\" name=\"week\" value=\"{{ week }}\">
 
   <table class=\"shifts-table\">
@@ -237,7 +237,7 @@ class __TwigTemplate_bf180156a4c795532b469b355271a440 extends Template
   </table>
 
   <button type=\"submit\">Save Changes</button>
-  <a href=\"/website/public/opening\">Cancel</a>
+  <a href=\"/website/opening\">Cancel</a>
 </form>
 {% endblock %}
 ", "open/edit.twig", "/var/www/html/website/src/Views/open/edit.twig");

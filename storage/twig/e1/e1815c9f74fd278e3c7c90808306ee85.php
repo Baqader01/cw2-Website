@@ -61,7 +61,7 @@ class __TwigTemplate_bef86b0f804d8d00c7c0d50a8e5b64f8 extends Template
         // line 6
         if ((($tmp = ($context["isStaff"] ?? null)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
             // line 7
-            yield "        <a href=\"/website/public/shifts/create\" class=\"create-button\">
+            yield "        <a href=\"/website/shifts/create\" class=\"create-button\">
             + Create Shift
         </a>
     ";
@@ -136,7 +136,7 @@ class __TwigTemplate_bef86b0f804d8d00c7c0d50a8e5b64f8 extends Template
                 ";
                     } else {
                         // line 41
-                        yield "                    <a class=\"book-button\" href=\"/website/public/shifts/book?shift_id=";
+                        yield "                    <a class=\"book-button\" href=\"/website/shifts/book?shift_id=";
                         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["s"], "shift_id", [], "any", false, false, false, 41), "html", null, true);
                         yield "\">
                     Book
@@ -153,7 +153,7 @@ class __TwigTemplate_bef86b0f804d8d00c7c0d50a8e5b64f8 extends Template
                 if ((($tmp = ($context["isStaff"] ?? null)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
                     // line 48
                     yield "                    <div class=\"shift-actions\">
-                        <a class=\"book-button\" href=\"/website/public/shifts/edit?shift_id=";
+                        <a class=\"book-button\" href=\"/website/shifts/edit?shift_id=";
                     // line 49
                     yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["s"], "shift_id", [], "any", false, false, false, 49), "html", null, true);
                     yield "\">
@@ -166,7 +166,7 @@ class __TwigTemplate_bef86b0f804d8d00c7c0d50a8e5b64f8 extends Template
                     if ((CoreExtension::getAttribute($this->env, $this->source, $context["s"], "booked_count", [], "any", false, false, false, 54) == 0)) {
                         // line 55
                         yield "                            <form method=\"post\"
-                                action=\"/website/public/shifts/delete\"
+                                action=\"/website/shifts/delete\"
                                 style=\"display:inline\"
                                 onsubmit=\"return confirm('Delete this shift?');\">
                             <input type=\"hidden\" name=\"shift_id\" value=\"";
@@ -239,7 +239,7 @@ class __TwigTemplate_bef86b0f804d8d00c7c0d50a8e5b64f8 extends Template
     <h2>Available Shifts</h2>
 
     {% if isStaff %}
-        <a href=\"/website/public/shifts/create\" class=\"create-button\">
+        <a href=\"/website/shifts/create\" class=\"create-button\">
             + Create Shift
         </a>
     {% endif %}
@@ -273,7 +273,7 @@ class __TwigTemplate_bef86b0f804d8d00c7c0d50a8e5b64f8 extends Template
                 {% if isFull %}
                     <span class=\"full\">Full</span>
                 {% else %}
-                    <a class=\"book-button\" href=\"/website/public/shifts/book?shift_id={{ s.shift_id }}\">
+                    <a class=\"book-button\" href=\"/website/shifts/book?shift_id={{ s.shift_id }}\">
                     Book
                     </a>
                 {% endif %}
@@ -281,14 +281,14 @@ class __TwigTemplate_bef86b0f804d8d00c7c0d50a8e5b64f8 extends Template
 
                 {% if isStaff %}
                     <div class=\"shift-actions\">
-                        <a class=\"book-button\" href=\"/website/public/shifts/edit?shift_id={{ s.shift_id }}\">
+                        <a class=\"book-button\" href=\"/website/shifts/edit?shift_id={{ s.shift_id }}\">
                             Edit
                         </a>
 
                         <span style=\"margin-left: 0.75rem;\"></span>
                         {% if s.booked_count == 0 %}
                             <form method=\"post\"
-                                action=\"/website/public/shifts/delete\"
+                                action=\"/website/shifts/delete\"
                                 style=\"display:inline\"
                                 onsubmit=\"return confirm('Delete this shift?');\">
                             <input type=\"hidden\" name=\"shift_id\" value=\"{{ s.shift_id }}\">

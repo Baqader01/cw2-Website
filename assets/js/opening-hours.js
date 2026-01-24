@@ -16,7 +16,7 @@ function showWeek(week) {
     : label.dataset.nextWeek;
 
   if (editBtn) {
-    editBtn.href = "/website/public/opening/edit?week=" + week;
+    editBtn.href = "/website/opening/edit?week=" + week;
   }
 }
 

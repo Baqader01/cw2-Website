@@ -8,19 +8,19 @@
         <p class="tagline">A table set for all</p>
         <nav aria-label="Main navigation">
         <ul>
-            <li><a href="/website/public">Our Story</a></li>
-            <li><a href="/website/public/shifts">Shifts</a></li>
+            <li><a href="/website">Our Story</a></li>
+            <li><a href="/website/shifts">Shifts</a></li>
 
             {% if isVolunteer %}
-                <li><a href="/website/public/shifts/myShifts">My Shifts</a></li>
-                <li><a href="/website/public/logout">Logout</a></li>
+                <li><a href="/website/shifts/myShifts">My Shifts</a></li>
+                <li><a href="/website/logout">Logout</a></li>
             
             {% elseif isStaff %}
-                <li><a href="/website/public/volunteers">View volunteers</a></li>
-                <li><a href="/website/public/logout">Logout</a></li>
+                <li><a href="/website/volunteers">View volunteers</a></li>
+                <li><a href="/website/logout">Logout</a></li>
 
             {% else %}
-                <li><a href="/website/public/login">Login</a></li>
+                <li><a href="/website/login">Login</a></li>
             {% endif %}
             </ul>
         </nav>

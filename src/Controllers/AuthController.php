@@ -43,7 +43,7 @@ class AuthController extends Controller
                         $_SESSION['staff_role'] = $user['role'];
                         $_SESSION['expires_at'] = time() + (8 * 3600);
 
-                        header('Location: /website/public/');
+                        header('Location: /website/');
                         exit;
                     }
 
@@ -57,7 +57,7 @@ class AuthController extends Controller
                         $_SESSION['volunteer_name'] = $user['full_name'];
                         $_SESSION['expires_at'] = time() + 3600;
 
-                        header('Location: /website/public/');
+                        header('Location: /website/');
                         exit;
                     }
                 }
@@ -143,7 +143,7 @@ class AuthController extends Controller
 
                 if ($ok) {
                     // redirect after successful POST
-                    echo 'Location: /website/public/volunteers.php?registered=1';
+                    echo 'Location: /website/volunteers.php?registered=1';
                     exit;
                 }
 
@@ -161,7 +161,7 @@ class AuthController extends Controller
     public function logout(): void
     {
         session_destroy();
-        header('Location: /website/public/login');
+        header('Location: /website/login');
         exit;
     }
 }

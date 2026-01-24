@@ -15,7 +15,7 @@ use Twig\Template;
 use Twig\TemplateWrapper;
 
 /* home.twig */
-class __TwigTemplate_a1b97e61daa82a54d089e5a5b8e374fd extends Template
+class __TwigTemplate_4a8913ee0e7eb79ed7b860c13df652a2 extends Template
 {
     private Source $source;
     /**
@@ -64,11 +64,11 @@ class __TwigTemplate_a1b97e61daa82a54d089e5a5b8e374fd extends Template
     </section>
 
     <section class=\"carousel\">
-      <img src=\"../assets/marketing/food_1.jpg\" alt=\"Volunteer placing donated food into a box in a community storeroom\">
-      <img src=\"../assets/marketing/food_2.jpg\" alt=\"Two food donation boxes, including one labelled halal, filled with assorted groceries\">
-      <img src=\"../assets/marketing/food_3.jpg\" alt=\"Volunteer packing food items into a donation box for the community\">
-      <img src=\"../assets/marketing/food_4.jpg\" alt=\"Stack of food donation boxes prepared for community distribution\">
-      <img src=\"../assets/marketing/tins_1.jpeg\" alt=\"Canned goods and tins donated for community food support\">
+      <img src=\"assets/marketing/food_1.jpg\" alt=\"Volunteer placing donated food into a box in a community storeroom\">
+      <img src=\"assets/marketing/food_2.jpg\" alt=\"Two food donation boxes, including one labelled halal, filled with assorted groceries\">
+      <img src=\"assets/marketing/food_3.jpg\" alt=\"Volunteer packing food items into a donation box for the community\">
+      <img src=\"assets/marketing/food_4.jpg\" alt=\"Stack of food donation boxes prepared for community distribution\">
+      <img src=\"assets/marketing/tins_1.jpeg\" alt=\"Canned goods and tins donated for community food support\">
     </section>
 
     <section id=\"info\">
@@ -115,10 +115,10 @@ class __TwigTemplate_a1b97e61daa82a54d089e5a5b8e374fd extends Template
     <section id=\"volunteer\">
       <h2>Volunteer With Us</h2>
       <figure>
-        <img src=\"../assets/volunteers/people_w_1.jpeg\" alt=\"Portrait of a volunteer woman with crossed arms in a dimly lit setting.\">
+        <img src=\"assets/volunteers/people_w_1.jpeg\" alt=\"Portrait of a volunteer woman with crossed arms in a dimly lit setting.\">
       </figure>
       <p>Our volunteers are at the heart of everything we do. Whether you’re helping prepare meals, welcoming visitors, or organising food donations, your time makes a real difference.</p>
-      <a href=\"/website/register.php\" class=\"button\">Become a Volunteer</a>
+      <a href=\"/website/register\" class=\"button\">Become a Volunteer</a>
     </section>
     <section id=\"testimonials\" class=\"testimonials\">
       <h2>What People Say</h2>
@@ -138,24 +138,20 @@ class __TwigTemplate_a1b97e61daa82a54d089e5a5b8e374fd extends Template
           <cite>— Priya, Community Member</cite>
         </blockquote>
       </div>
-
-      <a href=\"assets/PDFs/Testimonials.pdf\" class=\"button\" download>
-        Read all 7 testimonials (PDF)
-      </a>
     </section>
 ";
         yield from [];
     }
 
-    // line 84
+    // line 80
     /**
      * @return iterable<null|scalar|\Stringable>
      */
     public function block_scripts(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
-        // line 85
-        yield "  <script src=\"/website/assets/js/opening-hours.js\"></script>
+        // line 81
+        yield "  <script src=\"assets/js/opening-hours.js\"></script>
 ";
         yield from [];
     }
@@ -181,7 +177,7 @@ class __TwigTemplate_a1b97e61daa82a54d089e5a5b8e374fd extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  158 => 85,  151 => 84,  112 => 48,  110 => 44,  109 => 43,  106 => 42,  104 => 38,  103 => 37,  97 => 34,  93 => 33,  89 => 32,  59 => 4,  52 => 3,  41 => 1,);
+        return array (  154 => 81,  147 => 80,  112 => 48,  110 => 44,  109 => 43,  106 => 42,  104 => 38,  103 => 37,  97 => 34,  93 => 33,  89 => 32,  59 => 4,  52 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -197,11 +193,11 @@ class __TwigTemplate_a1b97e61daa82a54d089e5a5b8e374fd extends Template
     </section>
 
     <section class=\"carousel\">
-      <img src=\"../assets/marketing/food_1.jpg\" alt=\"Volunteer placing donated food into a box in a community storeroom\">
-      <img src=\"../assets/marketing/food_2.jpg\" alt=\"Two food donation boxes, including one labelled halal, filled with assorted groceries\">
-      <img src=\"../assets/marketing/food_3.jpg\" alt=\"Volunteer packing food items into a donation box for the community\">
-      <img src=\"../assets/marketing/food_4.jpg\" alt=\"Stack of food donation boxes prepared for community distribution\">
-      <img src=\"../assets/marketing/tins_1.jpeg\" alt=\"Canned goods and tins donated for community food support\">
+      <img src=\"assets/marketing/food_1.jpg\" alt=\"Volunteer placing donated food into a box in a community storeroom\">
+      <img src=\"assets/marketing/food_2.jpg\" alt=\"Two food donation boxes, including one labelled halal, filled with assorted groceries\">
+      <img src=\"assets/marketing/food_3.jpg\" alt=\"Volunteer packing food items into a donation box for the community\">
+      <img src=\"assets/marketing/food_4.jpg\" alt=\"Stack of food donation boxes prepared for community distribution\">
+      <img src=\"assets/marketing/tins_1.jpeg\" alt=\"Canned goods and tins donated for community food support\">
     </section>
 
     <section id=\"info\">
@@ -239,10 +235,10 @@ class __TwigTemplate_a1b97e61daa82a54d089e5a5b8e374fd extends Template
     <section id=\"volunteer\">
       <h2>Volunteer With Us</h2>
       <figure>
-        <img src=\"../assets/volunteers/people_w_1.jpeg\" alt=\"Portrait of a volunteer woman with crossed arms in a dimly lit setting.\">
+        <img src=\"assets/volunteers/people_w_1.jpeg\" alt=\"Portrait of a volunteer woman with crossed arms in a dimly lit setting.\">
       </figure>
       <p>Our volunteers are at the heart of everything we do. Whether you’re helping prepare meals, welcoming visitors, or organising food donations, your time makes a real difference.</p>
-      <a href=\"/website/register.php\" class=\"button\">Become a Volunteer</a>
+      <a href=\"/website/register\" class=\"button\">Become a Volunteer</a>
     </section>
     <section id=\"testimonials\" class=\"testimonials\">
       <h2>What People Say</h2>
@@ -262,15 +258,11 @@ class __TwigTemplate_a1b97e61daa82a54d089e5a5b8e374fd extends Template
           <cite>— Priya, Community Member</cite>
         </blockquote>
       </div>
-
-      <a href=\"assets/PDFs/Testimonials.pdf\" class=\"button\" download>
-        Read all 7 testimonials (PDF)
-      </a>
     </section>
 {% endblock %}
 
 {% block scripts %}
-  <script src=\"/website/assets/js/opening-hours.js\"></script>
+  <script src=\"assets/js/opening-hours.js\"></script>
 {% endblock %}", "home.twig", "/var/www/html/website/src/Views/home.twig");
     }
 }
