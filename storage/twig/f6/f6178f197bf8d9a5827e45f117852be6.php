@@ -108,7 +108,7 @@ class __TwigTemplate_b1eb774bdf5c9482f1089c5d62ed1279 extends Template
             // line 33
             yield "        </td>
         <td>
-          <a href=\"/cw2/public/opening/edit?week=current\"  class=\"book-button\">
+          <a href=\"/website/public/opening/edit?week=current\"  class=\"book-button\">
             Edit
           </a>
         </td>
@@ -161,7 +161,7 @@ class __TwigTemplate_b1eb774bdf5c9482f1089c5d62ed1279 extends Template
             // line 62
             yield "        </td>
         <td>
-          <a href=\"/cw2/public/opening/edit?week=next\" class=\"book-button\">
+          <a href=\"/website/public/opening/edit?week=next\" class=\"book-button\">
             Edit
           </a>
         </td>
@@ -262,7 +262,7 @@ document.getElementById('show-next-week').onclick = () => {
           {% endif %}
         </td>
         <td>
-          <a href=\"/cw2/public/opening/edit?week=current\"  class=\"book-button\">
+          <a href=\"/website/public/opening/edit?week=current\"  class=\"book-button\">
             Edit
           </a>
         </td>
@@ -291,7 +291,7 @@ document.getElementById('show-next-week').onclick = () => {
           {% endif %}
         </td>
         <td>
-          <a href=\"/cw2/public/opening/edit?week=next\" class=\"book-button\">
+          <a href=\"/website/public/opening/edit?week=next\" class=\"book-button\">
             Edit
           </a>
         </td>
@@ -318,6 +318,6 @@ document.getElementById('show-next-week').onclick = () => {
 </script>
 
 {% endblock %}
-", "open/manage.twig", "/var/www/html/cw2/src/Views/open/manage.twig");
+", "open/manage.twig", "/var/www/html/website/src/Views/open/manage.twig");
     }
 }

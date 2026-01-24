@@ -189,6 +189,6 @@ class __TwigTemplate_00806815c5630f899178183c0b6b7357 extends Template
     {% endif %}
 {% endblock %}
 
-", "volunteers.twig", "/var/www/html/cw2/src/Views/volunteers.twig");
+", "volunteers.twig", "/var/www/html/website/src/Views/volunteers.twig");
     }
 }

@@ -68,7 +68,7 @@ class __TwigTemplate_5e722e473ab887b25f7e9fc00a3a8936 extends Template
         }
         // line 9
         yield "
-<form method=\"post\" action=\"/cw2/public/shifts/store\">
+<form method=\"post\" action=\"/website/public/shifts/store\">
 
   <label>
     Date
@@ -133,7 +133,7 @@ class __TwigTemplate_5e722e473ab887b25f7e9fc00a3a8936 extends Template
     </label>
 
   <button type=\"submit\">Create Shift</button>
-  <a href=\"/cw2/public/shifts\">Cancel</a>
+  <a href=\"/website/public/shifts\">Cancel</a>
 
 </form>
 ";
@@ -175,7 +175,7 @@ class __TwigTemplate_5e722e473ab887b25f7e9fc00a3a8936 extends Template
   <p class=\"error\">{{ error }}</p>
 {% endif %}
 
-<form method=\"post\" action=\"/cw2/public/shifts/store\">
+<form method=\"post\" action=\"/website/public/shifts/store\">
 
   <label>
     Date
@@ -222,10 +222,10 @@ class __TwigTemplate_5e722e473ab887b25f7e9fc00a3a8936 extends Template
     </label>
 
   <button type=\"submit\">Create Shift</button>
-  <a href=\"/cw2/public/shifts\">Cancel</a>
+  <a href=\"/website/public/shifts\">Cancel</a>
 
 </form>
 {% endblock %}
-", "shifts/create.twig", "/var/www/html/cw2/src/Views/shifts/create.twig");
+", "shifts/create.twig", "/var/www/html/website/src/Views/shifts/create.twig");
     }
 }

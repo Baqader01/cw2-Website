@@ -24,10 +24,10 @@
     {% if isFull %}
       <p><strong>This shift is full.</strong></p>
     {% else %}
-      <form method="POST" action="/cw2/public/shifts/book">
+      <form method="POST" action="/website/public/shifts/book">
         <input type="hidden" name="shift_id" value="{{ shift.shift_id }}">
         <button class="button">Confirm booking</button>
-        <a href="/cw2/public/shifts" class="button">Cancel</a>
+        <a href="/website/public/shifts" class="button">Cancel</a>
       </form>
     {% endif %}
   {% endif %}

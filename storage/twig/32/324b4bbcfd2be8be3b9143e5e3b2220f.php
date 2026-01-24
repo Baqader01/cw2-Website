@@ -15,7 +15,7 @@ use Twig\Template;
 use Twig\TemplateWrapper;
 
 /* includes/footer.twig */
-class __TwigTemplate_ffcb5ad27f5ff2ff8cfe87c0a6949374 extends Template
+class __TwigTemplate_92a55392c0b3b0412816b939b0e7b5c6 extends Template
 {
     private Source $source;
     /**

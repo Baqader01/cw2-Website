@@ -180,7 +180,7 @@ class __TwigTemplate_a883501611d0ae2fc4c1b8864e2448db extends Template
             // line 66
             yield "  <div class=\"shift-actions\">
     <a id=\"edit-week-btn\"
-       href=\"/cw2/public/opening/edit?week=current\"
+       href=\"/website/public/opening/edit?week=current\"
        class=\"book-button\">
       Edit Opening Hours
     </a>
@@ -201,7 +201,7 @@ class __TwigTemplate_a883501611d0ae2fc4c1b8864e2448db extends Template
     {
         $macros = $this->macros;
         // line 78
-        yield "  <script src=\"/cw2/assets/js/opening-hours.js\"></script>
+        yield "  <script src=\"/website/assets/js/opening-hours.js\"></script>
 ";
         yield from [];
     }
@@ -299,7 +299,7 @@ class __TwigTemplate_a883501611d0ae2fc4c1b8864e2448db extends Template
 {% if isStaff %}
   <div class=\"shift-actions\">
     <a id=\"edit-week-btn\"
-       href=\"/cw2/public/opening/edit?week=current\"
+       href=\"/website/public/opening/edit?week=current\"
        class=\"book-button\">
       Edit Opening Hours
     </a>
@@ -309,7 +309,7 @@ class __TwigTemplate_a883501611d0ae2fc4c1b8864e2448db extends Template
 {% endblock %}
 
 {% block scripts %}
-  <script src=\"/cw2/assets/js/opening-hours.js\"></script>
-{% endblock %}", "open/index.twig", "/var/www/html/cw2/src/Views/open/index.twig");
+  <script src=\"/website/assets/js/opening-hours.js\"></script>
+{% endblock %}", "open/index.twig", "/var/www/html/website/src/Views/open/index.twig");
     }
 }

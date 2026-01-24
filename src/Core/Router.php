@@ -48,7 +48,7 @@ class Router
         $uri = strtok($_SERVER['REQUEST_URI'], '?');
 
         // Adjust base path if needed
-        $uri = str_replace('/cw2/public', '', $uri);
+        $uri = str_replace('/website/public', '', $uri);
         if ($uri === '') {
             $uri = '/';
         }

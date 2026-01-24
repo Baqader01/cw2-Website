@@ -15,7 +15,7 @@ use Twig\Template;
 use Twig\TemplateWrapper;
 
 /* layout/base.twig */
-class __TwigTemplate_73c917a59193b928fc124f74ad76130a extends Template
+class __TwigTemplate_540b2cee20c61c00496dad29130b6d28 extends Template
 {
     private Source $source;
     /**

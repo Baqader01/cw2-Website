@@ -1,6 +1,6 @@
 <header>
     <figure class="logo">
-        <img src="/cw2/assets/logos/CommunityTable-logo.png" alt="The Community Table logo">
+        <img src="/website/assets/logos/CommunityTable-logo.png" alt="The Community Table logo">
     </figure>
 
     <div class="title">
@@ -8,19 +8,19 @@
         <p class="tagline">A table set for all</p>
         <nav aria-label="Main navigation">
         <ul>
-            <li><a href="/cw2/public">Our Story</a></li>
-            <li><a href="/cw2/public/shifts">Shifts</a></li>
+            <li><a href="/website/public">Our Story</a></li>
+            <li><a href="/website/public/shifts">Shifts</a></li>
 
             {% if isVolunteer %}
-                <li><a href="/cw2/public/shifts/myShifts">My Shifts</a></li>
-                <li><a href="/cw2/public/logout">Logout</a></li>
+                <li><a href="/website/public/shifts/myShifts">My Shifts</a></li>
+                <li><a href="/website/public/logout">Logout</a></li>
             
             {% elseif isStaff %}
-                <li><a href="/cw2/public/volunteers">View volunteers</a></li>
-                <li><a href="/cw2/public/logout">Logout</a></li>
+                <li><a href="/website/public/volunteers">View volunteers</a></li>
+                <li><a href="/website/public/logout">Logout</a></li>
 
             {% else %}
-                <li><a href="/cw2/public/login">Login</a></li>
+                <li><a href="/website/public/login">Login</a></li>
             {% endif %}
             </ul>
         </nav>

@@ -163,6 +163,6 @@ class __TwigTemplate_c4e0579b1c865f965a00af6d29862ece extends Template
         </table>
     {% endif %}
 {% endblock %}
-", "shifts/volunteer.twig", "/var/www/html/cw2/src/Views/shifts/volunteer.twig");
+", "shifts/volunteer.twig", "/var/www/html/website/src/Views/shifts/volunteer.twig");
     }
 }

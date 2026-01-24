@@ -119,13 +119,13 @@ class __TwigTemplate_8756a0f268f105c4fd66f181bee782db extends Template
     ";
             } else {
                 // line 27
-                yield "      <form method=\"POST\" action=\"/cw2/public/shifts/book\">
+                yield "      <form method=\"POST\" action=\"/website/public/shifts/book\">
         <input type=\"hidden\" name=\"shift_id\" value=\"";
                 // line 28
                 yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["shift"] ?? null), "shift_id", [], "any", false, false, false, 28), "html", null, true);
                 yield "\">
         <button class=\"button\">Confirm booking</button>
-        <a href=\"/cw2/public/shifts\" class=\"button\">Cancel</a>
+        <a href=\"/website/public/shifts\" class=\"button\">Cancel</a>
       </form>
     ";
             }
@@ -187,14 +187,14 @@ class __TwigTemplate_8756a0f268f105c4fd66f181bee782db extends Template
     {% if isFull %}
       <p><strong>This shift is full.</strong></p>
     {% else %}
-      <form method=\"POST\" action=\"/cw2/public/shifts/book\">
+      <form method=\"POST\" action=\"/website/public/shifts/book\">
         <input type=\"hidden\" name=\"shift_id\" value=\"{{ shift.shift_id }}\">
         <button class=\"button\">Confirm booking</button>
-        <a href=\"/cw2/public/shifts\" class=\"button\">Cancel</a>
+        <a href=\"/website/public/shifts\" class=\"button\">Cancel</a>
       </form>
     {% endif %}
   {% endif %}
 {% endblock %}
-", "shifts/book.twig", "/var/www/html/cw2/src/Views/shifts/book.twig");
+", "shifts/book.twig", "/var/www/html/website/src/Views/shifts/book.twig");
     }
 }

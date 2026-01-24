@@ -178,7 +178,7 @@ class __TwigTemplate_be302ce6681ca9e93c496c75c7f7bf2c extends Template
     {
         $macros = $this->macros;
         yield "    
-    <script src=\"/cw2/assets/auth-toggle.js\" defer></script>
+    <script src=\"/website/assets/auth-toggle.js\" defer></script>
 ";
         yield from [];
     }
@@ -268,7 +268,7 @@ class __TwigTemplate_be302ce6681ca9e93c496c75c7f7bf2c extends Template
 {% endblock %}
 
 {% block script %}    
-    <script src=\"/cw2/assets/auth-toggle.js\" defer></script>
-{% endblock %}", "shifts.twig", "/var/www/html/cw2/src/Views/shifts.twig");
+    <script src=\"/website/assets/auth-toggle.js\" defer></script>
+{% endblock %}", "shifts.twig", "/var/www/html/website/src/Views/shifts.twig");
     }
 }

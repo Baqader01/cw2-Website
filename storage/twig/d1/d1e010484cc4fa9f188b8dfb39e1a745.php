@@ -148,6 +148,6 @@ class __TwigTemplate_1c644079993a97083e06fb701a31a9bc extends Template
     <p>No opening hours have been configured yet.</p>
   {% endif %}
 </section>
-", "opening_times.twig", "/var/www/html/cw2/src/Views/opening_times.twig");
+", "opening_times.twig", "/var/www/html/website/src/Views/opening_times.twig");
     }
 }

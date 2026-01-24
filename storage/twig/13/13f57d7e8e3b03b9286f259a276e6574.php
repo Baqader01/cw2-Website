@@ -15,7 +15,7 @@ use Twig\Template;
 use Twig\TemplateWrapper;
 
 /* auth/login.twig */
-class __TwigTemplate_4679753ef0973bf83195cee7eee3da6b extends Template
+class __TwigTemplate_ca7d73086669a7c700a3841527b2a800 extends Template
 {
     private Source $source;
     /**

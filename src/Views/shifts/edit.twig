@@ -13,7 +13,7 @@
         </div>
     {% endif %}
 
-    <form method="POST" action="/cw2/public/shifts/update">
+    <form method="POST" action="/website/public/shifts/update">
         <input type="hidden" name="shift_id" value="{{ shift.shift_id }}">
         <label>
             Date
@@ -57,6 +57,6 @@
         </label>
 
         <button type="submit" class="button">Save changes</button>
-        <a href="/cw2/public/shifts" class="button">Cancel</a>
+        <a href="/website/public/shifts" class="button">Cancel</a>
     </form>
 {% endblock %}
